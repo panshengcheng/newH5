@@ -1,0 +1,417 @@
+
+#img1{
+    position: absolute;
+    width: 26vw;
+    height: 5vh;
+    top: 5vh;
+    left: 10vw;
+}
+#img2{
+    position: absolute;
+    width: 23vw;
+    height: 5vh;
+    top: 4vh;
+    right: 8vw;
+
+}
+#img3{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 16vh;
+    left: 21vw;
+    /* opacity: 0; */
+}
+#img4{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 16vh;
+    left: 41vw;
+    /* opacity: 0; */
+}
+#img5{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 16vh;
+    left: 61vw;
+    /* opacity: 0; */
+}
+#img6{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 25vh;
+    left: 21vw;
+    /* opacity: 0; */
+}
+#img7{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 25vh;
+    left: 41vw;
+    /* opacity: 0; */
+}
+#img8{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 25vh;
+    left: 61vw;
+    /* opacity: 0; */
+}
+#img9{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 34vh;
+    left: 21vw;
+    /* opacity: 0; */
+}
+#img10{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 34vh;
+    left: 41vw;
+    /* opacity: 0; */
+}
+#img11{
+    position: absolute;
+    width: 16vw;
+    height: 7.5vh;
+    top: 34vh;
+    left: 61vw;
+    /* opacity: 0; */
+}
+#img12{
+    width: 70vw;
+    height: 8vh;
+    position: absolute;
+    top: 50vh;
+    left: 15vw;
+    /* opacity:1; */
+}
+#img13{
+    width: 78vw;
+    height: 4vh;
+    position: absolute;
+    top: 64vh;
+    left: 10vw;
+    /* opacity:1; */
+}
+#img14{
+    position: absolute;
+    top: 70vh;
+    width: 75vw;
+    height: 3vh;
+    left: 10vw;
+    /* opacity:1; */
+}
+#img15{
+    position: absolute;
+    top: 79vh;
+    width: 39vw;
+    height: 4vh;
+    left: 10vw;
+    /* opacity:1; */
+}
+#img16{
+    width: 60vw;
+    height: 20vh;
+    position: absolute;
+    top: 81vh;
+    right: 3vw;
+}
+
+#img17{
+    width: 37vw;
+    position: absolute;
+    top: 7vh;
+    left: 31vw;
+    height: 5vh;
+}
+#img18{
+    width: 76vw;
+    position: absolute;
+    top: 17vh;
+    left: 14vw;
+    height: 4vh;
+}
+#img19{
+    width: 30vw;
+    position: absolute;
+    top: 28vh;
+    left: 10vw;
+    height: 15vh;
+}
+#img20{
+    width: 50vw;
+    position: absolute;
+    top: 28vh;
+    right: 8vw;
+    height: 15vh;
+}
+#img21{
+    width: 44vw;
+    position: absolute;
+    top: 29.5vh;
+    right: 11vw;
+    height: 12vh;
+}
+#img22{
+    width: 32vw;
+    position: absolute;
+    top: 52vh;
+    right: 9vw;
+    height: 9vh;
+}
+#img23{
+    width: 48vw;
+    position: absolute;
+    top: 52vh;
+    left: 9vw;
+    height: 14vh;
+}
+#img24{
+    width: 43vw;
+    position: absolute;
+    top: 53.5vh;
+    left: 12vw;
+    height: 11vh;
+}
+#img25{
+    width: 47vw;
+    position: absolute;
+    top: 81vh;
+    left: 21vw;
+    height: 20vh;
+}
+#img26{
+    width: 33vw;
+    position: absolute;
+    top: 91.5vh;
+    height: 7vh;
+    right: 19vw;
+}
+#img27{
+    width: 33vw;
+    position: absolute;
+    top: 89vh;
+    height: 7.5vh;
+    right: 17vw;
+}
+#img28{
+    width: 33vw;
+    position: absolute;
+    top: 87vh;
+    height: 8vh;
+    right: 11.5vw;
+}
+#img29{
+    width: 33vw;
+    position: absolute;
+    top: 84.5vh;
+    height: 8vh;
+    right: 8vw;
+}
+#img30{
+    width: 32vw;
+    position: absolute;
+    top: 82.5vh;
+    height: 8vh;
+    right: 4.5vw;
+}
+#img31{
+    width: 31vw;
+    position: absolute;
+    top: 80.5vh;
+    height: 8vh;
+    right: 3vw;
+}
+#img32{
+    width: 32vw;
+    position: absolute;
+    top: 78vh;
+    height: 8vh;
+    right: 6vw;
+}
+#img33{
+    width: 31vw;
+    position: absolute;
+    top: 75.7vh;
+    height: 8vh;
+    right: 10vw;
+}
+#img34{
+    width: 40vw;
+    position: absolute;
+    top: 6vh;
+    left: 29vw;
+    height: 5.5vh;
+}
+#img35{
+    width: 63vw;
+    position: absolute;
+    top: 16vh;
+    left: 17vw;
+    height: 14vh;
+}
+#img36{
+    width: 63vw;
+    position: absolute;
+    top: 35.5vh;
+    left: 10vw;
+    height: 6vh;
+}
+#img37{
+    width: 20vw;
+    position: absolute;
+    top: 33vh;
+    right: 6vw;
+    height: 11vh;
+}
+#img38{
+    width: 63vw;
+    position: absolute;
+    top: 45.5vh;
+    left: 10vw;
+    height: 6vh;
+}
+#img39{
+    width: 20vw;
+    position: absolute;
+    top: 43vh;
+    right: 6vw;
+    height: 11vh;
+}
+#img40{
+    width: 63vw;
+    position: absolute;
+    top: 55.5vh;
+    left: 10vw;
+    height: 6vh;
+}
+#img41{
+    width: 20vw;
+    position: absolute;
+    top: 53vh;
+    right: 6vw;
+    height: 11vh;
+}
+#img42{
+    width: 63vw;
+    position: absolute;
+    top: 65.5vh;
+    left: 10vw;
+    height: 6vh;
+}
+#img43{
+    width: 20vw;
+    position: absolute;
+    top: 63vh;
+    right: 6vw;
+    height: 11vh;
+}
+#img44{
+    width: 60vw;
+    position: absolute;
+    top: 75vh;
+    height: 25vh;
+    left: 10vw;
+}
+
+/* 提交页 */
+#img45{
+    width: 28vw;
+    height: 5vh;
+    position: absolute;
+    top: 7vh;
+    left: 37vw;
+}
+#img46{
+    width: 44vw;
+    height: 7vh;
+    position: absolute;
+    top: 17vh;
+    left: 28.5vw;
+}
+#img47{
+    width: 75vw;
+    height: 17vh;
+    position: absolute;
+    top: 28vh;
+    left: 12.5vw;
+}
+#img48{
+    width: 70vw;
+    height: 15vh;
+    position: absolute;
+    top: 29vh;
+    left: 16vw;
+    /* opacity:0; */
+}
+#img49{
+    width: 63vw;
+    height: 12vh;
+    position: absolute;
+    top: 52vh;
+    left: 20vw;
+    /* opacity:0; */
+}
+#img50{
+    width: 17vw;
+    height: 4vh;
+    position: absolute;
+    top: 70vh;
+    left: 17vw;
+}
+
+input{
+    color: white;
+    border: 0px;
+    border-bottom: 1px white solid;
+    border-radius: 0;
+    BACKGROUND-COLOR: transparent;
+    font-size: 20px;
+    text-align: center;
+    outline: none;
+}
+input::-webkit-input-placeholder {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+#name{
+    width: 47vw;
+    position: absolute;
+    top: 70vh;
+    left: 34vw;
+}
+#img51{
+    width: 17vw;
+    height: 4vh;
+    position: absolute;
+    top: 78vh;
+    left: 17vw;
+}
+#phone{
+    width: 47vw;
+    position: absolute;
+    top: 77.5vh;
+    left: 34vw;
+
+}
+#img52{
+    position: absolute;
+    top: 85vh;
+    width: 35vw;
+    height: 10vh;
+    left: 36vw;
+    /* opacity:0; */
+}
+#data{
+    position: static;
+}

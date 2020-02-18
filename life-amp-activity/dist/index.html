@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <title>pixiJS实现</title>
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+  <body class="row">
+    <div id="loading" class="col">
+      <div class="loading-main"></div>
+      <div id="percent">
+        0%
+      </div>
+    </div>
+    <div id="canvas">
+
+    </div>
+    <a href="#" id='rule-link' class="shu">活动规则</a>
+    <div class="col" id="form-panel" >
+      <form class="col heng" id="form" action="demo_form.asp" method="get">
+        <input class="input" required  type="text" name="name" value="" placeholder="请输入您的姓名">
+        <input class="input" required  maxlength="11" minlength="11" type="tel" name="phone" value="" placeholder="请输入您的手机号码">
+        <button class="btn" type="submit" name="button">提交信息 参与抽奖</button>
+      </form>
+    </div>
+  </body>
+  <script src="./js/AlloyTouch.js" charset="utf-8"></script>
+  <script src="./js/Pixi.min.js" charset="utf-8"></script>
+  <script src="./js/TimelineMax.min.js" charset="utf-8"></script>
+  <script src="./js/TweenMax.min.js" charset="utf-8"></script>
+  <script src="./js/resources.js" charset="utf-8"></script>
+  <script src="./js/scene.js" charset="utf-8"></script>
+  <script src="./js/sprites.js" charset="utf-8"></script>
+  <script src="./js/animation.js" charset="utf-8"></script>
+  <script src="./js/index.js" charset="utf-8"></script>
+</html>

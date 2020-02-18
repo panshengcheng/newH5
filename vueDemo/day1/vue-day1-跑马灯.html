@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue跑马灯</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <button @click="start">动起来</button>
+        <button @click="stop">停止</button>
+        <div v-text="msg"></div>
+    </div>
+    <script>
+        let vue = new Vue({
+            el:"#app",
+            data:{
+                msg:"猥琐发育，别浪~~~~~!",
+                interval:null,
+            },
+            methods:{
+                start () {
+                    //this指向：vue中使用this指向在方法等数据之间进行值的传递,而箭头函数很好的解决了this 指向的问题
+                    //vue会自动监听自身的data数据是否发生改变，如果发生改变会立马把最新的数据赋值给页面
+                   if(this.interval !=null) return;
+                   this.interval= setInterval(() => {
+                        let start = this.msg.substring(0,1);
+                        let end = this.msg.substring(1);
+                        this.msg = end + start;
+                    }, 500);
+                    
+                },
+                stop(){
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

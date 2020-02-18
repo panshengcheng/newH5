@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter函数</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        html body .imgInfo{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .imgInfo img{
+            width: 100%; 
+            height: 100%;
+            -webkit-animation: filters 5s ease-in;
+        }
+        @-webkit-keyframes filters{
+            from{
+                -webkit-filter: grayscale(100%);
+            }
+            to{
+                -webkit-filter: grayscale(0%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="imgInfo">
+        <!-- filter:滤镜
+            filter: none | blur(px) | brightness(%) |contrast(%) | drop-shadow(h-shadow v-shadow blur spread color) | grayscale(%)
+            | hue-rotate(deg) | invert(%) | opacity(%) | saturate(%) | sepia(%) | url() | initial | inherit
+            blur(px): 给图片设置高斯模糊（不接受百分比的值)
+            grayscale(%): 将图像转换为灰色图像，值为100%全灰，0%则不起作用
+            invert（%）： 反转图像，100%为完全反转，0则不起作用
+            brightness(%): 给图片一种线性乘法，0%全黑，100%则图片没有变化，也可以超过100%
+        -->
+        <img src="./img/shouye1.png"/>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>透明提示框</title>
+    <script src="lib/jquery.min.js"></script>
+</head>
+<body>
+    <div id="touming">
+        <a href="#" onclick="show_main('操作成功！')" >按钮</a>
+    </div>
+    <script>
+        function show_main(content) {
+            var showWindow = '<div id="show_main" style="border:1px solid #000000;color: beige;'+
+        　　　　　　　　　　　　　　'height:40px;width:160px;position:fixed;top:50%;left:50%;'+
+        　　　　　　　　　　　　　　'margin-left:-80px;margin-top:-20px;z-index:999;border-radius: 7px;'+
+        　　　　　　　　　　　　　　'text-align:center;line-height:40px;filter:alpha(opacity=30);'+
+        　　　　　　　　　　　　　　'-moz-opacity:0.3; opacity:0.3;background-color:#000000;">'
+        　　　　　　　　　　　　    + content + '</div>';
+            if ($("#show_main").length != 0) {
+                $('#show_main').remove();
+            }
+            $("body").append(showWindow);
+        
+            $("#show_main").fadeOut(2000, removeShow_main);
+        }
+        function removeShow_main() {
+            var t = setTimeout($('#show_main').remove(), 2500);
+        }
+    </script>
+</body>
+</html>

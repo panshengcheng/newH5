@@ -1,0 +1,348 @@
+/* 全局网页的样式 */
+.wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: #f9ede1;
+  display: none;
+}
+/* loading样式 */
+.loading {
+  display: block;
+}
+.linner {
+  position: absolute;
+  top: 35vh;
+  left: 50%;
+  width: 18.875rem /* 604/16 */;
+  margin-left: -9.4375rem;
+}
+.linner .lbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.linner .line {
+  width: 18.875rem /* 604/16 */;
+  height: 0.96875rem /* 31/16 */;
+  background-image: url("../images/carpet.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+.linner .man {
+  width: 4.21875rem /* 135/16 */;
+  height: 6.625rem /* 212/16 */;
+  background-image: url("../images/run.png");
+  background-size: auto 100%;
+  background-position: 0 0;
+  animation: 1s manpao infinite;
+}
+.linner .man2 {
+  width: 4.5rem /* 144/16 */;
+  height: 5.3125rem /* 170/16 */;
+  background-image: url("../images/knock-human.png");
+  background-size: cover;
+  position: absolute;
+  right: 20%;
+  top: 20%;
+  display: none;
+}
+.linner .woman {
+  width: 3.96875rem /* 127/16 */;
+  height: 6.3125rem /* 202/16 */;
+  background-image: url("../images/girl.png");
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  top: 5%;
+  display: none;
+}
+.linner .loadingNum {
+  text-align: center;
+  padding-top: 1rem;
+}
+@keyframes manpao {
+  0% {
+    background-position: 0 0;
+  }
+  19% {
+    background-position: 0 0;
+  }
+  20% {
+    background-position: -4.21875rem 0;
+  }
+  39% {
+    background-position: -4.21875rem 0;
+  }
+  40% {
+    background-position: -8.4375rem 0;
+  }
+  59% {
+    background-position: -8.4375rem 0;
+  }
+  60% {
+    background-position: -12.65625rem 0;
+  }
+  79% {
+    background-position: -12.65625rem 0;
+  }
+  80% {
+    background-position: -16.875rem 0;
+  }
+  99% {
+    background-position: -16.875rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+/* KV样式 */
+.kv {
+  background-image: url("../images/main-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.kv .title {
+  background-image: url("../images/main-title.png");
+  background-size: cover;
+  width: 20.90625rem /* 669/16 */;
+  height: 17.21875rem /* 551/16 */;
+  position: absolute;
+  top: 20vh;
+  left: 50%;
+  margin-left: -10.453125rem /* 669/16 */;
+  animation: 3s piao ease-in-out infinite;
+}
+.kv .startBtn {
+  background-image: url("../images/main-btn.png");
+  background-size: cover;
+  width: 9.28125rem /* 297/16 */;
+  height: 3.40625rem /* 109/16 */ /* 551/16 */;
+  position: absolute;
+  left: 50%;
+  margin-left: -4.640625rem /* 297/16 */;
+  top: 70vh;
+  animation: 1.5s shanshan linear infinite;
+}
+@keyframes piao {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes shanshan {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-20px, 0) rotate(-5deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, 0) rotate(5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+/* 告白页样式 */
+.gb {
+  background-image: url("../images/trans-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.gb .text1 {
+  background-image: url("../images/cloud1.png");
+  background-size: cover;
+  width: 23.03125rem /* 737/16 */;
+  height: 22.25rem /* 712/16 */;
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  display: none;
+}
+.gb .text2 {
+  background-image: url("../images/cloud2.png");
+  background-size: cover;
+  width: 19.46875rem /* 623/16 */;
+  height: 18.40625rem /* 589/16 */;
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  display: none;
+}
+.gb .centerText1 {
+  animation: 1s enterText1 ease-in;
+}
+.gb .centerText2 {
+  animation: 1s enterText2 ease-in;
+}
+@keyframes enterText1 {
+  0% {
+    right: -23.03125rem;
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes enterText2 {
+  0% {
+    left: -19.46875rem;
+  }
+  100% {
+    left: 0;
+  }
+}
+/* 场景布置样式 */
+.bzcj .stagr {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+.bzcj .stagr canvas {
+  width: 100%;
+}
+.bzcj .cardContent {
+  height: 13.875rem /* 444/16 */;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #ffffff;
+}
+.bzcj .cardContent .tabs {
+  height: 2.5625rem /* 82/16 */;
+}
+.bzcj .cardContent .tabs .tab,
+.bzcj .cardContent .tabs .xs {
+  width: 20vw;
+  float: left;
+  height: 2.5625rem /* 82/16 */;
+  text-align: center;
+}
+.bzcj .cardContent .tabs .tab img,
+.bzcj .cardContent .tabs .xs img {
+  height: 80%;
+}
+.bzcj .cardContent .tabs .selected {
+  background-color: #f6f6f6;
+}
+.bzcj .cardContent .tabCont {
+  width: 100vw;
+  height: 11rem /* 176/16 */;
+  position: absolute;
+  top: 2.875rem /* 46/16 */;
+  background-color: #f6f6f6;
+}
+.bzcj .cardContent .tabCont .tCont {
+  height: 11rem /* 176/16 */;
+  overflow-y: auto;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.bzcj .cardContent .tabCont .selected {
+  display: block;
+}
+.bzcj .cardContent .tabCont li {
+  padding: 10px;
+  text-align: center;
+  width: 27%;
+  display: inline-block;
+}
+.bzcj .cardContent .tabCont img {
+  width: 90%;
+}
+.bzcj .saveBtn {
+  background-image: url("../images/img/btn-generate.png");
+  background-size: cover;
+  position: absolute;
+  bottom: 14.8125rem /* 474/16 */;
+  right: 0.9375rem /* 30/16 */;
+  width: 2.5rem /* 80/16 */;
+  height: 2.5rem /* 80/16 */;
+}
+.bzcj .subtab {
+  position: absolute;
+  top: 10vh;
+  right: 5vw;
+  width: 120px;
+}
+.bzcj .subtab .dobuleline {
+  width: 120px;
+}
+.bzcj .subtab .singleline {
+  width: 60px;
+}
+.bzcj .subtab ul {
+  display: none;
+  float: right;
+}
+.bzcj .subtab li {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  float: left;
+}
+.bzcj .subtab li img {
+  width: 100%;
+}
+/* 尾页样式 */
+.wy .xiushi1 {
+  background-image: url("../images/fn-cloth.png");
+  background-size: cover;
+  width: 8.125rem /* 260/16 */;
+  height: 11.875rem /* 380/16 */;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.wy .xiushi2 {
+  background-image: url("../images/fn-sepr-flower.png");
+  background-size: cover;
+  width: 5.34375rem /* 171/16 */;
+  height: 6.625rem /* 212/16 */;
+  position: absolute;
+  left: 20vw;
+  top: 50vh;
+}
+.wy .xiushi3 {
+  background-image: url("../images/fn-b-flower.png");
+  background-size: cover;
+  width: 100vw;
+  height: 5.84375rem /* 187/16 */;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.wy .btns {
+  width: 70vw;
+  position: absolute;
+  left: 50%;
+  margin-left: -35vw;
+  top: 70vh;
+}
+.wy .btns .btn {
+  width: 6.6875rem /* 214/16 */;
+  height: 2.40625rem /* 77/16 */;
+  background-size: cover;
+}
+.wy .btns .replayBtn {
+  background-image: url("../images/btn-l.png");
+  float: left;
+}
+.wy .btns .shareBtn {
+  background-image: url("../images/btn-r.png");
+  float: right;
+}

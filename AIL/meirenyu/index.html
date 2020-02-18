@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">
+<title>一起来当美人鱼</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="style/css.css" rel="stylesheet">
+</head>
+<body>
+    <!--LOADING BEGIN-->
+    <div class="laoding" id="loading">
+     <p class="fadeInOut delay1">加载慢</p>
+     <p class="fadeInOut delay2">但你不许</p>
+     <p class="fadeInOut delay3">有意见</p>
+    </div>
+    <!--LOADING END-->
+
+    <!--创建图片合成 BEGIN-->
+    <div class="content" id="content1">
+       <div class="inner" id="stageBox">
+          <div id="gesture-area" class="wrapper"></div><!--手势区域 gesture-area-->
+          <canvas id="stageCanvas" width="750" height="1018"></canvas><!--图片合成区 stageCanvas-->
+       </div>
+       <div class="inner">
+          <div class="button upimg">上传照片</div><!--上传图片按钮 upimg-->
+          <input type="file" name="photo" id="inputimg" class="button"><!--上传图片到画布按钮 inputimg-->
+          <div id="upload" class="button">生成图片</div><!--生成图片按钮 upload-->
+          <div class="desc1 mt20">@H5案例分享</div>
+          <div class="desc1">www.h5-share.com</div>
+       </div>
+       
+    </div>
+    <!--创建图片合成 END-->
+
+    <!--合成图片 BEGIN-->
+    <div class="content" id="content2">
+    <div class="replay" id="replay"><p>继续</p><p>生成</p></div>
+    <div class="inner">
+      
+     <div class="bgbg"></div>
+     <div class="imgwrapper"><img id="show" src=""></div>
+     <div class="desc2">长按保存图片，进行分享</div>
+     <div class="desc2">看星爷的《美人鱼》，一起变成美人鱼</div>
+    </div>
+    
+    </div>
+    <!--合成图片 END-->
+
+    <!--压缩图片不显示 BEGIN-->
+    <canvas id="canvas" style="display:none"></canvas>
+    <img src="" id="compressedimg">
+    <!--压缩图片不显示 END-->
+
+	<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+	<script src="js/interact.min.js"></script>
+	<script src="js/easeljs-0.8.2.min.js"></script>
+	<script src="js/imgcompress.js"></script>
+	<script type="text/javascript" src="js/face.js"></script>
+	<script>
+	   window.onload=function(){
+	      document.getElementById('loading').style.display='none';
+		  document.getElementById('content1').style.display='block';
+	   }
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6之类</title>
+    <script>
+        //创建ES6类
+        window.onload=function(){
+            let p1 = new Person("小明",23);
+            p1.say();
+        }
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            say(){
+                document.getElementById("div").innerHTML="我叫："+this.name+",今年："+this.age+"岁";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div"></div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no">
+<title>Swiper+TweenMax制作招聘H5</title>
+<script>
+	(function () {
+		var html = document.documentElement;
+		var width = html.getBoundingClientRect().width;
+		var fs = width/16;
+		html.style.fontSize = fs+"px";
+	})()
+</script>
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body>	
+<script src="js/swiper.js"></script>
+<div class="swiper-container">
+	<!--<div class="boxCover"></div>-->
+	
+	<div class="swiper-wrapper">
+		<!--<div class="swiper-slide first swiper-no-swiping">-->
+		<div class="swiper-slide first">
+			<!--这是微信分享的小图片-->
+			<div id="weixinLogo">
+				<img src="img/gear1.png"/>
+			</div>
+			
+			<div class="fence">
+				<div class="timeBox">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+			<div class="gears">
+				<img class="line1" src="img/line1.png"/>
+				<img class="line2" src="img/line2.png"/>
+				<img class="line3" src="img/line3.png"/>
+				<img class="line4" src="img/line4.png"/>
+				<img class="line5" src="img/line5.png"/>
+				<img class="line6" src="img/line6.png"/>
+				<img class="line7" src="img/line7.png"/>
+				<img class="line8" src="img/line8.png"/>
+				<img class="line9" src="img/line9.png"/>
+				<img class="line10" src="img/line10.png"/>
+				<img class="line11" src="img/line11.png"/>
+				<img class="line12" src="img/line12.png"/>
+				<img class="line13" src="img/line13.png"/>
+				<img class="line14" src="img/line14.png"/>
+				<img class="gear1" src="img/gear1.png"/>
+				<img class="gear2" src="img/gear2.png"/>
+				<img class="gear3" src="img/gear3.png"/>
+				<img class="gear4" src="img/gear4.png"/>
+				<img class="gear5" src="img/gear5.png"/>
+				<img class="gear6" src="img/gear6.png"/>
+				<img class="gear7" src="img/gear7.png"/>
+				<img class="gear8" src="img/gear8.png"/>
+			</div>
+			<div class="pawsbox">
+				<div class="paw">
+					<div class="pawLeft paws"></div>
+					<div class="pawRight paws"></div>
+				</div>
+				<div class="M">
+					<div class="leftchain chain"></div>
+					<div class="rightchain chain"></div>
+				</div>
+			</div>
+			<img src="img/first_people.png" class="firstPeople"/>
+			<img src="img/first_people2.png" class="firstPeople2"/>
+			<div class="next"></div>
+		</div>
+		<div class="swiper-slide second">
+			<div class="word">
+			</div>
+			<div class="bottomText">
+				<div class="bottomBorder"></div>
+				<div class="sideBorder leftSide"></div>
+				<div class="sideBorder rightSide"></div>
+				<div class="topBorder leftSide"></div>
+				<div class="topBorder rightSide"></div>
+				<p><img src="img/bottomTextLogo.png"/></p>
+				<p class="bottomTextSpanBox">
+					<em>
+						<span>招聘：运营主管</span>
+						<span>薪资：面议</span>
+						<span>坐标：上海 - 七宝 - 宝龙城</span>
+					</em>
+				</p>
+			</div>
+			<div class="next"></div>
+		</div>
+		<div class="swiper-slide third ">
+			<div class="work">
+				<img src="img/third_work.png"/>
+				<p>1.订制IT课程相关的创意活动策划；</p>
+				<p>2.言之有物、诉求精准的文案撰写；</p>
+				<p>3.严谨有序的资源安排、人员部署；</p>
+				<p>4.坚定的执行力！！</p>
+				<p>5.为结果负责。</p>
+			</div>
+			<div class="condition">
+				<img src="img/third_work.png"/>
+				<p>1.三年以上IT产品或服务运营经验，有成功运作案例；</p>
+				<p>2.永远保持紧迫感与危机意识，有方法论、有信心；</p>
+				<p>3.24岁以上，社会阅历丰富；</p>
+				<p>4.熟悉 “前端开发” 行业，对社群运营有一定心得体会。</p>
+			</div>
+			<div class="bottomjob">另招聘 “运营助理” 2~3 名，条件会适度放宽</div>
+			<div class="next"></div>
+		</div>
+		<div class="swiper-slide forth">
+			<img src="img/forth_demon.png" class="dot demon"/>
+			<img src="img/forth_yello.png" class="dot yellow"/>
+			<img src="img/forth_yello.png" class="dot yellow"/>
+			<img src="img/forth_yello.png" class="dot yellow"/>
+			<img src="img/forth_yello.png" class="dot yellow"/>
+			<img src="img/forth_demon1.png" class="dot demon"/>
+			<img src="img/forth_demon2.png" class="dot demon"/>
+			<img src="img/forth_demon3.png" class="dot demon"/>
+			<img src="img/forth_demon2.png" class="dot demon"/>
+			<img src="img/forth_yello.png" class="dot yellow"/>
+			<img src="img/forth_yello.png" class="dot yellow"/>
+			<img src="img/forth_demon4.png" class="dot demon"/>
+			<img src="img/intro.png" class="intro"/>
+			<div class="introduce">
+				<p>妙味课堂是国内资深的前端开发培训机构，妙味课堂拥有系统的JavaScript、HTML5、CSS3、移动开发、远程培训等课程，并录制成最系统的前端开发视频教程，妙味课堂推出的VIP前端学习平台已经成为学习氛围最浓郁的前端学习圈。</p>
+				<div class="coverBox"></div>
+			</div>
+			<div class="next"></div>
+		</div>
+		<div class="swiper-slide fifth">
+			<div id="boxWrap"></div>
+			<div class="textContent">
+				<p>投个简历试试吧</p>
+				<p class="email">miaov-er@miaov.com</p>
+				<p>收到简历后，我们会在工作日尽快回复！</p>
+			</div>
+			<div class="contentUs">
+				<img class="QRcode" src="img/QRCode.png"/>
+				<p>
+					
+					<a href="http://www.miaov.com/"><span>更多信息请访问妙味官网</span></a>
+					<a href="http://www.miaov.com/"><span class="email">www.miaov.com</span></a>
+					<span>扫码关注妙味课堂</span>
+				</p>
+			</div>
+			<img class="fifth_dot" src="img/fifth_dot.png"/>
+			<img class="fifth_dot" src="img/fifth_dot.png"/>
+			<img class="fifth_dot" src="img/fifth_dot1.png"/>
+			<img class="fifth_dot" src="img/fifth_dot1.png"/>
+			<img class="fifth_dot" src="img/fifth_demon.png"/>
+			<!--<div class="next"></div>-->
+		</div>
+	</div>
+	<div class="loading">
+		<p>0%</p>
+	</div>
+</div>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+
+</html>

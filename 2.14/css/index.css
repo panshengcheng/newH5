@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    height: 100%;
+    background-color: white;
+  }
+
+  body {
+    font-family: "microsoft yahei";
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    background: #000;
+
+
+  }
+  .loading{
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      text-align: center;
+  }
+  .loading img{
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 40vh;
+      left: 40vw;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+  }
+  .loading p{
+      position: absolute;
+      top: 55vh;
+      left: 45vw;
+      font-size: 22px;
+     
+  }
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+    background: url(../img/bj.jpg) no-repeat left top;
+    background-size: 100% 100%;
+    font-family: 'Kirang Haerang', cursive;
+    font-size: 19px;
+  }
+  .swiper-slide p{
+      text-align: center;
+  }
+ .one p:nth-of-type(1){
+    text-align: center;
+    top: 30vh;
+    left: 28vw;
+ }
+ .one p:nth-of-type(2){
+    text-align: center;
+    top: 35vh;
+    left: 25vw;
+ }
+ /* 第二页 */
+ .page2{
+    width: 33vw;
+    height: 24vh;
+ }
+ .img2-1{
+    left: 11vw;
+    top: 8vh;
+ }
+ .img2-2{
+    top: 8vh;
+    right: 11vw;
+ }
+ .two p:nth-of-type(1){
+    top: 36vh;
+    left: 37vw;
+ }
+ .two p:nth-of-type(2){
+    top: 41vh;
+    left: 34vw;
+ }
+ /* 第三页 */
+ .ther img:nth-of-type(1){
+    width: 40vw;
+    height: 19vh;
+    top: 7vh;
+    left: 25vw;
+    border: 1px solid #ccc;
+    padding: 5%;
+    border-radius: 10px;
+ }
+ .ther p:nth-of-type(1){
+    top: 38vh;
+    left: 33vw;
+ }
+ .ther p:nth-of-type(2){
+    top: 42vh;
+    left: 36vw;
+ }
+ /* 第四页 */
+ .four img{
+    width: 40vw;
+    height: 24vh;
+    top: 4vh;
+    left: 25vw;
+    border: 1px solid #ccc;
+    padding: 5%;
+    border-radius: 10px;
+    
+ }
+ .four p:nth-of-type(1){
+    top: 38vh;
+    left: 33vw;
+ }
+ .four p:nth-of-type(2){
+    top: 43vh;
+    left: 36vw;
+}
+/* 第五页 */
+.five p:nth-of-type(1){
+    top: 10vh;
+    left: 24vw;
+}
+.five p:nth-of-type(2){
+    top: 17vh;
+    left: 12vw;
+}
+.five p:nth-of-type(3){
+    top: 23vh;
+    left: 17vw;
+}
+.five p:nth-of-type(4){
+    top: 29vh;
+    left: 15vw;
+}
+/* 第六页 */
+.six img{
+    top: 4vh;
+    left: 10vw;
+    width: 80vw;
+    height: 24vh;
+}
+.six p:nth-of-type(1){
+    top: 30vh;
+    left: 4vw;
+ }
+ .six p:nth-of-type(2){
+    top: 38vh;
+    left: 13vw;
+ }
+ .six P:nth-of-type(3){
+    top: 45vh;
+    right: 9vw;
+ }
+  img {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    opacity: .4;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+  @-webkit-keyframes start {
+
+    0%,
+    30% {
+      opacity: 0;
+      -webkit-transform: translate(0, 10px);
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 0;
+      -webkit-transform: translate(0, -8px);
+    }
+  }
+
+  @-moz-keyframes start {
+
+    0%,
+    30% {
+      opacity: 0;
+      -moz-transform: translate(0, 10px);
+    }
+
+    60% {
+      opacity: 1;
+      -moz-transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 0;
+      -moz-transform: translate(0, -8px);
+    }
+  }
+
+  @keyframes start {
+
+    0%,
+    30% {
+      opacity: 0;
+      transform: translate(0, 10px);
+    }
+
+    60% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(0, -8px);
+    }
+  }
+
+  .ani {
+    position: absolute;
+  }
+
+  .txt {
+    position: absolute;
+  }
+
+  #array {
+    position: absolute;
+    z-index: 999;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+  }
+
+  /**音乐*/
+.music{
+    width:35px;
+    height: 35px;
+    position: absolute;
+    top: 1%;
+    right: 6%;
+    z-index: 100;
+    
+}
+.musicPlay{
+    background: url(../img/music.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-animation: reverseRotataZ 1.2s linear infinite;
+}
+
+.musicStop{
+    background: url(../img/music.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+@-webkit-keyframes reverseRotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(-360deg);}
+}
+@-webkit-keyframes rotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(0deg);}
+}
+/**
+    图标
+*/
+#array {
+    position: absolute;
+    z-index: 999;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    display: none;
+}
+@-webkit-keyframes start {
+
+    0%,
+    30% {
+      opacity: 0;
+      -webkit-transform: translate(0, 10px);
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 0;
+      -webkit-transform: translate(0, -8px);
+    }
+  }
+
+  @-moz-keyframes start {
+
+    0%,
+    30% {
+      opacity: 0;
+      -moz-transform: translate(0, 10px);
+    }
+
+    60% {
+      opacity: 1;
+      -moz-transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 0;
+      -moz-transform: translate(0, -8px);
+    }
+  }
+
+  @keyframes start {
+
+    0%,
+    30% {
+      opacity: 0;
+      transform: translate(0, 10px);
+    }
+
+    60% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(0, -8px);
+    }
+  }
+
+  .page1-title{
+    width: 100%;
+    height: 28vh;
+  }

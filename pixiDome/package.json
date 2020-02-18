@@ -1,0 +1,21 @@
+{
+  "name": "dome01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/gsap": "^1.20.2",
+    "animate": "^1.0.0",
+    "jquery": "^3.4.1",
+    "pixi.js": "^5.0.4",
+    "swiper": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/pixi.js": "^4.8.8"
+  }
+}

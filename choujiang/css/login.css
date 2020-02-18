@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3a3636;
+}
+html .zjm,
+body .zjm {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+html .zjm .gifImg,
+body .zjm .gifImg {
+  width: 100%;
+  height: 100vh;
+}
+html .zjm .yaojiang .zImages,
+body .zjm .yaojiang .zImages {
+  position: absolute;
+  top: 5%;
+}
+html .zjm .yaojiang .zImages img,
+body .zjm .yaojiang .zImages img {
+  width: 30%;
+  height: 30%;
+  position: relative;
+}
+html .zjm .yaojiang .zImages .help,
+body .zjm .yaojiang .zImages .help {
+  left: 2vw;
+}
+html .zjm .yaojiang .zImages .server,
+body .zjm .yaojiang .zImages .server {
+  left: 225%;
+}
+html .zjm .yaojiang .myInfo,
+body .zjm .yaojiang .myInfo {
+  position: absolute;
+  left: 30vw;
+  top: 95%;
+  color: aliceblue;
+}
+html .gz,
+body .gz {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 111;
+  position: relative;
+  top: 10%;
+  left: 15%;
+}
+html .gz .drawInfo,
+body .gz .drawInfo {
+  color: aliceblue;
+}
+html .gz .drawInfo h1,
+body .gz .drawInfo h1 {
+  margin: 0px 0px 20px 40px;
+  font-family: sans-serif;
+}
+html .gz .drawInfo p,
+body .gz .drawInfo p {
+  line-height: 30px;
+}
+html .gz .drawInfo .awardes,
+body .gz .drawInfo .awardes {
+  margin: 90px 0px 0px 0px;
+}
+html .gz .imgs,
+body .gz .imgs {
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  border: 3px solid;
+  border-radius: 50%;
+}
+html .gz .buttom,
+body .gz .buttom {
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  background-color: darkgray;
+  color: aliceblue;
+  position: absolute;
+  top: 90vh;
+  left: 30vw;
+}
+html .myDraw,
+body .myDraw {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: aliceblue;
+  position: relative;
+  z-index: 112;
+  -moz-opacity: 0.4;
+  opacity: 0.4;
+  filter: alpha(opacity=8);
+}
+html .myDraw .advertising,
+body .myDraw .advertising {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+html .myDraw .advertising h1,
+body .myDraw .advertising h1 {
+  margin: 0px 0px 30px 0px;
+}
+html .myDraw .advertising img,
+body .myDraw .advertising img {
+  margin: 0px 0px 30px 20px;
+}
+html .myDraw .advertising p,
+body .myDraw .advertising p {
+  line-height: 30px;
+}
+html .myDraw .buttom,
+body .myDraw .buttom {
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  background-color: darkgray;
+  color: aliceblue;
+  position: absolute;
+  top: 90vh;
+  left: 35vw;
+}

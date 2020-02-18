@@ -1,0 +1,372 @@
+/* 全局网页的样式 */
+.wrapper{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: #f9ede1;
+    display: none;
+}
+/* loading样式 */
+.loading{
+    display: block;
+}
+.linner{
+    position: absolute;
+    top: 35vh;
+    left: 50%;
+    width: 37.75/2rem /* 604/16 */;
+    margin-left: -37.75/4rem;
+    .lbox{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .line{
+        width: 37.75/2rem /* 604/16 */;
+        height: 1.9375/2rem /* 31/16 */;
+        background-image: url("../images/carpet.png");
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+    }
+    .man{
+        width: 8.4375/2rem /* 135/16 */;
+        height: 13.25/2rem /* 212/16 */;
+        background-image: url("../images/run.png");
+        background-size: auto 100%;
+        background-position: 0 0;
+        animation: 1s manpao infinite;
+    }
+    .man2{
+        width: 9/2rem /* 144/16 */;
+        height: 10.625/2rem /* 170/16 */;
+        background-image: url("../images/knock-human.png");
+        background-size: cover;
+        position: absolute;
+        right: 20%;
+        top: 20%;
+        display: none;
+    }
+    .woman{
+        width: 7.9375/2rem /* 127/16 */;
+        height: 12.625/2rem /* 202/16 */;
+        background-image: url("../images/girl.png");
+        background-size: cover;
+        position: absolute;
+        right: 0;
+        top: 5%;
+        display: none;
+    }
+    .loadingNum{
+        text-align: center;
+        padding-top: 1rem;
+    }
+}
+
+@keyframes manpao{
+    0%{
+        background-position: 0 0;
+    }
+    19%{
+        background-position: 0 0;
+    }
+    20%{
+        background-position: -8.4375/2rem 0;
+    }
+    39%{
+        background-position: -8.4375/2rem 0;
+    }
+    40%{
+        background-position: -8.4375/2*2rem 0;
+    }
+    59%{
+        background-position: -8.4375/2*2rem 0;
+    }
+    60%{
+        background-position: -8.4375/2*3rem 0;
+    }
+    79%{
+        background-position: -8.4375/2*3rem 0;
+    }
+    80%{
+        background-position: -8.4375/2*4rem 0;
+    }
+    99%{
+        // background-position: -8.4375/2*5rem 0;
+        background-position: -8.4375/2*4rem 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+
+
+/* KV样式 */
+
+.kv{
+    background-image: url("../images/main-bg.jpg");
+    background-size: cover;
+    background-position: center center;
+
+    .title{
+        background-image: url("../images/main-title.png");
+        background-size: cover;
+        width: 41.8125/2rem /* 669/16 */;
+        height: 34.4375/2rem /* 551/16 */;
+        position: absolute;
+        top: 20vh;
+        left: 50%;
+        margin-left: -41.8125/4rem /* 669/16 */;
+        animation: 3s piao ease-in-out infinite;
+    }
+    .startBtn{
+        background-image: url("../images/main-btn.png");
+        background-size: cover;
+        width: 18.5625/2rem /* 297/16 */;
+        height: 6.8125/2rem /* 109/16 */ /* 551/16 */;
+        position: absolute;
+        left: 50%;
+        margin-left: -18.5625/4rem /* 297/16 */;
+        top: 70vh;
+        animation: 1.5s shanshan linear infinite;
+    }
+}
+@keyframes piao{
+    0%{
+        transform: translate(0,0);
+    }
+    50%{
+        transform: translate(0,10px);
+    }
+    100%{
+        transform: translate(0,0);
+    }
+}
+
+@keyframes shanshan{
+    0%{
+        transform: translate(0,0) rotate(0deg);
+    }
+    25%{
+        transform: translate(-20px,0) rotate(-5deg);
+    }
+    50%{
+        transform: translate(0,0) rotate(0deg);
+    }
+    25%{
+        transform: translate(20px,0) rotate(5deg);
+    }
+    100%{
+        transform: translate(0,0) rotate(0deg);
+    }
+}
+/* 告白页样式 */
+
+.gb{
+    background-image: url("../images/trans-bg.jpg");
+    background-size: cover;
+    background-position: center center;
+    .text1{
+        background-image: url("../images/cloud1.png");
+        background-size: cover;
+        width: 46.0625/2rem /* 737/16 */;
+        height: 44.5/2rem /* 712/16 */;
+        position: absolute;
+        top: 10vh;
+        right: 0;
+        display: none;
+    }
+    .text2{
+        background-image: url("../images/cloud2.png");
+        background-size: cover;
+        width: 38.9375/2rem /* 623/16 */;
+        height: 36.8125/2rem /* 589/16 */;
+        position: absolute;
+        top: 50vh;
+        left: 0;
+        display: none;
+    }
+    .centerText1{
+        animation: 1s enterText1 ease-in;
+    }
+    .centerText2{
+        animation: 1s enterText2 ease-in;
+    }
+}
+
+@keyframes enterText1{
+    0%{
+        right: -46.0625/2rem;
+    }
+    100%{
+        right: 0;
+    }
+}
+@keyframes enterText2{
+    0%{
+        left: -38.9375/2rem;
+    }
+    100%{
+        left: 0;
+    }
+}
+/* 场景布置样式 */
+
+.bzcj{
+    .stagr{
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        // 添加完图片后可能尺寸会变化；
+        canvas{
+            width: 100%;
+
+        }
+    }
+    .cardContent{
+        height: 27.75/2rem /* 444/16 */;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #ffffff;
+
+        .tabs{
+            
+            height: 5.125/2rem /* 82/16 */;
+            .tab,.xs{
+                width: 20vw;
+                float: left;
+                height: 5.125/2rem /* 82/16 */;
+                text-align: center;
+                img{
+                    height: 80%;
+                }
+            }
+            .selected{
+                background-color: #f6f6f6;
+            }
+
+        }
+        .tabCont{
+            width: 100vw;
+            height: 11rem /* 176/16 */;
+            position: absolute;
+            top: 2.875rem /* 46/16 */;
+            background-color: #f6f6f6;
+            .tCont{
+                height: 11rem /* 176/16 */;
+                overflow-y: auto;
+                width: 100vw;
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: none;
+            }
+            .selected{
+                display: block;
+            }
+            li{
+                padding: 10px;
+                text-align: center;
+                width: 27%;
+                display: inline-block;
+            }
+            img{
+                width: 90%;
+            }
+        }
+    }
+    .saveBtn{
+        background-image: url("../images/img/btn-generate.png");
+        background-size: cover;
+        position: absolute;
+        bottom: 29.625/2rem /* 474/16 */;
+        right: 1.875/2rem /* 30/16 */;
+        width: 5/2rem /* 80/16 */;
+        height: 5/2rem /* 80/16 */;
+    }
+    .subtab{
+        position: absolute;
+        top: 10vh;
+        right: 5vw;
+        width: 120px;
+        .dobuleline{
+            width: 120px;
+        }
+        .singleline{
+            width:60px;
+        }
+
+        ul{
+            display: none;
+            float: right;
+        }
+
+        li{
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+            float: left;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    
+}
+
+/* 尾页样式 */
+
+
+.wy{
+    .xiushi1{
+        background-image: url("../images/fn-cloth.png");
+        background-size: cover;
+        width: 16.25/2rem /* 260/16 */;
+        height: 23.75/2rem /* 380/16 */;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .xiushi2{
+        background-image: url("../images/fn-sepr-flower.png");
+        background-size: cover;
+        width: 10.6875/2rem /* 171/16 */;
+        height: 13.25/2rem /* 212/16 */;
+        position: absolute;
+        left: 20vw;
+        top: 50vh;
+    }
+    .xiushi3{
+        background-image: url("../images/fn-b-flower.png");
+        background-size: cover;
+        width: 100vw;
+        height: 11.6875/2rem /* 187/16 */;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    .btns{
+        width: 70vw;
+        position: absolute;
+        left: 50%;
+        margin-left: -35vw;
+        top: 70vh;
+
+        .btn{
+            width: 13.375/2rem /* 214/16 */;
+            height: 4.8125/2rem /* 77/16 */;
+           background-size: cover;
+        }
+        .replayBtn{
+            background-image: url("../images/btn-l.png");
+            float: left;
+        }
+        .shareBtn{
+            background-image: url("../images/btn-r.png");
+            float: right;
+        }
+    }
+}

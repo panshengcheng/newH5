@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-事件修饰</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        *{margin: 0;}
+        .inner{
+            width: 400px;
+            padding: 20%;
+            background-color: skyblue;
+        }
+        .btn{
+            width: 100px;
+            height: 50px;
+            background-color: red;
+        }
+        .scroll{
+            background-color: springgreen;
+            width: 100%;
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- vue使用 .stop阻止冒泡事件 -->
+        <!-- <div class="inner" @click="innerFun">
+            <button class="btn" @click.stop="btnFun">按钮</button>
+        </div> -->
+        <!-- vue使用 .prevent阻止默认事件 -->
+        <!-- <a href="http://www.baidu.com" @click.prevent="aFun">有困难，找度娘</a> -->
+        <!-- vue使用 .capture添加事件监听器时，使用事件捕获模式:即内部元素触发的事件先在此处处理，才交由内部元素处理 -->
+        <!-- 先处理captrue事件上的函数，然后再处理子元素的函数 -->
+        <!-- <div class="inner" @click.capture="innerFun">
+            <button class="btn" @click="btnFun">按钮</button>
+        </div> -->
+        <!-- vue .self事件不是内部元素触发的 -->
+        <!-- <div class="inner" @click="innerFun">
+            <button class="btn" @click.self="btnFun">按钮</button>
+        </div> -->
+        <!-- vue .once当前事件只触发一次 -->
+        <!-- <div class="inner" @click="innerFun">
+            <button class="btn" @click.once="btnFun">按钮</button>
+        </div> -->
+        <!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+        <!-- 而不会等待 `onScroll` 完成  -->
+        <!-- 这其中包含 `event.preventDefault()` 的情况 -->
+        <div @click.scroll.passive="onScroll" class="scroll">监听滚动事件</div>
+    </div>
+    <script>
+        let vue = new Vue({
+            el:".app",
+            data:{},
+            methods:{
+                innerFun(){
+                    console.log("触发了 inner div 事件");
+                },
+                btnFun(){
+                    console.log("触发了 btn 按钮事件");
+                },
+                aFun(){
+                    console.log("触发了A标签");
+                },
+                onScroll(){
+                    console.log("触发了滚动条监听事件");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

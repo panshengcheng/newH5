@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript面向对象之原型链</title>
+    <script>
+        //编写面向对象的步骤：1创建构造函数（包括该构造函数的属性），2使用原型链创建构造函数方法（原型链：在内存中使用同一个空间，提升性能）
+        function CreateDate(name, gender, six){
+            this.name = name;
+            this.gender = gender;
+            this.six =six;
+        }
+        CreateDate.prototype.getInfo = function(){
+            alert("您的姓名是："+this.name+",年龄为："+this.gender+",性别是："+this.six);
+        }
+        //3.调用构造函数方法
+        window.onload=function(){
+            //let d = new CreateDate("张三",21, "男").getInfo();
+            let name =document.getElementById("name");
+            let gender = document.getElementById("gender");
+            let s = document.getElementsByName("six");
+            let btn = document.getElementById("btn");
+            btn.addEventListener("touchend",getMyInfo,false);
+            function getMyInfo(){
+                let six ="";
+                for(let i=0; i<s.length; i++){
+                    if(s[i].checked == true){
+                        six =s[i].value;
+                    }
+                }
+                new CreateDate(name.value,gender.value,six).getInfo();
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="myInfo">
+        <input type="text" id="name" placeholder="请输入姓名"/>
+        <input type="number" id="gender" placeholder="请输入年龄"/>
+        <input type="radio" name="six" value="男" checked/>男
+        <input type="radio" name="six" value="女"/>女
+        <button id="btn">提交</button>
+    </div>
+    
+</body>
+</html>

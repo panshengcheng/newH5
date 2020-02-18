@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6之promise容器</title>
+    <script>
+        let p = new Promise((resolve,reject)=>{
+            //执行函数体,包括三个状态:pending(正在执行) resolve(执行成功),reject(执行失败)，该执行体主要执行异步任务（也可以放同步任务，但不推荐）
+            //resolve("成功");
+            //reject("失败");
+        }).then((data)=>{//函数体执行完毕后没有发生错误，就会执行该代码块，该代码可以嵌套多层
+            console.log(data);
+        }).catch((err)=>{//函数体执行发生错误后，执行该代码块
+            console.log(err);
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

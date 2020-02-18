@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贵州首钢</title>
+    <script src="lib/pixi5.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //创建画布
+        let app = new PIXI.Application({
+            width:window.innerWidth,
+            height:window.innerHeight,
+            background:0x199999,
+            transparent:true});
+        //app.renderer.resize(window.innerWidth, );
+        document.body.appendChild(app.view);
+        //创建容器
+        var stage = new PIXI.Container();
+        //设置容器的宽和高
+        stage.width = app.width;
+        stage.height = app.height;
+        
+        //添加背景图片
+        var sprite1 = new PIXI.Sprite.from("img/souye.jpg");
+        sprite1.width = app.renderer.width;
+        sprite1.width = app.renderer.height;
+        //sprite1.scale.set(0.5);
+        //sprite1.scale.y = 0.5;
+        app.stage.addChild(sprite1);
+        //画一个圆形播放按钮
+        let buttion = new PIXI.Graphics();
+        buttion.beginFill(0x0, 0.5);
+        buttion.drawRoundedRect(0,0,60,60,10);
+        buttion.endFill();
+        buttion.beginFill(0xffffff);
+        buttion.moveTo(10, 10);
+        buttion.lineTo(10,50);
+        buttion.lineTo(50,30);
+        
+        //按钮的位置
+        buttion.x =app.renderer.width/2;
+        buttion.y =app.renderer.height/2;
+
+        //给按钮添加点击
+        buttion.interactive = true;
+        buttion.buttonMode = true;
+
+        //添加按钮到舞台上
+        app.stage.addChild(buttion);
+
+        //监听按钮点击
+        buttion.on("pointertap", onPlayVideo);
+
+        function onPlayVideo(){
+            //隐藏按钮
+            buttion.destroy();
+
+            //添加视频纹理
+            //var textrue = new PIXI.Textrue.fromVideoUrl("mp4/h5bei03.mp4");
+            //把纹理添加到精灵里
+            var sprite = new PIXI.Sprite.from("mp4/h5bei03.mp4");
+            //视频的播放尺寸
+            sprite.width = app.renderer.width;
+            sprite.height = app.renderer.height;
+            app.stage.addChild(sprite);
+        }
+
+    </script>
+</body>
+</html>

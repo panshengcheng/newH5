@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取数据库信息</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="../../../26dome/libs/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <style>
+        *{margin: 0;}
+        html body{width: 100%;height: 100%;position: relative;}
+        .tr{text-align: center;vertical-align:middle;}
+        .td{
+            width: 100px;
+            height: 90px;
+            position: relative;
+            text-align: center;
+            vertical-align:middle;
+        }
+        .td img{width:100%;height: 100%; border-radius: 10px;}
+        th{text-align: center;}
+    </style>
+</head>
+<body>
+    <table class="table table-bordered" id="table">
+        <tr>
+            <th>头像</th>
+            <th>姓名</th>
+            <th>联系电话</th>
+            <th>注册日期</th>
+        </tr>
+    </table>
+    <script>
+        (function(){
+            let table =document.getElementById("table");
+            $.ajax({
+                url:"server/getUserInfo.php",
+                data:{},
+                dataType:'json',
+                type:'get',
+                success: function(data){
+                    console.log(data);
+                    if(data.length> 0){
+                        for(let i=0; i<data.length; i++){
+                            let tbody = document.createElement('tbody');
+                            let tr = document.createElement("tr");
+                            tr.className = "tr";
+                            let td = document.createElement("td");
+                            td.className = "td";
+                            let img = document.createElement("img");
+                            img.className="img";
+                            img.src = data[i].imgurl;
+                            td.appendChild(img);
+                            tr.appendChild(td);
+                            let td1 = document.createElement("td");
+                            td1.className="td1";
+                            td1.innerHTML = data[i].user_name;
+                            tr.appendChild(td1);
+                            let td2 = document.createElement("td");
+                            td2.className="td2";
+                            td2.innerHTML = data[i].user_phone;
+                            tr.appendChild(td2);
+                            let td3 = document.createElement("td");
+                            td3.className="td3";
+                            td3.innerHTML = data[i].playTime;
+                            tr.appendChild(td3);
+                            tbody.appendChild(tr);
+                            table.appendChild(tbody);
+                        }
+                    }else{
+                        alert("没有数据");
+                    }
+                },
+                error: function(e){
+                    console.log(e);
+                }
+            })
+        }())
+    </script>
+</body>
+</html>

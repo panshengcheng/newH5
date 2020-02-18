@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<!-- saved from url=(0053)http://php.study.com/CodeIgniter/index.php/demo/snow/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,hight=device-hight,minimum-scale=1.0,maximum-scale=1.0,ser-scalable=none">
+<title>雪花飞舞</title>
+<link type="text/css" rel="stylesheet" href="">
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+body{
+	background-image:url('images/background.jpg');
+	background-size:cover;
+	background-repeat: no-repeat;
+	position: relative;
+	width:100%;
+}
+
+</style>
+
+<style type="text/css"></style></head>
+
+<body>
+<audio autoplay="autoplay" loop="loop"><source src="js/网络歌手-冰海.mp3" type="audio/ogg"></audio>
+</body>
+<script type="text/javascript" src="./js/ThreeCanvas.js"></script>
+<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="./js/Snow.js"></script>
+<script type="text/javascript" src="./js/snowFall.js"></script>
+<script type="text/javascript" src="./js/snowFalling.js"></script>
+<script>
+	$.snowFalling({
+		//创建粒子数量，密度
+		particleNo:0,
+		//setTimeout(parseInt(10000*Math.random()),1000),
+		//粒子下拉速度
+		particleSpeed:50,
+		//粒子在垂直（Y轴）方向运动范围
+		particleY_Range:window.innerWidth,
+		//粒子在垂直（X轴）方向运动范围
+		particleX_Range:window.innerHeight,
+	    //相机离Z轴原点距离
+	    zIndex:600,
+	  //摄像机视野角度
+	    angle:55,
+	    wind_weight:10
+		});
+</script>
+
+
+</html>

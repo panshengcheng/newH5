@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26度中秋报名</title>
+    <script src="./lib/jquery.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
+    <style>
+        html,body,section{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGO页 -->
+    <section id="logo" class="logo"></section>
+    <!-- video页 -->
+    <section></section>
+    <!-- myInfo页 -->
+    <section></section>
+    <script>
+        let logo = document.getElementById("logo");
+        let app = new PIXI.Application({
+            width:window.innerWidth,
+            height:window.innerHeight,
+            antialias:true,
+            transparent:false,
+            resolution:1
+        });
+        logo.appendChild(app.view);
+        
+        //添加背景图片
+        let sprite = new PIXI.Sprite.from("./img/logo.jpg");
+        sprite.width = app.renderer.width;
+        sprite.height = app.renderer.height;
+        app.stage.addChild(sprite);
+        //添加透明遮罩
+        let graphics = new PIXI.Graphics();
+            graphics.lineStyle(4, 0xFF3300, 1);
+            graphics.beginFill(0x66CCFF);
+            graphics.drawRect(0, 0, app.renderer.width, app.renderer.height);
+            graphics.endFill();
+        //添加图片遮罩
+        let spriteMask = new PIXI.Sprite.from("./img/shouye1.png");
+        spriteMask.width = app.renderer.width;
+        spriteMask.height = app.renderer.height;
+        spriteMask.mask = graphics;
+        app.stage.addChild(spriteMask);
+        TweenMax.to(spriteMask,10,{y:app.renderer.height,yoyo:true,onComplete:function(){
+            alert("动画完成了")
+        }});
+      
+        
+    </script>
+</body>
+</html>

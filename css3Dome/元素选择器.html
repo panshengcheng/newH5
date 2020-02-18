@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3元素选择器</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        html body{width: 100vw; height: 100vh;overflow: hidden;background: url(./img/shouye1.png) no-repeat;background-size: cover;}
+        ol{width: 100%;height: 100vh;text-align: center;}
+        /**查找li标签里的空元素*/
+        li:empty{background-color: red;}
+        /**查找父元素ol下的第一个标签*/
+        ol > li:first-child{
+            background-color: royalblue;
+        }
+        /**查找父元素ol下的最后一个标签*/
+        ol > li:last-child{
+            background-color: salmon;
+        }
+        /**查找父元素下的偶数哥标签*/
+        ol > li:nth-child(2n){
+            background-color: springgreen;
+        }
+        /**选择父元素下的子元素倒数第3个：倒数的形式*/
+        ol > li:nth-last-child(3){
+            font-size: 20px;
+            color: white;
+        }
+        /**选择元素下的指定某个元素*/
+        ol > li:first-of-type{
+            background-image: url(./img/user1.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+        <li></li>
+        <li>item6</li>
+        <li>item7</li>
+        <li>item8</li>
+        <li>item9</li>
+        <li>item10</li>
+    </ol>​
+</body>
+</html>

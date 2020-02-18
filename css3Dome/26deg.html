@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26度</title>
+    <script src="./lib/jquery.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* body{
+            width: 100%;
+            height: 100%;
+            
+        } */
+        body {
+            background-color: #000000;
+            margin: 0px;
+            overflow: hidden;
+        }
+        section{
+            width: 100%;
+            height: 100%;
+            
+        }
+        .titleInfo{
+            background-image:url("./img/logo.jpg");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            position:absolute;
+            height: 100vh;
+        }
+        .info{
+            position: relative;
+            top: 45%;
+            left: 30%;
+            width: 50%;
+            font-family: "楷体";
+            color: aliceblue;
+        }
+        .box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .obj-cover {
+            object-fit: cover;
+            object-position: center;
+        }
+        .none {
+            display: none;
+        }
+
+        #skip {
+            position: fixed;
+            color: #ffffff;
+            letter-spacing: 3px;
+            right: 1.5%;
+            bottom: 1%;
+            font-family: monospace;
+            background: #0000006e;
+            padding: 5px;
+            border-radius: 6px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 7;
+        }
+
+       .conceal{
+            opacity: 1;
+            -webkit-animation: 3.5s titleInfo;
+            animation: 3.5s titleInfo;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes titleInfo{
+            100%{
+                opacity: 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页文字展示 -->
+    
+    <section id="titleInfo" class="titleInfo">
+        <!-- <div class="info">
+            <span id="span" style="display: none">中秋佳节快乐</span>
+            <h1 id="title"></h1>
+        </div> -->
+    </section>
+    <!-- 视频播放 -->
+    <section id="videoInfo" class="videoInfo" style="display: none">
+        <div class="box" id="video-container">
+            <video id="video" class="box obj-cover" preload="true" autobuffer="true" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" src="mp4/sougang.mp4?t=3" poster=""></video>
+            <div id="skip" class="none">跳过</div>
+            <img src="./img/shouye1.png" alt="" class="box obj-cover" id="playBtn">
+        </div>
+    </section>
+    <!-- 用户填写报名信息 + 报名信息展示 -->
+    <section id="myInfo" class="myInfo conceal" style="display: none"></section>
+    <script>
+        window.onload = function(){
+                
+        //    let span = document.getElementById("span");
+        //    let title = document.getElementById("title");
+           var midAutumn = {
+               title : function(){
+                let logo = document.getElementById("titleInfo");
+                let app = new PIXI.Application({
+                    width:window.innerWidth,
+                    height:window.innerHeight,
+                    antialias:true,
+                    transparent:false,
+                    resolution:1
+                });
+                logo.appendChild(app.view);
+                
+                //添加背景图片
+                let sprite = new PIXI.Sprite.from("./img/logo.jpg");
+                sprite.width = app.renderer.width;
+                sprite.height = app.renderer.height;
+                app.stage.addChild(sprite);
+                //添加透明遮罩
+                let graphics = new PIXI.Graphics();
+                    graphics.lineStyle(4, 0xFF3300, 1);
+                    graphics.beginFill(0x66CCFF);
+                    graphics.drawRect(0, 0, app.renderer.width, app.renderer.height);
+                    graphics.endFill();
+                //添加图片遮罩
+                let spriteMask = new PIXI.Sprite.from("./img/shouye1.png");
+                spriteMask.width = app.renderer.width;
+                spriteMask.height = app.renderer.height;
+                spriteMask.mask = graphics;
+                app.stage.addChild(spriteMask);
+                TweenMax.to(spriteMask,5,{y:app.renderer.height,yoyo:true,onComplete:function(){
+                  let p1Text = PIXI.Sprite.fromImage("./img/p1text.png");
+                  let rect = new PIXI.Graphics().beginFill(0xffffff).drawRect(0, 0, 640, 474.15);
+                    rect.position.set(0, -372.5);
+                    p1Text.position.set(0,0);
+                    p1Text.width=app.renderer.width;
+                    p1Text.height = app.renderer.height;
+                    p1Text.mask = rect;
+                    app.stage.addChild( p1Text, rect);
+                    TweenMax.to(rect, 18, {
+                        y: 195,
+                        ease: Linear.easeNone,
+                        onComplete: function () {
+                            TweenMax.to(p1Text, 5, { alpha: 0, delay: 3,onComplete:function(){
+                                midAutumn.playVode();
+                            }
+                        });
+                        }
+                    });
+                   
+                }});
+                    
+               },
+               playVode : function(){
+                    $("#titleInfo").addClass("conceal");
+                    setTimeout(() => {
+                        $("#titleInfo").css("display","none");
+                        $("#videoInfo").css("display","block"); 
+                    }, 500);
+                    var video=document.getElementById("video");
+                    //var bgm=document.getElementById("bgm");
+                    //其他移动端浏览器只能让用户自己触发
+                    $("#playBtn").on("click", function () {
+                        $("#playBtn").fadeOut();
+                        //bgm.pause();
+                        video.play();
+                        $("#skip").show();
+                    });
+                    video.addEventListener('ended', movieEnd);
+                    $("#skip").on("click", movieEnd);
+                    function movieEnd() {
+                        $("#skip").hide();
+                        //bgm.play();
+                        video.pause();
+                        $("#video-container").hide();
+                       
+                    }
+
+                    // if(window.plus){
+                    //     var osName = plus.os.name;
+                    //     if(osName === 'Android') {
+                    //         fullScreenOfAndroid();
+                    //     } else if(osName === 'iOS') {
+                    //         var videoElem = document.getElementById('video');
+                    //         fullScreenOfIos(videoElem);
+                    //     }
+                    // }else{
+                    //     // 涉及到5+API的内容，均在plusready事件后调用；
+                    //     document.addEventListener('plusready', function() {
+                    //         var osName = plus.os.name;
+                    //         if(osName === 'Android') {
+                    //             fullScreenOfAndroid();
+                    //         } else if(osName === 'iOS') {
+                    //             var videoElem = document.getElementById('video');
+                    //             fullScreenOfIos(videoElem);
+                    //         }
+                    //     });
+                    // }
+                    
+
+                    // // Android平台的视频全屏旋转
+                    // var fullScreenOfAndroid = function() {
+                    //     if(true) {
+                    //         // 最新5+API的支持
+                    //         var self = plus.webview.currentWebview();
+                    //         self.setStyle({
+                    //             videoFullscreen: 'landscape'
+                    //         });
+                    //     } else {
+                    //         // 如果暂未更新sdk，可以先使用差量升级等方式，做出兼容处理；
+                    //         // 旧版本下的兼容处理
+                    //         document.addEventListener('webkitfullscreenchange', function() {
+                    //             var el = document.webkitFullscreenElement; //获取全屏元素
+                    //             if(el) {
+                    //                 plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
+                    //             } else {
+                    //                 plus.screen.unlockOrientation(); //解除屏幕方向的锁定
+                    //             }
+                    //         });
+
+                    //     }
+                    // };
+                    //  // iOS平台的视频全屏旋转
+                    // var fullScreenOfIos = function(videoElem) {
+                    //     // 监听的事件与Android平台有很大区别
+                    //     videoElem.addEventListener('webkitbeginfullscreen', function() {
+                    //         plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
+                    //     });
+                    //     videoElem.addEventListener('webkitendfullscreen', function() {
+                    //         plus.screen.unlockOrientation(); //解除屏幕方向的锁定
+                    //     });
+                    // };
+                    
+                    
+               }
+               
+               
+           }
+           
+           midAutumn.title();
+        }
+        
+    </script>
+</body>
+</html>

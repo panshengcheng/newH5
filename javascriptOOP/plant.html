@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript的工厂方式</title>
+    <script>
+        //工厂方式：封装函数
+        function createPlabt(name){//1.封装函数
+            this.name = name;
+            this.getName = function(){
+                alert(this.name);
+            }
+        }
+        //let p1 = createPlabt("张三").getName();
+        let p1 = new createPlabt("张三");//调用函数
+        p1.getName();
+        let p2 = new createPlabt("李四");
+        p2.getName();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

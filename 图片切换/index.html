@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery照片画廊过度效果</title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jqFancyTransitions.1.8.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('#gallery').jqFancyTransitions({ 
+        effect: 'zipper', // wave, zipper, curtain
+        width: 850, // width of panel
+        height: 600, // height of panel
+        strips: 15, // number of strips
+        delay: 3000, // delay between images in ms
+        stripDelay: 20, // delay beetwen strips in ms
+        titleOpacity: 0.8, // opacity of title
+        titleSpeed: 2000, // speed of title appereance in ms
+        position: 'curtain', // top, bottom, alternate, curtain
+        direction: 'fountainAlternate', // left, right, alternate, random, fountain, fountainAlternate
+        navigation: true, // prev and next navigation buttons
+        links: false // show images as links
+    });
+})
+</script>
+
+</head>
+<body>
+
+<div class="focus">
+  <div id="gallery">
+		<img width="850" height="600" src="images/pic1.jpg" alt="<i>一个新泽西 <a href='http://www.17sucai.com/'>由汉斯·Cmarits</a></i>" />
+		<img width="850" height="600" src="images/pic2.jpg" alt="<i>反射(颜色) <a href='http://www.17sucai.com/'>由斯文Fennema</a></i>" />
+		<img width="850" height="600" src="images/pic3.jpg" alt="<i>丝绸 <a href='http://www.17sucai.com/'>由布莱恩快活</a></i>" />
+		<img width="850" height="600" src="images/pic4.jpg" alt="<i>第三空间城市<a href='http://www.17sucai.com/'>由WisoNet</a></i>" />
+		<img width="850" height="600" src="images/pic5.jpg" alt="<i>形式和反思<a href='http://www.17sucai.com/'>由斯文Fennema</a></i>" />
+		<img width="850" height="600" src="images/pic6.jpg" alt="<i>Skyarena <a href='http://www.17sucai.com/'>由路易斯·罗梅罗</a></i>" />
+	</div>
+</div>
+
+</body>
+</html>

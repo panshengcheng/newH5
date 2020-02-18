@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>人脸识别--一起来当美人鱼</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <input id="imageInput1" class="inpfile" type="file" name="photo"/>
+    <canvas id="canvas" style="display: none"></canvas>
+    <img src="" id="compressedimg" style="width:100%;">
+
+    <script type="text/javascript">
+        var yasuo = new Compress('canvas');
+        document.getElementById('imageInput1').onchange = function(){
+            var img = event.target.files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(img);
+            reader.onload = function(e){
+                var pic = e.target.result;
+                document.getElementById('compressedimg').src = pic;
+                //压缩
+                setTimeout(() => {
+                    var data = yasuo.reduce('compressedimg',0.1);
+                    document.getElementById('compressedimg').src = data;
+                }, 200);
+            }
+        }
+    </script>
+</body>
+</html>

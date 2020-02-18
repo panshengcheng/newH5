@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6之静态属性和方法的使用</title>
+    <script>
+        window.onload=function(){
+            //静态属性的赋值
+            Person.name="小明";
+            Person.age=23;
+            //调用静态方法只能使用构造函数调用:例如
+            Person.say();
+            
+        }
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            static say(){//静态方法
+                document.getElementById("div").innerHTML=`您叫：${this.name}，今年：${this.age}岁了`;//ES6的超级字符串写法
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div"></div>
+</body>
+</html>

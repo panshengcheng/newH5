@@ -1,0 +1,68 @@
+*{
+    padding: 0;margin: 0;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body, html {color:#000;text-align: left;height: 100%;width: 100%;font-family: Microsoft YaHei;font-size: 16px;font-weight: normal;display: -webkit-box;-webkit-box-orient: vertical;-webkit-box-align: center;padding: 0px;margin: 0px;}
+body{
+    width: 640px;height:100%;
+    -webkit-transition:opacity 800ms ease-out; margin:0 auto;
+}
+ul,li{ list-style-type:none;}
+h2,h3{font-weight: normal;}
+a{
+    -webkit-tap-highlight-color:rgba(0,0,0,0); color:#fff;
+    text-decoration: none; outline:none; cursor:pointer;
+}
+img{ border:0;}
+.lf{ float:left;}
+.lr{ float:right;}
+.clear{clear:both; overflow:hidden;}
+.main{ position: relative;width:640px;min-height:100%;}
+.content-box{	padding-bottom: 30px;}
+.top-nav{ padding:5px 50px 0px 50px; position:relative; }
+.top-nav .helf{ width:60px; height:60px;}
+.top-nav .service{width:60px; height:60px;position:relative;}
+.top-nav .prize{ border-radius:10px; background:#F00;width:15px;height:15px;display:block; position:absolute;right:5px;top:0px;}
+.shake-box{ margin-top:-15px;}
+.shake-yes{ display:none;}
+.overlay {background-color: #000000;display: none; height: 1090px;left: 0;position: absolute;top: 0; width: 100%;z-index: 300;
+background:rgba(0, 153, 255, 0.7) none repeat scroll 0 0 !important;filter:Alpha(opacity=50); background:#000;}
+.rule-box{ background:#fff; width:540px;height:420px; position:absolute;border-radius:15px;margin:-210px 0 0 -270px;left:50%;top:30%;text-align:center;}
+.rule-close{ background:url(../images/close.png) no-repeat; border-color: #000000;border-radius: 15px;border-style: solid; border-width: 2px;display: block;height: 26px;width: 26px;  position: absolute;
+    right: -5px; top: -9px;}
+.rule-box h2{ font-size:34px; padding:20px 0 5px 0; }
+.rule-box p{ line-height:36px;font-size:26px; text-align:center;}
+.btn{background:#ff3300; border-radius:5px; padding:15px 40px; font-size:24px; }
+.btn-dynamic{ background:url(../images/btn.jpg) no-repeat;width:240px;height:65px; border-radius:6px; line-height:65px; font-size:22px; text-align:center; margin:5px auto 68px; cursor:pointer;}
+
+/*.footer{ height:60px; width:640px;color:#333; font-size:12px; line-height:18px;text-align:center; padding:10px 0;position: absolute;bottom: 0;}
+*/
+.prize-box{ background:url(../images/pop-text.png) no-repeat; height:960px; width:640px;}
+.prize-box .content{width:540px;height:420px; position: absolute;width:540px;height:420px; position:absolute;border-radius:15px;margin:-210px 0 0 -270px;left:50%;top:33%;}
+.prize-box .content p{ line-height:38px;font-size:34px; text-align:center;}
+
+.sorry-box{background:url(../images/pop-sorry.png) no-repeat; height:960px; width:640px;}
+.sorry-box .content{width:540px;height:420px; position: absolute;width:540px;height:420px; position:absolute;border-radius:15px;margin:-210px 0 0 -270px;left:50%;top:42%;}
+.sorry-box .content p{line-height:48px;font-size:34px; text-align:center;}
+
+.intro{ margin:20px 0 0;}
+.intro img{ border-radius:10px; float:left; display:inline-block;}
+.intro h3{font-size:32px; margin-bottom:20px;}
+.intro span{ font-size:24px; color:#ff3300; display:block; line-height:35px;}
+.info{width:460px; margin:50px auto 0;}
+.info h3{font-size:32px; color:#999; padding-bottom:20px;}
+.info li{  margin-bottom:18px; height:33px; line-height:33px;}
+.info label{font-size:24px;color:#999;width:117px; height:33px; line-height:33px; display:inline-block; text-align:center;}
+.info input{width:305px; height:33px; line-height:33px;font-size:24px;color:#999; background:none; padding:0 10px; border:none; display:inline-block;}
+.btn-box{ text-align:center; margin-top:85px;}
+
+.intro-text{ padding-top:30px; text-align:center; }
+.intro-text p{line-height:38px;font-size:34px; text-align:center;}
+.prize-pic{ margin:33px auto;}
+.prize-pic img{border-radius:20px;}
+
+.share-pic{ position:absolute;right:92px; top:0px;}
+
+.record{ margin:20px 0;text-align:left;}
+.record img{ float:left; display:inline-block; width:180px; height:160px; border-radius:5px; margin-right:25px;}
+.record p{ font-size:30px;  height: 50px;line-height: 50px; display:inline-block;}

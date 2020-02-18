@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+  <title>春节送好礼 温暖回家路</title>
+  <link rel="stylesheet" href="public/css/index.css">
+  <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+  <script src="public/js/Alloytouch.js" charset="utf-8"></script>
+  <script src="public/js/Pixi.min.js" charset="utf-8"></script>
+  <script src="public/js/TimelineMax.min.js" charset="utf-8"></script>
+  <script src="public/js/TweenMax.min.js" charset="utf-8"></script>
+  <script src="public/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+</head>
+
+<body class="row">
+  <div id="loading" class="col">
+    <div class="loading-main">
+      <img src="public/imgs/gift.png" class="gift" />
+    </div>
+    <div id="percent">
+      0%
+    </div>
+  </div>
+
+  <div id="canvas">
+
+  </div>
+
+  <!-- <div class="title">
+
+    </div> -->
+
+  <a href="#" id='rule-link' class="shu">活动规则</a>
+  <div class="col" id="form-panel">
+    <form class="col heng" id="form" method="post" action='/submit' onsubmit="return submitForm();">
+      <input id="name" class="input" required type="text" name="name" value="" placeholder="请输入您的姓名">
+      <input id="phone" class="input" required maxlength="11" minlength="11" type="tel" name="phone" value=""
+        placeholder="请输入您的手机号码">
+      <button class="btn" type="submit" name="button">提交信息 参与抽奖</button>
+      <div class="success">提交成功</div>
+    </form>
+  </div>
+
+
+  <div class="audio">
+    <audio preload='auto' src="public/audio/bg.mp3" id="bg" loop="loop"></audio>
+
+    <audio preload='auto' src="public/audio/talk_1.mp3" id="talk_1"></audio>
+    <audio preload='auto' src="public/audio/talk_2.mp3" id="talk_2"></audio>
+    <!-- <audio preload='auto' src="./audio/talk_3.mp3" id="talk_3"></audio> -->
+    <!-- <audio preload='auto' src="./audio/talk_4.mp3" id="talk_4"></audio> -->
+    <audio preload='auto' src="public/audio/wechat.wav" id="wechat"></audio>
+    <audio preload='auto' src="public/audio/talk_5.mp3" id="talk_5"></audio>
+    <audio preload='auto' src="public/audio/talk_6.mp3" id="talk_6"></audio>
+    <audio preload='auto' src="public/audio/talk_7.mp3" id="talk_7"></audio>
+    <audio preload='auto' src="public/audio/talk_8.mp3" id="talk_8"></audio>
+    <audio preload='auto' src="public/audio/talk_9.mp3" id="talk_9"></audio>
+    <audio preload='auto' src="public/audio/talk_10.mp3" id="talk_10"></audio>
+    <audio preload='auto' src="public/audio/talk_11.mp3" id="talk_11"></audio>
+    <audio preload='auto' src="public/audio/train.mp3" id="train"></audio>
+    <audio preload='auto' src="public/audio/train1.mp3" id="train1"></audio>
+    <audio preload='auto' src="public/audio/talk_12.mp3" id="talk_12"></audio>
+    <audio preload='auto' src="public/audio/talk_13.mp3" id="talk_13"></audio>
+    <audio preload='auto' src="public/audio/fireworks.mp3" id="fireworks"></audio>
+    <audio preload='auto' src="public/audio/talk_14.mp3" id="talk_14"></audio>
+    <audio preload='auto' src="public/audio/talk_15.mp3" id="talk_15"></audio>
+  </div>
+</body>
+<script type="text/javascript">
+  (function (_D) {
+    var _self = {};
+    _self.resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+    _self.Html = _D.getElementsByTagName("html")[0];
+    _self.widthProportion = function () {
+      var p = Number((_D.body && _D.body.clientWidth || _self.Html.offsetWidth) / 750).toFixed(3);
+      return p > 1.067 ? 1.067 : p < 0.444 ? 0.444 : p;
+    };
+    _self.changePage = function () {
+      _self.Html.setAttribute("style", "font-size:" + _self.widthProportion() * 100 + "px");
+      _self.correctPx();
+    };
+    _self.correctPx = function () {
+      var docEl = document.documentElement;
+      var clientWidth = docEl.clientWidth;
+      if (!clientWidth || clientWidth > 768) return;
+      var div = document.createElement('div');
+      div.style.width = '1.4rem';
+      div.style.height = '0';
+      // document.body.appendChild(div);
+      var ideal = 140 * clientWidth / 750;
+      var rmd = (div.clientWidth / ideal);
+      // console.log(rmd);
+      if (rmd > 1.2 || rmd < 0.8) {
+        docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+        // document.body.removeChild(div);
+      }
+
+    };
+    _self.changePage();
+    if (!document.addEventListener) return;
+    window.addEventListener(_self.resizeEvt, _self.changePage, false);
+    document.addEventListener('DOMContentLoaded', _self.changePage, false);
+  })(document);
+</script>
+<script src="public/js/playAudio.js" charset="utf-8"></script>
+<script src="public/js/resources.js" charset="utf-8"></script>
+<script src="public/js/scene.js" charset="utf-8"></script>
+<script src="public/js/sprites.js" charset="utf-8"></script>
+<script src="public/js/animation.js" charset="utf-8"></script>
+<script src="public/js/index.js" charset="utf-8"></script>
+
+</html>

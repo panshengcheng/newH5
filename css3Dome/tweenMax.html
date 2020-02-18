@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tweenMax动画测试</title>
+    <script src="./lib/jquery.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
+    <style>
+        html,body,section{
+            margin:0;
+            padding:0;
+        }
+        body{
+            width:100%;
+            height: 100%;
+        }
+        section{
+            width: 100%;
+            height: 100%;
+        }
+        .bj-img img{
+            width: 100vw;
+            height:100vh;
+        }
+        .box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .obj-cover {
+            object-fit: cover;
+            object-position: center;
+        }
+        .none {
+            display: none;
+        }
+
+        #skip {
+            position: fixed;
+            color: #ffffff;
+            letter-spacing: 3px;
+            right: 1.5%;
+            bottom: 1%;
+            font-family: monospace;
+            background: #0000006e;
+            padding: 5px;
+            border-radius: 6px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 7;
+        }
+        .mp4Info .box #video{
+            width: 100vw;
+            height: 100vh;
+        }
+        .loopImg{
+            line-height: 40px;
+            position: relative;
+            top: 50vh;
+            left: 20%;
+            font-size: 18px;
+            font-family: "楷体";
+            font-weight: bold;
+        }
+        input{
+            border-radius: 10px;
+            line-height: 25px;
+            width: 50vw;
+            margin: 10px;
+            border: 1px solid #666666;
+        }
+        .pimg{
+            position: relative;
+            left: 20vw;
+            width: 40vw;
+            height: 5vh;
+            border: 0px;
+            border-radius: 10px;
+            background-color: deepskyblue;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: "楷体";
+            letter-spacing: 10px;
+        }
+     
+    </style>
+</head>
+<body>
+    
+    <section id="logoInfo">
+        <div class="bj-img">
+            <img src="./img/logo.jpg" alt="中秋背景"/>
+        </div>
+       
+    </section>
+    
+    <section id="mp4Info" class="mp4Info" style="display: none">
+        <div class="box" id="video-container">
+            <video id="video" class="box obj-cover" preload="true" autobuffer="true" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" src="mp4/sougang.mp4?t=3" poster=""></video>
+            <div id="skip" class="none">跳过</div>
+            <img src="./img/shouye1.png" alt="" class="box obj-cover" id="playBtn">
+        </div>
+    </section>
+    <!-- 报名=姓名+电话+照片 -->
+    <section id="myInfo" class="myInfo" style="display: none">
+        <div id="loopImg" class="loopImg">
+            姓名：<input type="text" id="name" class="name"/><br>
+            电话：<input type="number" id="phone" class="phone"/><br>
+            <button id="pimg" class="pimg">拍照
+                <input type="file" capture="camcorder" accept="image/*" id="filetest" name="filetest">
+            </button>
+            <img src="" id="v_photoA" style="width:100%;"/>
+            
+    </section>
+    <script>
+        //设置bj-img消失
+        TweenMax.to($(".bj-img"),3,{
+            delay:3,
+            alpha:0,
+            onComplete:function(){
+                //给bj-img1加遮罩
+                $(".bj-img").css("display","none");
+                let logo = document.getElementById("logoInfo");
+                let app = new PIXI.Application({
+                    width:window.innerWidth,
+                    height:window.innerHeight,
+                    antialias:true,
+                    transparent:false,
+                    resolution:1
+                });
+                app.renderer.backgroundColor = 0x222224;
+                logo.appendChild(app.view);
+                let graphics = new PIXI.Graphics();
+                    graphics.beginFill(0xffffff);//设置遮罩额颜色
+                    graphics.drawRect(0,0,app.renderer.width,app.renderer.height);//设置遮罩为矩形，起点为（0，0）宽高和浏览器一样
+                    graphics.endFill();//绘制遮罩结束
+                    graphics.position.set(0,-872.5);
+                let sprite = new PIXI.Sprite.from("./img/p1text.png");
+                    sprite.width = app.renderer.width;
+                    sprite.height = app.renderer.height;
+                    sprite.mask = graphics;
+                    sprite.position.set(0,0);
+                    app.stage.addChild(sprite, graphics);
+                     TweenMax.to(graphics, 10, {
+                         y:window.innerHeight,
+                         onComplete:function(){
+                             TweenMax.set(sprite, {
+                                 alpha:0, 
+                                 onComplete:function(){
+                                    //添加视频进行播放
+                                    $("#logoInfo").css("display","none");
+                                    $("#mp4Info").css("display","block");
+                                    var video=document.getElementById("video");
+                                    //var bgm=document.getElementById("bgm");
+                                    //其他移动端浏览器只能让用户自己触发
+                                    $("#playBtn").on("click", function () {
+                                        $("#playBtn").fadeOut();
+                                        //bgm.pause();
+                                        video.play();
+                                        $("#skip").show();
+                                    });
+                                    video.addEventListener('ended', movieEnd);
+                                    $("#skip").on("click", movieEnd);
+                                    function movieEnd() {
+                                        $("#skip").hide();
+                                        //bgm.play();
+                                        video.pause();
+                                        $("#video-container").hide();
+                                    }
+                                    //进入报名页面
+                                    $("#mp4Info").css("display","none");
+                                    $("#myInfo").css("display","block");
+                                    //点击拍照，调用摄像机
+                                    let pimg = document.getElementById("pimg");
+                                    pimg.addEventListener("touchend", getImages);
+                                    function getImages(){
+                                        alert(111);
+                                        var fileTag = document.getElementById('filetest');
+                                        console.log();
+                                       var file = fileTag.files[0];
+                                        var fileReader = new FileReader();
+                                        fileReader.onloadend = function () {
+                                        if (fileReader.readyState == fileReader.DONE) {
+
+                                                 document.getElementById('v_photoA').setAttribute('src', fileReader.result);
+
+                                               }
+
+                                           };
+
+                                           fileReader.readAsDataURL(file);
+                                    };
+     
+                                 }
+                             })
+                         }
+                     })
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局之弹性盒子</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body .buju{
+            display: flex;
+            flex-direction: column-reverse; 
+        }
+        body .buju .hezi{
+            width: 50vw;
+            height: 10vh;
+            background-color: aqua;
+            border: 1px solid red;
+            margin: 2vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="buju">
+        <div class="hezi">盒子1</div>
+        <div class="hezi">盒子2</div>
+        <div class="hezi">盒子3</div>
+        <div class="hezi">盒子4</div>
+    </div>
+</body>
+</html>

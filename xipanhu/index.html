@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="../tiger/css/swiper.min.css"/>
+    <script src="../26limit/lib/jquery.min.js"></script>
+    <script src="../tiger/js/swiper.min.js"></script>
+    <style>
+        *{margin: 0; padding: 0;}
+        body{width: 100%; height: 100%;}
+        .swiper-container {width: 100%;height: 100%;background: #000; }
+        .swiper-slide {width: 100%;height: 100%;}
+        .control{width:35px;height: 35px; position:fixed;right: 20px; top: 20px; display: inline-block; z-index: 99;background: url(./img/Music1.png) no-repeat;background-size: 100% 100%;
+        -webkit-animation:musicRotate 2s linear infinite;}
+        .controlStop{width:35px;height: 35px; position:fixed;right: 20px; top: 20px; display: inline-block; z-index: 99;background: url(./img/Music1.png) no-repeat;background-size: 100% 100%;}
+        @keyframes musicRotate {
+            0%{-webkit-transform: rotate(0deg);}
+            100%{-webkit-transform: rotate(360deg);}
+        }
+        .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px;
+            background: rgb(248, 246, 246);
+            opacity: .4;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+            <section class="swiper-slide"><img src="img"></section>
+        </div>
+        <div class="control" id="control">
+                <audio id="music" src="./mp3/music.mp3" muted="false" loop="loop" autoplay="autoplay">
+                    您当前浏览器版本过低，无法正常播放音乐
+                </audio>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <script> 
+        var flag = true;
+
+        //播放音乐 
+        var myVid=document.getElementById("music");
+        //其他移动端浏览器只能让用户自己触发
+        $(window).on('touchstart', function(){
+            $("audio")[0].play();
+            myVid.muted=false;
+        });
+        // 兼容微信(微信可以自动播放)
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            $("audio")[0].play();
+            myVid.muted=false;
+            plays();
+        }, false);
+        function plays(){
+                document.getElementById('music').play();
+        }
+        document.getElementById("control").addEventListener("touchstart",function(){
+            var cImg =document.getElementById('control');
+            if(flag){
+                //已经播放
+                $("audio")[0].pause();
+                
+                cImg.classList.remove('control');
+                cImg.classList.add('controlStop');
+            }else{
+                //未播放
+                $("audio")[0].play();
+                cImg.classList.remove('controlStop');
+                cImg.classList.add('control');
+            }
+            flag = !flag;
+        },false)
+        var swiper = new Swiper('.swiper-container',{
+            direction:'vertical',
+            loop:true,
+            pagination: '.swiper-pagination',
+        })
+        </script>
+</body>
+</html>

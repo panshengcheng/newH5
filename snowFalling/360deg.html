@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿VR</title>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style: none; }
+        body{font-size:11px;}
+        a{text-decoration: none;}
+        .pop_see_360pic:after {clear:both;display:block;content:".";height:0;visibility:hidden;font-size:0;line-height:0;}
+        .pop_see_360pic {position:relative;float:left;width:550px;padding:14px 70px 14px 71px;border:1px solid #CECECE;background-color:#FFFFFF;zoom:1;}
+        .pop_see_360pic_fla {width:650px;padding:20px 40px 14px 0;}
+        .pop_see_360pic .mbtn {position:absolute;top:12px;right:20px;}
+        .pop_see_360pic .pic_box {position:relative;float:left;width:320px;height:240px;overflow:hidden;margin-right:10px;}
+        .pop_see_360pic .pic_box img {display:block;width:320px;height:240px;}
+        .pop_see_360pic .pic_list {float:left;width:220px;height:240px;overflow-x:hidden;overflow-y:auto;}
+        .pop_see_360pic .pic_list ul {overflow:hidden;width:218px;border:1px solid #CECECE;border-bottom:0 none;}
+        .pop_see_360pic .pic_list li {float:left;width:218px;height:35px;font-weight:bold;border-bottom:1px solid #CECECE;}
+        .pop_see_360pic .pic_list li a {display:block;width:100%;height:18px;overflow:hidden;padding:9px 10px 8px 10px;zoom:1;}
+        .pop_see_360pic .pic_list li a:hover {text-decoration:none;background-color:#EFF0F1;}
+        .pop_see_360pic .pic_list li a.sel,
+        .pop_see_360pic .pic_list li a.sel:hover {text-decoration:none;background-color:#C1D3F1;}
+        .pop_see_360pic .prev_arrow,
+        .pop_see_360pic .pause_arrow,
+        .pop_see_360pic .next_arrow {position:absolute;left:124px;bottom:0;width:70px;height:27px;overflow:hidden;padding-top:17px;text-align:center;font-size:12px;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7FFFFFFF', endColorstr='#7FFFFFFF');background:url(about:blank);background:rgba(255,255,255,0.5);z-index:9;}
+        :root .pop_see_360pic .prev_arrow,
+        :root .pop_see_360pic .pause_arrow,
+        :root .pop_see_360pic .next_arrow {filter:none;}
+        .pop_see_360pic .prev_arrow {left:53px;border-radius:10px 0 0 0;}
+        .pop_see_360pic .next_arrow {left:195px;border-radius:0 10px 0 0;}
+        .pop_see_360pic .prev_arrow:hover,
+        .pop_see_360pic .pause_arrow:hover,
+        .pop_see_360pic .next_arrow:hover {font-size:11px;}
+        .pop_see_360pic .pic_box img {width: auto;height: 240px;}
+        .pop_see_360pic{margin:10px;}
+        .pop_see_360pic .loading{position: absolute; top:0; left:0; background:#ebebeb url(http://www.daqianduan.com/wp-content/uploads/2012/12/loading_50_g.gif) no-repeat 134px 78px; width: 320px; height:240px; z-index:998; text-indent: -999px;}
+        .pic_box_inner{position:absolute; width:5000px; overflow: hidden; *zoom:1;}
+        .pic_box_inner img{float:left;}
+    </style>
+</head>
+<body>
+        <div class="pop_see_360pic" id="popseebox">
+                <div class="pic_box">
+                    <div class="loading" id="pic360load">Loading...</div>
+                    <div class="pic_box_inner" id="pic_box_inner">
+                        <img src="snowFalling/images/background.jpg" />
+                    </div>
+                    <a href="void(0)" class="prev_arrow" id="prev"><span>←</span></a>
+                    <a href="void(0)" class="pause_arrow" id="pause"><span>‖</span></a>
+                    <a href="void(0)" class="next_arrow" id="next"><span>→</span></a>
+                </div>
+                <div class="pic_list">
+                    <ul id="picListItem">
+                        <li><a href="void(0)" class="sel">Standard Room</a></li>
+                        <li><a href="void(0)">Sea view Room (PVSU1)</a></li>
+                        <li><a href="void(0)">Royale Suite</a></li>
+                        <li><a href="void(0)">Bella Suite</a></li>
+                        <li><a href="void(0)">11Royale Suite (PVSU1)</a></li>
+                        <li><a href="void(0)">Royale Suite</a></li>
+                        <li><a href="void(0)">Bella Suite</a></li>
+                        <li><a href="void(0)">Royale Suite (PVSU1)</a></li>
+                    </ul>
+                </div>
+                <a href="void(0)" class="mbtn mbtn-mini" id="close">X</a>
+            </div>
+            <script>
+                window.onload = function(){
+                var pic360play = function(){this.initialize()}
+
+                pic360play.prototype = {
+                    initialize : function(){
+                        var oThis = this;
+
+                        this.popseebox = document.getElementById("popseebox");
+                        this.pic360load = document.getElementById("pic360load");
+
+                        this.oPrev = document.getElementById("prev");
+                        this.opause = document.getElementById("pause");
+                        this.oNext = document.getElementById("next");
+
+                        this.timeout = 0;
+                        this.picList = document.getElementById("picListItem");
+                        this.oScrollIner = document.getElementById("pic_box_inner");
+                        this.oScrollBox = this.oScrollIner.parentNode;
+                        this.oScrollImg = this.oScrollBox.getElementsByTagName("img")[0];
+
+                        /* ============= copy img for scrool no space =========== */
+                        this.oScrollImgcopy = this.oScrollImg.cloneNode(true);
+                        this.oScrollIner.appendChild(this.oScrollImgcopy);
+
+                        /* =========== bind close pic360play popup event ========== */
+                        document.getElementById("close").onclick = function(){
+                            oThis.close(popseebox);
+                        }
+
+                        /* ============== reset first img and layout ===============*/
+                        oThis.resetImg();
+
+                        /* ============== give per link tabs pic =================*/
+                        oThis.picList.onclick = function(e) {
+                            e = window.event ? window.event : e;
+                            var who = e.target ? e.target : e.srcElement;
+                            if(who.nodeType == 1 && who.tagName == "A" && who.getAttribute("imgurl") && oThis.oScrollImgcopy.src != who.getAttribute("imgurl")){
+                                oThis.pic360load.style.display = "block";
+                                var newimg = new Image();
+                                newimg.src = who.getAttribute("imgurl");
+                                newimg.onload = function(){
+                                    oThis.oScrollImg.src = oThis.oScrollImgcopy.src = who.getAttribute("imgurl");
+                                        oThis.oScrollImg = oThis.oScrollBox.getElementsByTagName("img")[0];
+                                        oThis.oScrollImgcopy = oThis.oScrollBox.getElementsByTagName("img")[1];
+                                        oThis.pic360load.style.display = "none";
+                                        clearTimeout(oThis.timeout);
+                                        oThis.resetMiddle();
+                                        oThis.timeout = setInterval(function(){
+                                            oThis.prev(oThis);
+                                        },16);
+
+                                }
+
+                                return false;
+                            }
+                        };	
+                        /* ============ play pic ============= */ 
+                        this.oPrev.onclick = function(){
+                            clearTimeout(oThis.timeout);
+                            oThis.timeout = setInterval(function(){
+                                oThis.prev();
+                            },16);
+                        }
+
+                        this.oNext.onclick = function(){
+                            clearTimeout(oThis.timeout);
+                            oThis.timeout = setInterval(function(){
+                                oThis.next();
+                            },16);
+
+                        }
+
+                        this.opause.onclick = function(){
+                            clearTimeout(oThis.timeout);
+                        }
+                    },
+                    getStyle : function(elem,name){
+                        if(elem.style[name]){
+                        return elem.style[name];
+                        }
+                        else if(elem.currentStyle){
+                            return elem.currentStyle[name];
+                        }
+                        else if(document.defaultView && document.defaultView.getComputedStyle){
+                            name = name.replace(/[A-Z]/g,"-$1");
+                            name = name.toLowerCase();
+                            var s = document.defaultView.getComputedStyle(elem,'');
+                            return s && s.getPropertyValue(name);
+                        }
+                        return null;
+                    },
+                    prev : function(){
+                        if(parseFloat(this.oScrollIner.style.left) && parseFloat(this.getStyle(this.oScrollBox,"width")) - this.oScrollImg.width)
+                            this.oScrollIner.style.left =  parseFloat(this.oScrollIner.style.left) - this.oScrollImg.width + "px";
+                        this.oScrollIner.style.left = parseFloat(this.oScrollIner.style.left) + 1 + "px";
+                    },
+                    close : function(obj){
+                        obj.style.display = "none";
+                            return false;
+                    },
+                    resetImg : function(){
+                        var picListItemLink = this.picList.getElementsByTagName("a");
+                        var oThis = this;
+                        oThis.oScrollImg.src = oThis.oScrollImgcopy.src = picListItemLink[1].getAttribute("imgurl");
+                        var resetImg = new Image();
+                        resetImg.src= picListItemLink[1].getAttribute("imgurl");
+
+                        resetImg.onload = function(){
+                            //reset img location middle
+                            oThis.resetMiddle();
+
+                            oThis.pic360load.style.display = "none";
+
+                            oThis.timeout = setInterval(function(){
+                                oThis.prev(oThis);
+                            },16);
+                        }
+                    },
+                    resetMiddle: function(){
+                        this.oScrollIner.style.left = - (this.oScrollImg.width/2 - parseFloat(this.getStyle(this.oScrollBox,"width"))/2) + "px";			
+                    }
+                }
+
+                new pic360play();
+
+                }
+            </script>
+</body>
+</html>

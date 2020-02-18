@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D轮播图</title>
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/mTween.js"></script>
+    <style>
+        body{width:100%;background-color: sandybrown;}
+        .view{width:1000px;height: 600px; perspective: 600px;margin: 100px auto;}
+        .bigbox{width: 100%;height: 100%; position: relative;transform-style: preserve-3d;}
+        .box{width: 200px;height: 200px;transform-style: preserve-3d;position: absolute;}
+        .box span{position: absolute; width: 100%;height: 100%;background:#ddd;opacity: 0;transition: 1.5s;}
+        .show span{opacity: 1;}
+        .box span:nth-child(1){transform: translateZ(100px);}
+        .box span:nth-child(2){transform: rotateY(90deg) translateZ(100px);}
+        .box span:nth-child(3){transform: rotateY(180deg) translateZ(100px);}
+        .box span:nth-child(4){transform: rotateY(270deg) translateZ(100px);}
+        .box span:nth-child(5){transform: rotateX(90deg) translateZ(100px);}
+        .box span:nth-child(6){transform: rotateX(-90deg) translateZ(100px);}
+
+        /* 样式选择器:插入图片 */
+        .box[data-z="0"] span:nth-child(1){background-image: url(./img/logo.jpg);}
+        .box[data-z="1"] span:nth-child(1){background-image: url(./img/logo.jpg);}
+        /*每一面的图片*/
+        .box[data-z="2"] span:nth-child(1){background-image: url(./img/logo.jpg);background-size: 1000px 600px;}
+        .box[data-z="2"] span:nth-child(2){background-image: url(./img/logo1.jpg);background-size: 1000px 600px;}
+        .box[data-z="2"] span:nth-child(3){background-image: url(./img/logo.jpg);background-size: 1000px 600px;}
+        .box[data-z="2"] span:nth-child(4){background-image: url(./img/logo1.jpg);background-size: 1000px 600px;}
+        .btnbox{position:absolute;top:33vh;width: 100%; margin: 50px auto; opacity: 0;transition: 1s;}
+        .btnbox button:nth-child(1){border: none;outline: none;cursor: pointer;/*手型*/width: 50px; height: 50px; background: url(./img/play.png) no-repeat; background-size: 100%;transform: rotate(180deg);}
+        .btnbox button:nth-child(2){border: none;outline: none;cursor: pointer;/*手型*/width: 50px; height: 50px; background: url(./img/play.png) no-repeat; background-size: 100%;float: right;}
+    </style>
+</head>
+<body>
+    <div class="view">
+        <div class="bigbox">
+
+        </div>
+        <div class="btnbox">
+            <button></button>
+            <button></button>
+        </div>
+    </div>
+    <script>
+        let bigbox = document.querySelector(".bigbox");
+        let zSize = 3, rows = 3, ceils = 5, boxW= 200,boxH = 200;
+        //创建文档碎片，降低浏览器性能损耗
+        let fragment = document.createDocumentFragment();
+        for(let z=0; z<zSize; z++){
+            for(let y=0; y<rows; y++){
+                for(let x=0; x<ceils; x++){
+                    let box = document.createElement('div');
+                    box.dataset.z=z;
+                    box.dataset.y=y;
+                    box.dataset.x=x;
+                    box.classList.add('box');
+                    box.innerHTML=`
+                    <span style="background-position:-${boxW*x}px -${boxH*y}px;"></span>
+                    <span style="background-position:-${boxW*x}px -${boxH*y}px;"></span>
+                    <span style="background-position:-${boxW*x}px -${boxH*y}px;"></span>
+                    <span style="background-position:-${boxW*x}px -${boxH*y}px;"></span>
+                    <span></span>
+                    <span></span>
+                    `;
+                    box.style.cssText=`
+                        top:${boxH*y}px;
+                        left:${boxW*x}px;
+                    `
+                    css(box,'translateX',(x-Math.floor(ceils/2))*200*(z+1));
+                    css(box,'translateY',(y-Math.floor(rows/2))*200*(z+1));
+                    css(box,'translateZ',z*200);
+                    //元素样式初始化
+                    css(box,'rotateY',0);
+                    //存入到文档碎片中
+                    fragment.appendChild(box);
+                }
+            }
+        }
+        //插入DOM节点
+        bigbox.appendChild(fragment);
+        //入场动画
+        let boxs =document.querySelectorAll(".box");
+        
+        let times = 3000;
+        boxs.forEach(item =>{
+            //随机运动时间
+            let z =item.dataset.z;
+            //延迟执行
+            let dely = Math.random()*500+z*700;
+            setTimeout(() => {
+                //显示box
+                item.classList.add('show');
+                mTween({
+                    el:item,//运动的元素
+                    attrs:{//运动的目标
+                        translateX:0,
+                        translateY:0,
+                        translateZ:-100,
+                    },
+                    duration:times-dely
+                })
+            }, dely);
+        })
+        //入场动画完毕时=>删除背面多余的元素
+        setTimeout(() => {
+            boxs.forEach(item=>{
+                if(item.dataset.z<2){//把前2层盒子删除,只留最上面一层
+                    item.remove();
+                }
+            })
+            //document.querySelector(".btnbox").style.opacity='1';
+            $(".btnbox").css("opacity","1");
+            
+        }, times);
+
+        //获取事件元素
+        
+        let isPlay = false;
+        //存储运动形式
+        let fnArr =[];
+        let btns = document.querySelectorAll('.btnbox button');
+        let now =0;
+        btns[0].onclick = function(){
+            if(isPlay) return;
+            isPlay = true;
+            fnArr[now%fnArr.length](-90);
+            now++;
+        }
+        btns[1].onclick = function(){
+            if(isPlay) return;
+            isPlay = true;
+            fnArr[now%fnArr.length](90);
+            now++;
+        }
+        
+        fnArr[0]=function(deg){
+            let boxs = document.querySelectorAll('.box');
+            let time = 1000;
+            //运动框架,加元素
+            boxs.forEach(item=>{
+                let dely = Math.random()*400;
+                setTimeout(() => {
+                    mTween({
+                        el:item,
+                        attrs:{
+                            rotateY:css(item,'rotateY')+deg,
+                        },
+                        duration:time-dely
+                    })
+                }, dely);
+                
+            });
+            setTimeout(() => {
+                isPlay = false;
+            }, time);
+        }
+        //效果2：分三个阶段：1向前平移， 2.旋转， 3向后平移
+        fnArr[1]=function(deg){
+            let boxs = document.querySelectorAll('.box');
+            let tiems = 2300;
+            boxs.forEach(item=>{
+                let x = item.dataset.x;
+                let y = item.dataset.y;
+                let z = item.dataset.z;
+                let dely =x*80+y*80;
+                setTimeout(() => {
+                    mTween({
+                        el:item,
+                        attrs:{
+                            translateZ:css(item,'translateZ')+100
+                        },
+                        duration:600,
+                        //当前运动完毕执行
+                        cb:()=>{
+                            mTween({
+                                el:item,
+                                attrs:{
+                                    rotateY:css(item,'rotateY')+deg
+                                },
+                                duration:600,
+                                //当前运动完毕执行
+                                cb:()=>{
+                                    mTween({
+                                        el:item,
+                                        attrs:{
+                                            translateZ:css(item,'translateZ')-100
+                                        },
+                                        duration:600,
+                                    
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }, dely);
+            })
+            setTimeout(() => {
+                isPlay = false;
+            }, tiems);
+        }
+        //效果3：
+        fnArr[2]=function(deg){
+            let boxs = document.querySelectorAll('.box');
+            let tiems = 2200;
+            boxs.forEach(item=>{
+                let x = parseInt(item.dataset.x);
+                let y = parseInt(item.dataset.y);
+                let dely =Math.random()*400;
+                //判断方向
+                let dir =1;
+                if(x%2){
+                    dir=y%2?-1:1;
+                }else{
+                    dir=y%2?1:-1;
+                }
+                setTimeout(() => {
+                    mTween({
+                        el:item,
+                        attrs:{
+                            translateZ:css(item,'translateZ')+50*dir
+                        },
+                        duration:600,
+                        //当前运动完毕执行
+                        cb:()=>{
+                            mTween({
+                                el:item,
+                                attrs:{
+                                    rotateY:css(item,'rotateY')+deg
+                                },
+                                duration:600,
+                                //当前运动完毕执行
+                                cb:()=>{
+                                    mTween({
+                                        el:item,
+                                        attrs:{
+                                            translateZ:css(item,'translateZ')-50*dir
+                                        },
+                                        duration:600,
+                                    
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }, dely);
+            })
+            setTimeout(() => {
+                isPlay = false;
+            }, tiems);
+        }
+        setInterval(() => {
+            if(isPlay) return;
+            isPlay = true;
+            fnArr[now%fnArr.length](90);
+            now++;
+        }, 5000);
+    </script>
+</body>
+</html>

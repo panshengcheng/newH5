@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遇见最好的你</title>
+    <link href="https://fonts.font.im/css?family=Kirang+Haerang" rel="stylesheet">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="mp3/bjMusic.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" style="display: none;">
+          <section class="swiper-slide swiper-slide1 one">
+            <img class="ani page1-title" swiper-animate-effect="zoomIn" swiper-animate-duration="2s" swiper-animate-delay="0.3s" src="./img/page-1-title.jpg" alt="" srcset="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="1.5s">这辈子最幸运的是：</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="2.5s">“I Met You In A Big Crowd”</p>
+          </section>
+          <section class="swiper-slide swiper-slide1 two">
+            <img class="ani page2 img2-1" swiper-animate-effect="fadeInRight" swiper-animate-duration="2s" swiper-animate-delay="0.5s" src="./img/1-1.jpg" alt="">
+            <img class="ani page2 img2-2" swiper-animate-effect="fadeInLeft" swiper-animate-duration="2s" swiper-animate-delay="0.5s" src="./img/1-2.jpg" alt="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="2s">第一次聊天</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="3s">2019年12月8日</p>
+          </section>
+          <section class="swiper-slide swiper-slide1 ther">
+            <img class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2.5s" swiper-animate-delay="0.3s" src="./img/2-1.jpg" alt="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="2s">第一次添加微信</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="3s">2019年1月19日</p>
+            
+          </section>
+          <section class="swiper-slide swiper-slide1 four">
+            <img class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration="2.5s" swiper-animate-delay="0.3s" src="./img/3-1.jpg" alt="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="2s">第一次说喜欢你</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="3s">2020年2月8日</p>
+            
+          </section>
+          <section class="swiper-slide swiper-slide1 five">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s">见到你第一眼我就觉得</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="1s">为什么有人像偶像剧一样带着柔光</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="2s">而我就像一只小狗瞬间被驯服</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="3s">从那时起 我就不再属于我自己了</p>
+            
+          </section>
+          <section class="swiper-slide swiper-slide1 six">
+            <img class="ani " swiper-animate-effect="fadeInDown" swiper-animate-duration="2s" swiper-animate-delay="0.3s" src="./img/page-end-2.jpg" alt="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="2s">“等到风景都看透，还有我陪你看细水长流”</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="3s">“愿余生可以一起打闹，不负遇见！”</p>
+            <p class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="3.5s">panshengcheng</p>
+          </section>
+        </div>
+        <div class="loading">
+            <img src="./img/logo.jpg" alt="">
+            <p id="process"></p>
+        </div>
+    </div>
+    <div class="tubiao">
+        <img src="./img/arrow.png" style="width:50px;height:40px; top:90vh; left:150px;" id="array" class="resize">
+    </div>
+    <script src="./js/swiper.animate.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script>
+        
+        let loadingProcess = document.getElementById("process");
+        let imgArr = [
+            "./img/1-1.jpg",
+            "./img/1-2.jpg",
+            "./img/2-1.jpg",
+            "./img/3-1.jpg",
+            "./img/bj.jpg",
+            "./img/arrow.png",
+            "./img/music.png",
+            "./img/page-end-2.jpg",
+        ];
+        let num =0;
+        let sum = imgArr.length;
+        let img =  new Image();
+        init();
+        function init(){
+            img.src = imgArr[num]; 
+            function go () {
+                num ++ ;
+                loadingProcess.innerHTML = parseInt( num/sum *100 ) + "%";
+                if(num < sum){
+                    init();
+                }else{
+                    musicPlay();
+                    $(".loading").css({"display":"none"});
+                    $(".swiper-wrapper").css({"display":"block"});
+                    $("#array").css({"display":"block"});
+                }
+            }
+            img.onerror = go;
+            img.onload = go;
+        }
+        
+        let objMusic = document.getElementById('bgMusic');
+        let musicState = true;
+        function musicPlay(){
+            $(".music").removeClass('musicStop').addClass('musicPlay');  
+            if(objMusic.paused){
+                objMusic.play();
+                objMusic.muted=false;
+            } 
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.play();
+                objMusic.muted=false;
+            },false)    
+        }
+
+
+        function musicStop(){
+            objMusic.pause();
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.pause();
+                objMusic.muted=true;
+            },false)
+            $(".music").removeClass('musicPlay').addClass('musicStop');
+            
+        }
+        $('.music').bind("touchend",function(){
+            if(musicState){
+                musicStop();
+                musicState=false;
+            }else{
+                musicPlay();
+                musicState=true;
+            }
+        });
+        
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            //effect : 'fade',
+            on:{
+                init: function(){
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                }, 
+                slideChangeTransitionEnd: function(){ 
+                    swiperAnimate(this); 
+                },
+                slideChangeTransitionStart:function(){
+                    if(this.activeIndex === 5){
+                        $("#array").hide();
+                    }else{
+                        $("#array").show();
+                    }
+                }
+            }
+        }) 
+
+    </script>
+</body>
+</html>

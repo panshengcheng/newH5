@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="./libs/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+        .simg{
+            width: 100%;
+            height: 100%;
+        }
+        .simg1{
+            position: absolute;
+            top: 40%;
+            left: 1%;
+            width: 100%;
+
+        }
+        .simg2{
+            position: absolute;
+            top: 60%;
+            left: 1%;
+            width: 100%;
+            
+        }
+        .info{
+            position: absolute;
+            top: 23%;
+            left: 13%;
+            color: rgb(254, 242, 58);
+            line-height: 52px;
+            font-size: 30px;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <div class="">
+        <img src="./img/bg1.jpg" class="simg"/>
+        <div class="info">
+            <div class="unnid">
+                唯一编号：
+                <span id="unnid"></span>
+            </div>
+            <div class="expirationTime">
+                过期时间：
+                <span id="expirationTime"></span>
+            </div>
+        </div>
+        <img src="./img/success.png" class="simg1"/>
+        <img src="./img/successIntro.png" class="simg2"/>
+    </div>
+    <script>
+        var url = location.search;
+        // console.log(url);
+        // if(url.indexOf("?")!=-1){
+        //     let str = url.substr(1);
+        //     let strs = str.split("=");
+        //     console.log(strs);
+        //     let id = strs[1];
+        //     //给input赋值
+        //     $("#unnid").html(id);
+        //     $("#expirationTime").html(id);
+        // }
+        var theRequest = new Object();  
+        if ( url.indexOf( "?" ) != -1 ) {  
+            var str = url.substr( 1 ); //substr()方法返回从参数值开始到结束的字符串；  
+            var strs = str.split( "&" );  
+            for ( var i = 0; i < strs.length; i++ ) {  
+                theRequest[ strs[ i ].split( "=" )[ 0 ] ] = ( strs[ i ].split( "=" )[ 1 ] );  
+            }  
+            //console.log( theRequest ); //此时的theRequest就是我们需要的参数；  
+            $("#unnid").html(theRequest.unnid);
+            $("#expirationTime").html(theRequest.expirationTime);
+        }
+    </script>
+</body>
+</html>

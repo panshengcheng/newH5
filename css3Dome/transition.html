@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3过度</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        html body{
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        .wapper{
+            /* CSS3过度：transition四个过度属性
+                    transition-property:规定应用过度的css属性名称（瞬间变化的属性不能设置过度，比如display）
+                    transition-duration(必须):定义过度效果花费的时间
+                    transition-delay: 规定过度动画效果何时开始（类似于延时加载），默认为0
+                    transition-timing-function: 定义过度动画效果的时间曲线，默认是“ease”，
+                                    linear  :规定以相同速度开始到结束的过度效果（匀速）
+                                    ease    :规定慢速开始，然后变快，然后慢速结束的过度效果
+                                    ease-in :规定以慢速开始的过度效果
+                                    ease-out:规定以慢速结束的过度效果
+                                    ease-in-out:规定以慢速开始和结束的过度效果
+                                    cubic-bezier(n,n,n):在cubic-bezier函数中定义自己的值，可能的值是0至1之间的值
+                简写形式：
+                    transition:name 1s linear 2s(延时)
+
+                CSS3动画：animation 7个属性
+                    animation-name  :规定@keyframes动画的名称
+                    animation-duration:规定动画完成一个周期所花费的秒或毫秒，默认0
+                    animation-timing-function:规定动画的速度曲线，默认是ease
+                    animation-delay:规定动画何时开始，默认是0，-2表示动画跳过两秒
+                    animation-iteration-count:规定动画被播放的次数。默认是1
+                    animation-direction:规定动画是否在下一周期逆向播放，默认是"normal"(是否循环反向播放动画),
+                                        normal  :默认值，动画按正常播放
+                                        reverse :动画反向播放
+                                        alternate:动画在奇数次（1，3，5.....)正向播放，在偶数次（2，4，6.....)反向播放
+                                        alternate-reverse:动画在奇数次（1，3，5....)反向播放，在偶数次（2，4，6...）正向播放
+                    animation-play-state:规定动画是否正在运行或停止，默认"running"
+             */
+             width: 100%;
+             height: 100%;
+             text-align: center;
+             vertical-align: middle;
+             /* background-image: linear-gradient(to left,red, green,blue,yellow); */
+             /* background-image: radial-gradient(red,yellow,green); */
+             animation: colorname 5s linear infinite;
+        }
+        h1{
+            /* opacity: 0; */
+            position: relative;
+            top: 50%;
+            color: white;
+            letter-spacing: 10px;
+            /* text-shadow: 7px 7px 5px black; */
+            text-shadow: -7px -7px 5px black;
+        }
+        @keyframes colorname{
+            0%{
+                background-color: #F5F5F5;
+            }
+            10%{
+                background-color: #F5F5F5;
+            }
+            20%{
+                background-color: #DCDCDC;
+            }
+            30%{
+                background-color: #D3D3D3;
+            }
+            40%{
+                background-color: #C0C0C0;
+            }
+            50%{
+                background-color: #A9A9A9;
+            }
+            60%{
+                background-color: #808080;
+            }
+            70%{
+                background-color: #A9A9A9;
+            }
+            80%{
+                background-color: #C0C0C0;
+            }
+            90%{
+                background-color: #F5F5F5;
+            }
+            100%{
+                background-color: #F5F5F5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wapper">
+        <h1>测试镂空字</h1>
+    </div>
+</body>
+</html>

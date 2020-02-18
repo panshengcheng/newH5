@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>问卷调查</title>
+    <script src="./js/jquery.min.js"></script>
+    
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            
+        }
+        .icons img{
+            width: 100%;
+            height: 100%;
+        }
+         div {
+            position: relative;
+            line-height: 30px;
+        }
+        
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+        }
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+        }
+        label {
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 20px;
+            height: 20px;
+            /* border-radius: 50%; */
+            border: 1px solid #999;
+　　　　　　　cursor: pointer;
+        }
+        
+        /*设置选中的input的样式*/
+        /* + 是兄弟选择器,获取选中后的label元素*/
+        input:checked+label { 
+            /* background-color: #fe6d32; */
+            border: 1px solid #2ee74d;
+        }
+         /*添加的加号与label进行拼接(一个矩形边框去掉上和左的边框),再旋转45度*/
+        input:checked+label::after {
+            position: absolute;
+            content: "";
+            width: 5px;
+            height: 10px;
+            top: 3px;
+            left: 6px;
+            border: 2px solid rgb(20, 224, 64);
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg);
+        }
+        h3{
+            color: rgb(32, 122, 130);
+        }
+        .options{
+            margin: 5%;
+        }
+        .info{
+            border-bottom: 1px dashed rgb(32, 122, 130);
+            padding-bottom: 5%;
+        }
+        #btn{
+            width: 100%;
+            background-color: rgb(32, 122, 130);
+            height: 5vh;
+            color: antiquewhite;
+            letter-spacing: 40px;
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+    </style>
+</head>
+<body>
+    <section id="icons" class="icons" >
+        <img src="./img/bj1.jpg" alt="背景图片" />
+        <img id="nextPage" style="position: absolute;top: 90%;left: 0%;height: 8%;" src="./img/bj1.gif" alt="小标" />
+    </section>
+    <section class="radio" style="display: none;">
+        <img style="width: 100%;" src="./img/bj2.png" alt="背景"/>
+        <div class="options">
+            <div class="info gender">
+                <h3>1.性别</h3>
+                <div>
+                    <input id="item1" type="radio" name="gender" value="0"><!--0：男-->
+                    <label for="item1"></label>
+                    <span>男</span>
+                </div>
+                <div>
+                    <input id="item2" type="radio" name="gender" value="1"><!--1：女-->
+                    <label for="item2"></label>
+                    <span>女</span>
+                </div>
+             
+            </div>
+            <div class="info grade">
+                <h3>2.年级</h3>
+                <div>
+                    <input id="item3" type="radio" name="grade" value="0"><!--0：大一至大四-->
+                    <label for="item3"></label>
+                    <span>大一至大四</span>
+                </div>
+                <div>
+                    <input id="item4" type="radio" name="grade" value="1"><!--1：研究生-->
+                    <label for="item4"></label>
+                    <span>研究生</span>
+                </div>
+                <div>
+                    <input id="item5" type="radio" name="grade" value="2"><!--2：其他-->
+                    <label for="item5"></label>
+                    <span>其他</span>
+                </div>
+      
+            </div>
+            <div class="info school">
+                    <h3>3.就读学校</h3>
+                    <div>
+                        <input id="item6" type="radio" name="school" value="0"><!--0：贵州大学-->
+                        <label for="item6"></label>
+                        <span>贵州大学</span>
+                    </div>
+                    <div>
+                        <input id="item7" type="radio" name="school" value="1"><!--1：贵州师范大学-->
+                        <label for="item7"></label>
+                        <span>贵州师范大学</span>
+                    </div>
+                    <div>
+                        <input id="item8" type="radio" name="school" value="2"><!--2：贵州财经大学-->
+                        <label for="item8"></label>
+                        <span>贵州财经大学</span>
+                    </div>
+                    <div>
+                        <input id="item9" type="radio" name="school" value="3"><!--3：贵州民族大学-->
+                        <label for="item9"></label>
+                        <span>贵州民族大学</span>
+                    </div>
+                    <div>
+                        <input id="item10" type="radio" name="school" value="4"><!--4：贵州医科大学-->
+                        <label for="item10"></label>
+                        <span>贵州医科大学</span>
+                    </div>
+                    <div>
+                        <input id="item11" type="radio" name="school" value="5"><!--5：贵阳中医学院-->
+                        <label for="item11"></label>
+                        <span>贵阳中医学院</span>
+                    </div>
+                    <div>
+                        <input id="item12" type="radio" name="school" value="6"><!--6：贵州城市职业学院-->
+                        <label for="item12"></label>
+                        <span>贵州城市职业学院</span>
+                    </div>
+                    <div>
+                        <input id="item13" type="radio" name="school" value="7"><!--7：贵州城市职业学院-->
+                        <label for="item13"></label>
+                        <span>贵州理工学院</span>
+                    </div>
+                    <div>
+                        <input id="item14" type="radio" name="school" value="8"><!--8：贵州警察学院-->
+                        <label for="item14"></label>
+                        <span>贵州警察学院</span>
+                    </div>
+                    <div>
+                        <input id="item15" type="radio" name="school" value="9"><!--9：贵州轻工职业技术学院-->
+                        <label for="item15"></label>
+                        <span>贵州轻工职业技术学院</span>
+                    </div>
+            </div>
+            <div class="info alimony">
+                    <h3>4.每月生活费区间</h3>
+                    <div>
+                        <input id="item16" type="radio" name="alimony" value="0"><!--0：1500以下-->
+                        <label for="item16"></label>
+                        <span>1500以下</span>
+                    </div>
+                    <div>
+                        <input id="item17" type="radio" name="alimony" value="1"><!--1：1500-2500-->
+                        <label for="item17"></label>
+                        <span>1500-2500</span>
+                    </div>
+                    <div>
+                        <input id="item18" type="radio" name="alimony" value="2"><!--2：2500以上-->
+                        <label for="item18"></label>
+                        <span>2500以上</span>
+                    </div>
+            </div>
+            <div class="info cost">
+                    <h3>5.每月费用在校外商业上的花销比例有多少</h3>
+                    <div>
+                        <input id="item19" type="radio" name="cost" value="0">
+                        <label for="item19"></label>
+                        <span>0-20%</span>
+                    </div>
+                    <div>
+                        <input id="item20" type="radio" name="cost" value="1">
+                        <label for="item20"></label>
+                        <span>21%-40%</span>
+                    </div>
+                    <div>
+                        <input id="item21" type="radio" name="cost" value="2">
+                        <label for="item21"></label>
+                        <span>41%-60%</span>
+                    </div>
+                    <div>
+                        <input id="item22" type="radio" name="cost" value="3">
+                        <label for="item22"></label>
+                        <span>60%以上</span>
+                    </div>
+            </div>
+            <div class="info internet">
+                    <h3>6.生活费在网上的花销比例</h3>
+                    <div>
+                        <input id="item23" type="radio" name="internet" value="0">
+                        <label for="item23"></label>
+                        <span>20%以下</span>
+                    </div>
+                    <div>
+                        <input id="item24" type="radio" name="internet" value="1">
+                        <label for="item24"></label>
+                        <span>21%-40%</span>
+                    </div>
+                    <div>
+                        <input id="item25" type="radio" name="internet" value="2">
+                        <label for="item25"></label>
+                        <span>41%-60%</span>
+                    </div>
+                    <div>
+                        <input id="item26" type="radio" name="internet" value="3">
+                        <label for="item26"></label>
+                        <span>60%以上</span>
+                    </div>
+            </div>
+            <div class="info after">
+                    <h3>7.课余时间主要的消费场所</h3>
+                    <div>
+                        <input id="item27" type="radio" name="after" value="0">
+                        <label for="item27"></label>
+                        <span>大学城内</span>
+                    </div>
+                    <div>
+                        <input id="item28" type="radio" name="after" value="1">
+                        <label for="item28"></label>
+                        <span>花溪城区</span>
+                    </div>
+                    <div>
+                        <input id="item29" type="radio" name="after" value="2">
+                        <label for="item29"></label>
+                        <span>小河城区</span>
+                    </div>
+                    <div>
+                        <input id="item30" type="radio" name="after" value="3">
+                        <label for="item30"></label>
+                        <span>主城区</span>
+                    </div>
+            </div>
+            <div class="info relaxation">
+                    <h3>8.休闲娱乐时会考虑的因素是什么(多选)</h3>
+                    <div>
+                        <input id="item31" type="checkbox" name="relaxation" value="0">
+                        <label for="item31"></label>
+                        <span>品牌</span>
+                    </div>
+                    <div>
+                        <input id="item32" type="checkbox" name="relaxation" value="1">
+                        <label for="item32"></label>
+                        <span>价格</span>
+                    </div>
+                    <div>
+                        <input id="item33" type="checkbox" name="relaxation" value="2">
+                        <label for="item33"></label>
+                        <span>环境</span>
+                    </div>
+                    <div>
+                        <input id="item34" type="checkbox" name="relaxation" value="3">
+                        <label for="item34"></label>
+                        <span>体验</span>
+                    </div>
+                    <div>
+                        <input id="item35" type="checkbox" name="relaxation" value="4">
+                        <label for="item35"></label>
+                        <span>其他</span>
+                    </div>
+            </div>
+            <div class="info activity">
+                    <h3>9.课余时间经常参加的休闲娱乐活动（多选）</h3>
+                    <div>
+                        <input id="item36" type="checkbox" name="activity" value="0">
+                        <label for="item36"></label>
+                        <span>聚餐</span>
+                    </div>
+                    <div>
+                        <input id="item37" type="checkbox" name="activity" value="1">
+                        <label for="item37"></label>
+                        <span>购物</span>
+                    </div>
+                    <div>
+                        <input id="item38" type="checkbox" name="activity" value="2">
+                        <label for="item38"></label>
+                        <span>健身</span>
+                    </div>
+                    <div>
+                        <input id="item39" type="checkbox" name="activity" value="3">
+                        <label for="item39"></label>
+                        <span>KTV、跳舞</span>
+                    </div>
+                    <div>
+                        <input id="item40" type="checkbox" name="activity" value="4">
+                        <label for="item40"></label>
+                        <span>看电影</span>
+                    </div>
+                    <div>
+                        <input id="item41" type="checkbox" name="activity" value="5">
+                        <label for="item41"></label>
+                        <span>看展览、演出</span>
+                    </div>
+                    <div>
+                        <input id="item42" type="checkbox" name="activity" value="6">
+                        <label for="item42"></label>
+                        <span>参加社团活动</span>
+                    </div>
+                    <div>
+                        <input id="item43" type="checkbox" name="activity" value="7">
+                        <label for="item43"></label>
+                        <span>酒吧</span>
+                    </div>
+                    <div>
+                        <input id="item44" type="checkbox" name="activity" value="8">
+                        <label for="item44"></label>
+                        <span>专业培训班</span>
+                    </div>
+                    <div>
+                        <input id="item45" type="checkbox" name="activity" value="9">
+                        <label for="item45"></label>
+                        <span>其他</span>
+                    </div>
+            </div>
+            <div class="info isActivity">
+                    <h3>10.学校周边休闲娱乐消费场所是否充足</h3>
+                    <div>
+                        <input id="item46" type="radio" name="isActivity" value="0">
+                        <label for="item46"></label>
+                        <span>很充足</span>
+                    </div>
+                    <div>
+                        <input id="item47" type="radio" name="isActivity" value="1">
+                        <label for="item47"></label>
+                        <span>不太充足</span>
+                    </div>
+                    <div>
+                        <input id="item48" type="radio" name="isActivity" value="2">
+                        <label for="item48"></label>
+                        <span>几乎没有</span>
+                    </div>
+            </div>
+            <div class="info bourn">
+                    <h3>11.在大学城附近的商业项目/商场中，你和你的同学/朋友经常去消费的是（多选）</h3>
+                    <div>
+                        <input id="item49" type="checkbox" name="bourn" value="0">
+                        <label for="item49"></label>
+                        <span>万宜广场</span>
+                    </div>
+                    <div>
+                        <input id="item50" type="checkbox" name="bourn" value="1">
+                        <label for="item50"></label>
+                        <span>亨特公园里</span>
+                    </div>
+                    <div>
+                        <input id="item51" type="checkbox" name="bourn" value="2">
+                        <label for="item51"></label>
+                        <span>万科大都会</span>
+                    </div>
+                    <div>
+                        <input id="item52" type="checkbox" name="bourn" value="3">
+                        <label for="item52"></label>
+                        <span>贵大学府里</span>
+                    </div>
+                    <div>
+                        <input id="item53" type="checkbox" name="bourn" value="4">
+                        <label for="item53"></label>
+                        <span>花溪公园步行街</span>
+                    </div>
+                    <div>
+                        <input id="item54" type="checkbox" name="bourn" value="5">
+                        <label for="item54"></label>
+                        <span>花溪地下商城</span>
+                    </div>
+                    <div>
+                        <input id="item55" type="checkbox" name="bourn" value="6">
+                        <label for="item55"></label>
+                        <span>思雅美食广场</span>
+                    </div>
+                    <div>
+                        <input id="item56" type="checkbox" name="bourn" value="7">
+                        <label for="item56"></label>
+                        <span>庭轩商业广场</span>
+                    </div>
+                </div>
+                    <!-- 第二部分 -->
+                    <div class="info factor">
+                        <h3>12.选择购物中心/商业街区最重要的因素有（多选）</h3>
+                        <div>
+                            <input id="item57" type="checkbox" name="factor" value="0">
+                            <label for="item57"></label>
+                            <span>距离及交通便利</span>
+                        </div>
+                        <div>
+                            <input id="item58" type="checkbox" name="factor" value="1">
+                            <label for="item58"></label>
+                            <span>可消费可体验商业种类是否丰富</span>
+                        </div>
+                        <div>
+                            <input id="item59" type="checkbox" name="factor" value="2">
+                            <label for="item59"></label>
+                            <span>是否有自己喜欢的品牌</span>
+                        </div>
+                        <div>
+                            <input id="item60" type="checkbox" name="factor" value="3">
+                            <label for="item60"></label>
+                            <span>消费地点的知名度和形象</span>
+                        </div>
+                        <div>
+                            <input id="item61" type="checkbox" name="factor" value="4">
+                            <label for="item61"></label>
+                            <span>消费地点的规模</span>
+                        </div>
+                        <div>
+                            <input id="item62" type="checkbox" name="factor" value="5">
+                            <label for="item62"></label>
+                            <span>人流量是否旺盛</span>
+                        </div>
+                        <div>
+                            <input id="item63" type="checkbox" name="factor" value="6">
+                            <label for="item63"></label>
+                            <span>附近是否还有其他商业项目</span>
+                        </div>
+                </div>
+                <div class="info frequency">
+                        <h3>13.逛购物中心/商业街区的频率是</h3>
+                        <div>
+                            <input id="item64" type="radio" name="frequency" value="0">
+                            <label for="item64"></label>
+                            <span>每周5次</span>
+                        </div>
+                        <div>
+                            <input id="item65" type="radio" name="frequency" value="1">
+                            <label for="item65"></label>
+                            <span>每周2-3次</span>
+                        </div>
+                        <div>
+                            <input id="item66" type="radio" name="frequency" value="2">
+                            <label for="item66"></label>
+                            <span>每周1-2次</span>
+                        </div>
+                        <div>
+                            <input id="item67" type="radio" name="frequency" value="3">
+                            <label for="item67"></label>
+                            <span>每月两次</span>
+                        </div>
+                </div>
+                <div class="info brand">
+                        <h3>14.花溪区域内是否有你特别喜欢的餐饮品牌</h3>
+                        <div>
+                            <input id="item68" type="radio" name="isBrand" value="0">
+                            <label for="item68"></label>
+                            <span>有</span>
+                        </div>
+                        <div>
+                            <input id="item69" type="radio" name="isBrand" value="1">
+                            <label for="item69"></label>
+                            <span>否</span>
+                        </div>
+                        
+                </div>
+                <div class="info goOut">
+                        <h3>15.外出就餐频率</h3>
+                        <div>
+                            <input id="item70" type="radio" name="goOut" value="0">
+                            <label for="item70"></label>
+                            <span>一周多次</span>
+                        </div>
+                        <div>
+                            <input id="item71" type="radio" name="goOut" value="1">
+                            <label for="item71"></label>
+                            <span>一周一次</span>
+                        </div>
+                        <div>
+                            <input id="item72" type="radio" name="goOut" value="2">
+                            <label for="item72"></label>
+                            <span>几乎不</span>
+                        </div>
+                </div>
+                <div class="info way">
+                        <h3>16.最常从哪个途径了解到知名度较高的餐饮品牌</h3>
+                        <div>
+                            <input id="item73" type="radio" name="way" value="0">
+                            <label for="item73"></label>
+                            <span>朋友推荐</span>
+                        </div>
+                        <div>
+                            <input id="item74" type="radio" name="way" value="1">
+                            <label for="item74"></label>
+                            <span>微博 抖音等美食博主推荐</span>
+                        </div>
+                        <div>
+                            <input id="item75" type="radio" name="way" value="2">
+                            <label for="item75"></label>
+                            <span>朋友圈晒图</span>
+                        </div>
+                        <div>
+                            <input id="item76" type="radio" name="way" value="3">
+                            <label for="item76"></label>
+                            <span>其他</span>
+                        </div>
+                </div>
+                <div class="info bar">
+                        <h3>17.酒吧、清吧等休闲娱乐场所消费频率</h3>
+                        <div>
+                            <input id="item77" type="radio" name="bar" value="0">
+                            <label for="item77"></label>
+                            <span>一周多次</span>
+                        </div>
+                        <div>
+                            <input id="item78" type="radio" name="bar" value="1">
+                            <label for="item78"></label>
+                            <span>一周一次</span>
+                        </div>
+                        <div>
+                            <input id="item79" type="radio" name="bar" value="2">
+                            <label for="item79"></label>
+                            <span>一月一次</span>
+                        </div>
+                        <div>
+                            <input id="item80" type="radio" name="bar" value="3">
+                            <label for="item80"></label>
+                            <span>几乎不</span>
+                        </div>
+                </div>
+                <div class="info ctf">
+                        <h3>18.选择酒吧、清吧等注重的因素是（多选）</h3>
+                        <div>
+                            <input id="item81" type="checkbox" name="ctf" value="0">
+                            <label for="item81"></label>
+                            <span>价格实惠</span>
+                        </div>
+                        <div>
+                            <input id="item82" type="checkbox" name="ctf" value="1">
+                            <label for="item82"></label>
+                            <span>酒吧形象及知名度</span>
+                        </div>
+                        <div>
+                            <input id="item83" type="checkbox" name="ctf" value="2">
+                            <label for="item83"></label>
+                            <span>酒水品类多</span>
+                        </div>
+                        <div>
+                            <input id="item84" type="checkbox" name="ctf" value="3">
+                            <label for="item84"></label>
+                            <span>酒吧氛围热闹、有没有现场驻唱</span>
+                        </div>
+                        <div>
+                            <input id="item85" type="checkbox" name="ctf" value="4">
+                            <label for="item85"></label>
+                            <span>主题性强</span>
+                        </div>
+                        <div>
+                            <input id="item86" type="checkbox" name="ctf" value="5">
+                            <label for="item86"></label>
+                            <span>其他</span>
+                        </div>
+                </div>
+                <div class="info film">
+                        <h3>19.周边最爱去的电影院</h3>
+                        <div>
+                            <input id="item87" type="radio" name="film" value="0">
+                            <label for="item87"></label>
+                            <span>亨特星空影城</span>
+                        </div>
+                        <div>
+                            <input id="item88" type="radio" name="film" value="1">
+                            <label for="item88"></label>
+                            <span>万宜中影国际影院</span>
+                        </div>
+                        <div>
+                            <input id="item89" type="radio" name="film" value="2">
+                            <label for="item89"></label>
+                            <span>溪城时代国际影院</span>
+                        </div>
+                        <div>
+                            <input id="item90" type="radio" name="film" value="3">
+                            <label for="item90"></label>
+                            <span>万科卢米埃影城</span>
+                        </div>
+                        <div>
+                            <input id="item91" type="radio" name="film" value="4">
+                            <label for="item91"></label>
+                            <span>贵大学府里中影南方影城</span>
+                        </div>
+                        <div>
+                            <input id="item92" type="radio" name="film" value="5">
+                            <label for="item92"></label>
+                            <span>大学城上影国际影城</span>
+                        </div>
+                        <div>
+                            <input id="item93" type="radio" name="film" value="6">
+                            <label for="item93"></label>
+                            <span>私人影院</span>
+                        </div>
+                </div>
+
+                <div class="info movie">
+                        <h3>20.看电影的频率</h3>
+                        <div>
+                            <input id="item94" type="radio" name="movie" value="0">
+                            <label for="item94"></label>
+                            <span>每周一次</span>
+                        </div>
+                        <div>
+                            <input id="item95" type="radio" name="movie" value="1">
+                            <label for="item95"></label>
+                            <span>每月2-3次</span>
+                        </div>
+                        <div>
+                            <input id="item96" type="radio" name="movie" value="2">
+                            <label for="item96"></label>
+                            <span>基本新片上映就会看</span>
+                        </div>
+                        <div>
+                            <input id="item97" type="radio" name="movie" value="3">
+                            <label for="item97"></label>
+                            <span>看看有没有喜欢的片子</span>
+                        </div>
+                        
+                </div>
+                <div class="info hp">
+                        <h3>21.对于轰趴馆更倾向的功能有（多选）</h3>
+                        <div>
+                            <input id="item98" type="checkbox" name="hp" value="0">
+                            <label for="item98"></label>
+                            <span>台球、桌游</span>
+                        </div>
+                        <div>
+                            <input id="item99" type="checkbox" name="hp" value="1">
+                            <label for="item99"></label>
+                            <span>KTV</span>
+                        </div>
+                        <div>
+                            <input id="item100" type="checkbox" name="hp" value="2">
+                            <label for="item100"></label>
+                            <span>麻将</span>
+                        </div>
+                        <div>
+                            <input id="item101" type="checkbox" name="hp" value="3">
+                            <label for="item101"></label>
+                            <span>私人影院</span>
+                        </div>
+                        <div>
+                            <input id="item102" type="checkbox" name="hp" value="4">
+                            <label for="item102"></label>
+                            <span>X-BOX游戏机</span>
+                        </div>
+                        <div>
+                            <input id="item103" type="checkbox" name="hp" value="5">
+                            <label for="item103"></label>
+                            <span>联机电脑</span>
+                        </div>
+                        <div>
+                            <input id="item104" type="checkbox" name="hp" value="6">
+                            <label for="item104"></label>
+                            <span>投篮器、娃娃机</span>
+                        </div>
+                        <div>
+                            <input id="item105" type="checkbox" name="hp" value="7">
+                            <label for="item105"></label>
+                            <span>其他</span>
+                        </div>
+                </div>
+                <div class="info space">
+                        <h3>22.学校及学校周边是否有完全满足个人需求的运动空间</h3>
+                        <div>
+                            <input id="item106" type="radio" name="space" value="0">
+                            <label for="item106"></label>
+                            <span>有</span>
+                        </div>
+                        <div>
+                            <input id="item107" type="radio" name="space" value="1">
+                            <label for="item107"></label>
+                            <span>没有</span>
+                        </div>
+                        
+                </div>
+                <!-- 第三部分 -->
+                <div class="info fortify">
+                        <h3>23.想要增加哪些运动项目（多选）</h3>
+                        <div>
+                            <input id="item108" type="checkbox" name="fortify" value="0">
+                            <label for="item108"></label>
+                            <span>游泳</span>
+                        </div>
+                        <div>
+                            <input id="item109" type="checkbox" name="fortify" value="1">
+                            <label for="item109"></label>
+                            <span>羽毛球</span>
+                        </div>
+                        <div>
+                            <input id="item120" type="checkbox" name="fortify" value="2">
+                            <label for="item120"></label>
+                            <span>射击</span>
+                        </div>
+                        <div>
+                            <input id="item121" type="checkbox" name="fortify" value="3">
+                            <label for="item121"></label>
+                            <span>滑冰场</span>
+                        </div>
+                        <div>
+                            <input id="item122" type="checkbox" name="fortify" value="4">
+                            <label for="item122"></label>
+                            <span>网球</span>
+                        </div>
+                        <div>
+                            <input id="item123" type="checkbox" name="fortify" value="5">
+                            <label for="item123"></label>
+                            <span>攀岩</span>
+                        </div>
+                        <div>
+                            <input id="item124" type="checkbox" name="fortify" value="6">
+                            <label for="item124"></label>
+                            <span>壁球</span>
+                        </div>
+                        <div>
+                            <input id="item125" type="checkbox" name="fortify" value="7">
+                            <label for="item125"></label>
+                            <span>搏击馆</span>
+                        </div>
+                </div>
+                <div class="info attraction">
+                        <h3>24.下面哪个零售品牌更具消费吸引力（多选）</h3>
+                        <div>
+                            <input id="item126" type="checkbox" name="attraction" value="0">
+                            <label for="item126"></label>
+                            <span>优衣库</span>
+                        </div>
+                        <div>
+                            <input id="item127" type="checkbox" name="attraction" value="1">
+                            <label for="item127"></label>
+                            <span>无印良品</span>
+                        </div>
+                        <div>
+                            <input id="item128" type="checkbox" name="attraction" value="2">
+                            <label for="item128"></label>
+                            <span>丝芙兰</span>
+                        </div>
+                        <div>
+                            <input id="item129" type="checkbox" name="attraction" value="3">
+                            <label for="item129"></label>
+                            <span>迪卡侬</span>
+                        </div>
+                        <div>
+                            <input id="item130" type="checkbox" name="attraction" value="4">
+                            <label for="item130"></label>
+                            <span>ZARA HOME</span>
+                        </div>
+                        <div>
+                            <input id="item131" type="checkbox" name="attraction" value="5">
+                            <label for="item131"></label>
+                            <span>名创优品</span>
+                        </div>
+                </div>
+                <div class="info trench">
+                        <h3>25.日常零售商品的购买渠道</h3>
+                        <div>
+                            <input id="item132" type="radio" name="trench" value="0">
+                            <label for="item132"></label>
+                            <span>实体店</span>
+                        </div>
+                        <div>
+                            <input id="item133" type="radio" name="trench" value="1">
+                            <label for="item133"></label>
+                            <span>网购</span>
+                        </div>
+                        
+                </div>
+                <div class="info stockpile">
+                        <h3>26.每周会逛一次超市囤货吗</h3>
+                        <div>
+                            <input id="item134" type="radio" name="stockpile" value="0">
+                            <label for="item134"></label>
+                            <span>会</span>
+                        </div>
+                        <div>
+                            <input id="item135" type="radio" name="stockpile" value="1">
+                            <label for="item135"></label>
+                            <span>不会</span>
+                        </div>
+                </div>
+                <div class="info bookshop">
+                        <h3>27.是否经常逛书店或者图书馆</h3>
+                        <div>
+                            <input id="item136" type="radio" name="bookshop" value="0">
+                            <label for="item136"></label>
+                            <span>是</span>
+                        </div>
+                        <div>
+                            <input id="item137" type="radio" name="bookshop" value="1">
+                            <label for="item137"></label>
+                            <span>否</span>
+                        </div>
+                </div>
+                <div class="info xyl">
+                        <h3>28.以下书店品牌哪个更具吸引力</h3>
+                        <div>
+                            <input id="item138" type="radio" name="xyl" value="0">
+                            <label for="item138"></label>
+                            <span>钟书阁</span>
+                        </div>
+                        <div>
+                            <input id="item139" type="radio" name="xyl" value="1">
+                            <label for="item139"></label>
+                            <span>西西弗</span>
+                        </div>
+                        <div>
+                            <input id="item140" type="radio" name="xyl" value="2">
+                            <label for="item140"></label>
+                            <span>大众书局</span>
+                        </div>
+                        <div>
+                            <input id="item141" type="radio" name="xyl" value="3">
+                            <label for="item141"></label>
+                            <span>方所</span>
+                        </div>
+                        <div>
+                            <input id="item142" type="radio" name="xyl" value="4">
+                            <label for="item142"></label>
+                            <span>当当书店</span>
+                        </div>
+                        <div>
+                            <input id="item143" type="radio" name="xyl" value="5">
+                            <label for="item143"></label>
+                            <span>千翻与作</span>
+                        </div>
+                        <div>
+                            <input id="item144" type="radio" name="xyl" value="6">
+                            <label for="item144"></label>
+                            <span>言几又</span>
+                        </div>
+                        <div>
+                            <input id="item145" type="radio" name="xyl" value="7">
+                            <label for="item145"></label>
+                            <span>乐转城市书房</span>
+                        </div>
+                        <div>
+                            <input id="item146" type="radio" name="xyl" value="8">
+                            <label for="item146"></label>
+                            <span>集文里</span>
+                        </div>
+                        <div>
+                            <input id="item147" type="radio" name="xyl" value="9">
+                            <label for="item147"></label>
+                            <span>百无一用</span>
+                        </div>
+                        <div>
+                            <input id="item148" type="radio" name="xyl" value="10">
+                            <label for="item148"></label>
+                            <span>新华书店</span>
+                        </div>
+                        <div>
+                            <input id="item149" type="radio" name="xyl" value="11">
+                            <label for="item149"></label>
+                            <span>五之堂</span>
+                        </div>
+                </div>
+                <div class="info condition">
+                        <h3>29.你认为一个吸引你的书店具备的条件（多选）</h3>
+                        <div>
+                            <input id="item150" type="checkbox" name="condition" value="0">
+                            <label for="item150"></label>
+                            <span>书店良好的氛围环境及独特个性</span>
+                        </div>
+                        <div>
+                            <input id="item151" type="checkbox" name="condition" value="1">
+                            <label for="item151"></label>
+                            <span>可以找到一些比较稀有的书</span>
+                        </div>
+                        <div>
+                            <input id="item152" type="checkbox" name="condition" value="2">
+                            <label for="item152"></label>
+                            <span>可以边看书边喝咖啡或茶饮</span>
+                        </div>
+                        <div>
+                            <input id="item153" type="checkbox" name="condition" value="3">
+                            <label for="item153"></label>
+                            <span>定期举办特色文化活动</span>
+                        </div>
+                        <div>
+                            <input id="item154" type="checkbox" name="condition" value="4">
+                            <label for="item154"></label>
+                            <span>地理位置交通便捷</span>
+                        </div>
+                        <div>
+                            <input id="item155" type="checkbox" name="condition" value="5">
+                            <label for="item155"></label>
+                            <span>其他</span>
+                        </div>
+                </div>
+                <div class="info clockIn">
+                        <h3>30.文创手作或大学生文创商品店铺能否吸引你前往打卡</h3>
+                        <div>
+                            <input id="item156" type="radio" name="clockIn" value="0">
+                            <label for="item156"></label>
+                            <span>是</span>
+                        </div>
+                        <div>
+                            <input id="item157" type="radio" name="clockIn" value="1">
+                            <label for="item157"></label>
+                            <span>否</span>
+                        </div>
+                        
+                </div>
+                <div class="info hobby">
+                        <h3>31.你对喜欢的商业消费场所的偏好是</h3>
+                        <div>
+                            <input id="item158" type="radio" name="hobby" value="0">
+                            <label for="item158"></label>
+                            <span>以美食、休闲娱乐为主导的休闲街区</span>
+                        </div>
+                        <div>
+                            <input id="item159" type="radio" name="hobby" value="1">
+                            <label for="item159"></label>
+                            <span>酒吧、夜宵及小商品的夜市</span>
+                        </div>
+                        <div>
+                            <input id="item160" type="radio" name="hobby" value="2">
+                            <label for="item160"></label>
+                            <span>类似的亨特或国贸购物中心</span>
+                        </div>
+                        
+                </div>
+                <div class="info terrace">
+                        <h3>32.是否倾向于有一个聚焦大学生才艺的展示平台</h3>
+                        <div>
+                            <input id="item161" type="radio" name="terrace" value="0">
+                            <label for="item161"></label>
+                            <span>是</span>
+                        </div>
+                        <div>
+                            <input id="item162" type="radio" name="terrace" value="1">
+                            <label for="item162"></label>
+                            <span>否</span>
+                        </div>           
+                </div>   
+                <button id="btn">提交</button>
+            </div> 
+            
+    </section>
+    <section id="sucess" class="icons" style="display: none;">
+        <img src="./img/cg.jpg" alt="成功背景"/>
+    </section>
+    <script src="./js/text.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript操作DOM模型</title>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html body{width: 100%; height: 1080px;background-color: yellow;}
+        .div{width: 100px;height: 100px;background-color: red;position: absolute;}
+    </style>
+</head>
+<body>
+    <div class="div" id="div"></div>
+    <script>
+        //open打开一个新的页面 open(url(路径),'_self'(打开方式))
+       // window.location.open('www.baidu.com','_self');
+       //console.log(navigator.userAgent)//获取当前浏览器信息
+       //获取浏览器可视区域的宽高
+       console.log("浏览器的宽："+document.documentElement.clientWidth);
+       console.log("浏览器可视区域的高："+document.documentElement.clientHeight);
+       console.log("获取内容高度:"+document.body.scrollHeight);
+    //    //需求：使DIV跟随滚动条高度滚动而滚动 /分析:获取浏览器页面的高
+         let div = document.getElementById("div");
+        let bH = document.body.scrollHeight;
+        //初始化先设置div在可视区域的中间位置
+        let KH = document.documentElement.clientHeight;
+        let KW = document.documentElement.clientWidth;
+        console.log("浏览器可视区域的宽："+KW+",浏览器可视区域的高："+KH+"元素的宽高："+div.clientHeight+": "+div.clientWidth);
+        div.style.top=((KH/2)-(div.clientHeight/2))+"px";
+        div.style.left=((KW/2)-(div.clientWidth/2))+"px";
+        document.onscroll=function(){
+            //改变当前元素的位置，也就是top和left，使其始终居中
+            let CH = div.clientHeight;
+            console.log(CH);
+            div.style.top=div.clientHeight/2+"px";
+        }
+        
+    </script>
+</body>
+</html>

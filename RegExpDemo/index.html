@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式练习</title>
+</head>
+<script>
+    //正则表达式：根据人类的习惯判断字符串中的值，其不能用于对象等，正则中默认区分大小写，如需不区分大小写在正则最后添加一个i =>例如：ver re = /B/i;
+    /**
+        var a = /正则表达式主体/修饰符（可选）;
+        简写：ver a=/a/;
+        全写：ver a= new RegExp('a');
+        注：简写在某种程度上效率要比RegExp全写要好
+        
+        1.正则的常用方法：
+            test()字符串判断
+                - 返回真假
+                - 正则.test(字符串)
+                - 例：判断是不是字符串或者数字
+            search()字符串搜索
+                - 返回出现的位置=>没找到返回-1
+                - 字符串.search(正则)
+                - 忽略大小写：1---ignore
+            match()字符串匹配
+                - 返回数组或null
+                - 字符串.match(正则)
+                - 默认正则匹配成功就会结束，不会继续匹配，如需要查找全部，需要在正则后面假标识g（全局匹配）
+                - 量词：匹配不确定的位置 +：至少出现一次 =>例：var str = /\d+/g;
+            replace()替换所有匹配
+                - 返回替换后的字符串
+                - 字符串.replace(正则，想替换的)
+                - 例：敏感词过滤
+
+        2.匹配子项： 小括号（） （还有一个意思，分组操作）
+        3.特殊含义字符：
+           i :  不区分大小写
+           g ： 全局匹配（找到第一个，后面的字符还会继续匹配
+           | ： 或
+           []:  中括号的整体代表一个字符串
+           ^ :  排除：如果写在[]里面代表排除
+           m :  执行多行匹配
+           [abc]:   查找方括号之间的任何字符
+           [0-9]:   查找任何从0-9的数字
+           (x|y):   查找任何以|分隔的选项
+           \d   :   查找数字
+           \s   :   查找空白字符
+           \b   :   匹配单词边界
+           \uxxx:   查找十六进制数xxx规定的Unicode字符
+           n+   :   匹配任何包含至少一个n的字符串
+           n*   :   匹配包含零个或多个n的字符串   
+           n?   :   匹配任何包含零个或一个n的字符串
+
+    */
+    
+</script>
+<body>
+    <textarea id="text"></textarea>
+    <button id="btn">提交</button>
+    <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("touchend", function(){
+            var val =document.getElementById("text");
+            alert(val.value)
+            var reg = /<script/i;
+            //var d = reg.test(val.value);
+            if(reg.test(val.value)){
+                alert("您输入的字符串中有不符合要求的"+val.value);
+            }else{
+                alert("您输入的字符串符合要求")
+            }
+        },false)
+    </script>
+</body>
+</html>

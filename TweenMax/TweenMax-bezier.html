@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TweenMax贝塞尔曲线</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #div{width:50px;height: 50px;background-color: aqua;}
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <script src="../BGY-issue/lib/TweenMax.min.js"></script>
+    <script>
+        
+        let div = document.getElementById("div");
+        //使用left和top定义坐标点，由于使用了默认设置，因此可省略"values"关键词
+        // TweenMax.to(div, 5, {bezier:[{left:100, top:250}, {left:300, top:0}, {left:500, top:400}], ease:Power1.easeInOut});
+        //如果自定义设置，则需使用"values"关键词来包含坐标点
+        //TweenMax.to(div, 5, {bezier:{curviness:1.25, values:[{x:100, y:250}, {x:300, y:0}, {x:300, y:350},{x:100, y:400}], autoRotate:true}, backgroundColor:"#f00", ease:Power1.easeInOut});
+        //定义type为"soft"
+       // TweenMax.to(div, 5, {bezier:{type:"soft", values:[{x:100, y:250}, {x:300, y:0}, {x:250, y:400}], autoRotate:true}, ease:Power1.easeInOut});
+        //设定目标自动根据路径旋转
+        //TweenMax.to(div, 5, {bezier:{type:"cubic", values:[{x:100, y:250}, {x:150, y:100}, {x:300, y:500}, {x:150, y:100}], autoRotate:["x","y","rotation",45,false]}, ease:Power1.easeInOut});
+        TweenMax.to(div, 5, {bezier:[{x:100, y:250}, {x:300, y:0}, {x:500, y:400}], ease:Power1.easeInOut});
+    </script>
+</body>
+</html>

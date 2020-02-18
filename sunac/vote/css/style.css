@@ -1,0 +1,159 @@
+/* You can add global styles to this file, and also import other style files */
+.no-border{
+    border:none;
+}
+
+.no-padding{
+    padding:0px;
+}
+
+.margin-tb-15{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.no-margin{
+    margin:0px;
+}
+
+
+.none{
+    display:none;
+}
+
+.wImg {
+    width: 100%;
+    height: auto;
+}
+
+.none{
+    display:none;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-x-center{
+    display: flex;
+    align-items: center;
+}
+
+.fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+img.cover {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    position: absolute;
+    width: 100%;
+    height: 92%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.card-title,.card-text{
+    letter-spacing:0.1rem;
+}
+
+.float-right{
+    float: right;
+}
+
+
+
+/*footer*/
+.tabbar {
+    position: absolute;
+    width: 100%;
+    height: 8%;
+    background: white;
+    left: 0;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: grey 1px 1px 10px;
+}
+
+.tabbar-btn {
+    width:100%;
+    font-family: monospace;
+    color:gray;
+    font-weight: lighter;
+    text-align:center;
+}
+
+.border-right{
+    border-right:1px white solid;
+}
+
+.tabbar-btn-active{
+    color:#17a2b8;
+}
+
+.fix-box {
+    position: absolute;
+    background: #009688;
+    width: 100%;
+    height: 100%;
+}
+
+#canvas{
+    width: 70vw;
+    height: 70vw;
+    position: relative;
+    left: 15vw;
+}
+
+
+#btn-control{
+    width: 95%;
+    position: relative;
+    left: 2.5%;
+}
+
+.btn{
+    border-color:white;
+}
+
+#btn-control button {
+    width: 20%;
+}
+
+div#userMessage {
+    width: 90%;
+    left: 5%;
+    position: relative;
+    top: 1%;
+    height: 20%;
+}
+
+div#userMessage textarea{
+    margin-top:1%;
+}
+
+.form-control{
+    margin-bottom:1%;
+}
+
+div#btn-end {
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    top: 3%;
+}
+

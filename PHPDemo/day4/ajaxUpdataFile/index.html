@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax实现图片上传功能</title>
+    <script src="../../../26dome/libs/jquery.min.js"></script>
+    <script src="./js/jquery.form.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html body{width: 100%; height: 100%;background: cadetblue;}
+        .myInfo{position: relative; width: 80vw;height: 43vh;border: 1px solid #ccc; border-radius: 10px;text-align: center;top: 20vh;margin: 0 auto;
+        padding: 25px 0;color: white;background-color: rgba(255,255,255,0.2);}
+        h3{margin-bottom: 17px;}
+        input{margin: 3%;border: 1px solid #fff;border-radius: 6px;color: white;height: 24px;padding-left: 3%;outline: none;}
+        input::-webkit-input-placeholder{color: white;}
+        input::-moz-input-placeholder{color: white;}
+        input::-ms-input-placeholder{color: white;}
+        input::placeholder{color: white;}
+        .btn{position: relative;overflow: hidden;margin-right: 4px;display:inline-block; 
+        *display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px; *line-height:20px;color:#fff; 
+        text-align:center;vertical-align:middle;cursor:pointer;background:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf; 
+        border-bottom-color:#b3b3b3;-webkit-border-radius:4px; -moz-border-radius:4px;border-radius:4px;} 
+        .myImg{box-sizing: border-box;position: relative;top: 3%;}
+        .btn input{position: absolute;top: 0; right: 0;margin: 0;border:solid transparent; opacity: 0;filter:alpha(opacity=0); cursor: pointer;} 
+        .progress{position:relative; margin-left:53%; margin-top:-8px;  width:120px;padding: 1px; border-radius:3px; display:none;} 
+        .bar {background-color: green; display:block; width:0%; height:20px;   border-radius:3px; } 
+        .percent{position:absolute; height:20px; display:inline-block;  top:3px; left:2%; color:#fff } 
+        .files{height:22px; line-height:22px; margin:10px 0;display: none;} 
+        .delimg{margin-left:20px; color:#090; cursor:pointer} 
+        #showimg{width: 100px;height: 90px; position: absolute;top: 1%;left:8%;border: 1px solid;display: none;border-radius: 5px;}
+        #showimg img {width: 100%;height: 100%;}
+        .submit{width: 80px;height: 41px;border: 1px solid #fff;border-radius: 10px;
+            position: relative;left: 60px;top: 20px;background-color: cadetblue;color: #fff;display: none;}
+    </style>
+</head>
+<body>
+    <div class="myInfo">
+        <h3>用户注册</h3>
+        <div class="myname">
+            <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;：</label>
+            <input type="text" id="name" class="name" maxlength="10" placeholder="不能超过10个字符" style="BACKGROUND-COLOR: transparent;"/>
+        </div>
+        <div class="myphone">
+            <label for="phone">电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;&nbsp;：</label>
+            <input type="number" id="phone" maxlength="11" class="phone" placeholder="请输入手机号码" style="BACKGROUND-COLOR: transparent;"/>
+        </div>
+        <div class="mypasd">
+            <label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;：</label>
+            <input type="password" id="password" class="password" maxlength="18" placeholder="密码长度在6~18位之间" style="BACKGROUND-COLOR: transparent;"/>
+        </div>
+        <div class="mypasd1">
+            <label for="password1">确认密码：</label>
+            <input type="password" id="password1" class="password1" maxlength="18" placeholder="密码长度在6~18位之间" style="BACKGROUND-COLOR: transparent;"/>
+        </div>
+        <div class="myImg">
+            <div class="btn"> 
+                <span>请上传头像</span> 
+                <input id="fileupload" type="file" name="mypic"> 
+           </div> 
+           <div class="progress"> 
+               <span class="bar"></span><span class="percent">0%</span > 
+           </div> 
+           <div class="files"></div> 
+           <div id="showimg"></div>
+        </div>
+        <button class="submit" id="submit">注册</button>
+    </div>
+   <script>
+       let img = '';
+       $(function () { 
+            let bar = $('.bar'); 
+            let percent = $('.percent'); 
+            let showimg = $('#showimg'); 
+            let progress = $(".progress"); 
+            let files = $(".files"); 
+            let btn = $(".btn span"); 
+            $("#fileupload").wrap("<form id='myupload' action='action.php' method='post' enctype='multipart/form-data'></form>"); 
+            $("#fileupload").change(function(){ //选择文件 
+                $("#myupload").ajaxSubmit({ 
+                    dataType:  'json', //数据格式为json 
+                    beforeSend: function() { //开始上传 
+                        showimg.empty(); //清空显示的图片 
+                        progress.show(); //显示进度条 
+                        var percentVal = '0%'; //开始进度为0% 
+                        bar.width(percentVal); //进度条的宽度 
+                        percent.html(percentVal); //显示进度为0% 
+                        btn.html("上传中..."); //上传按钮显示上传中 
+                    }, 
+                    uploadProgress: function(event, position, total, percentComplete) { 
+                        var percentVal = percentComplete + '%'; //获得进度 
+                        bar.width(percentVal); //上传进度条宽度变宽 
+                        percent.html(percentVal); //显示上传进度百分比 
+                    }, 
+                    success: function(data) { //成功 
+                        $(".btn").hide();//隐藏按钮
+                        $("#submit").show();
+                        //获得后台返回的json数据，显示文件名，大小，以及删除按钮 
+                        files.html("<b>"+data.name+"("+data.size+"k)</b>",
+                        "<span class='delimg' rel='"+data.pic+"'>删除</span>");
+                        //显示上传后的图片 
+                        img = data.pic; 
+                        showimg.html("<img src='"+img+"'>"); 
+                        showimg.show();
+                        //btn.html("添加附件"); //上传按钮还原 
+                    }, 
+                    error:function(xhr){ //上传失败 
+                        btn.html("上传失败"); 
+                        bar.width('0'); 
+                        files.html(xhr.responseText); //返回失败信息 
+                    } 
+                }); 
+            });
+            // $(".delimg").live('click',function(){ 
+            //     var pic = $(this).attr("rel"); 
+            //     $.post("action.php?act=delimg",{imagename:pic},function(msg){ 
+            //         if(msg==1){ 
+            //             files.html("删除成功."); 
+            //             showimg.empty(); //清空图片 
+            //             progress.hide(); //隐藏进度条 
+            //         }else{ 
+            //             alert(msg); 
+            //         } 
+            //     }); 
+            // });  
+        }); 
+        $("#submit").on('click', addUserInfo);
+        function addUserInfo(){
+            let flag = true;
+            let name = $("#name").val();
+            let phone =$("#phone").val();
+            let password = $("#password").val();
+            let password1 = $("#password1").val();
+            let time = new Date().Format("yyyy-MM-dd HH:mm:ss");
+            if(img ==''){
+                alert("请先上传图像");
+            }else{
+                if(password !== password1){
+                    alert('两次输入密码不一样');
+                }else{
+                    if(!flag){
+                        alert("请等待提交结果");
+                    }else{
+                        $.ajax({
+                            url:"http://192.168.137.1:81/PHPDemo/day4/ajaxUpdataFile/server/server.php",
+                            type:"post",
+                            // dataType:'json',//不能加这个，否则结果只会出现在error里面
+                            data:{
+                                'name':name,
+                                'phone':phone,
+                                'password':password,
+                                'imgurl':img,
+                                'playTime':time
+                            },
+                            success: function(data){
+                                let val =eval('('+data+')');
+                                alert(val.msg);
+                                if(val.code == 0){
+                                    alert("该用户已经存在")
+                                }else if(val.code == 1){
+                                    window.location.reload();
+                                }else{
+                                    alert("出现未知的错误");
+                                }
+                            },
+                            error: function(e){
+                                console.log(e);
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        //获取日期
+        Date.prototype.Format = function (fmt) {
+            var o = {
+                "M+": this.getMonth() + 1, //月份 
+                "d+": this.getDate(), //日 
+                "H+": this.getHours(), //小时 
+                "m+": this.getMinutes(), //分 
+                "s+": this.getSeconds(), //秒 
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+                "S": this.getMilliseconds() //毫秒 
+            };
+            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
+   </script>
+</body>
+</html>

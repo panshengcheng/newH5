@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi平铺精灵</title>
+    <!-- <script src="./lib/pixi5.min.js"></script> -->
+    <script src="https://www.kkkk1000.com/js/pixi4.8.2.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <style>
+        *{margin: 0vmin;}
+    </style>
+</head>
+<body>
+    <script>
+        //查看当前设备
+        console.log(PIXI.utils.isMobile);
+        let option = {
+            width:window.innerWidth,
+            height:window.innerHeight,
+            transparent:true
+        }    
+        let app = new PIXI.Application(option);
+        let stage = app.stage;
+        let renderer = app.renderer;
+        document.body.appendChild(app.view);
+        /**
+         * PIXI.extras.TilingSprite(texture,width,height);平铺精灵-->是一个特殊精灵，可以在一定范围内重复一个纹理,可以使用这个机制创建无线滚动的精灵背景
+         * texture:平铺精灵的纹理
+         * width:平铺精灵的宽度，默认100
+         * height:平铺精灵的高度,默认100
+         * 
+         */
+        let imgURL ="./images/bj.jpg";
+        let groundUrl = "./images/ground.png"; 
+        PIXI.loader.add([imgURL,groundUrl]).load(setup);
+        let woodScript;
+        let groundScript;
+        function setup(){
+            let resources = PIXI.loader.resources;
+            woodScript = new PIXI.extras.TilingSprite(
+                resources[imgURL].texture, window.innerWidth, window.innerHeight
+            );
+            woodScript.tileScale.set(0.6,0.6);
+            groundScript = new PIXI.extras.TilingSprite(
+                resources[groundUrl].texture, 100
+                , window.innerHeight
+            )
+           //tilingSprite.y=30;//精灵的起始坐标
+           stage.addChild(woodScript);
+           stage.addChild(groundScript);
+           gameLoop();
+        }
+        let state = play;
+        function gameLoop(){
+            requestAnimationFrame(gameLoop);
+            state();
+            renderer.render(stage);
+        }
+        function play(){
+            woodScript.tilePosition.y -= 1;
+            groundScript.tilePosition.y -=0.5;
+        }
+    </script>
+</body>
+</html>

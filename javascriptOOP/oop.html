@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript面向对象的原理</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #div{height: 5vh; width: 60vw; border: 1px solid red; border-radius: 10px;}
+    </style>
+    <script>
+        window.onload=function(){
+            let div = document.getElementById("div");
+            let ob = new Object();//1.创建对象
+            ob.name = "小明"; //2.对象的属性
+            ob.getName = function(){//3.对象的方法
+                alert(this.name);//this指向当前调用者
+            }
+            ob.getName();//4.调用对象的方法=>注：如果方法前面有对象，方法里面的this指向就是改对象本身。但如果没有的话就是this指向就是window
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="div" placeholder="请输入有效数字"/>
+</body>
+</html>

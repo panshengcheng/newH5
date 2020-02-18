@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3背景</title>
+    <style>
+        html,body,.bj-img,h1{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+           width: 375px;
+           height: 677px;
+           border: 1px solid #666; 
+        }
+        .bj-img{
+            width: 100%;
+            height: 100%;
+            /* background-color: rgba(255,0,0,1); */
+            background-image: url("./img/shouye1.png");
+            background-repeat: no-repeat;
+            /* 是否固定在浏览器的可见区域 */
+            background-attachment: fixed;
+        }
+        h1{
+            position: relative;
+            top: 30%;
+            left: 40%;
+            /* 字体样式 */
+            font-family: "楷体";
+            width: 50%;
+        }
+        .redius{   
+            position: relative;
+            top: 50%;
+            left: 15%;
+            font-size: 15px;
+            width: 200px;
+            height: 100px;
+            line-height: 22px; 
+            font-family: "楷体";
+        }
+        .green{
+            position: relative;
+            left: 20vw;
+            top: 2vh;
+            width: 100px;
+            height: 30px;
+        }
+        span{
+            width: 33%;
+            padding: 2px 3px;
+            border: 1px solid #666;
+            border-radius: 5px;
+        }
+        .span{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景不会占用容器的高度：所以在添加背景时，需要先设定背景的高度 -->
+    <div class="bj-img">
+        <h1>梵华里</h1>
+        <div class="redius">
+            <div class="rediuInfo">请选择您的性别：</div>
+            <div class="green">
+                <span>男</span>
+                <span>女</span>
+                <span>保密</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let span =document.querySelectorAll(".green span");
+        for(var i=0; i<span.length; i++){
+            span.onclick = function(){
+                console.log(this.keys)
+            }
+        }
+    </script>
+</body>
+</html>

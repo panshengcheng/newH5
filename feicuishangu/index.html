@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>翡翠山谷</title>
+    <link rel="stylesheet" href="./css/swiper.min.css"/>
+    <link rel="stylesheet" href="./css/animate.min.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="./mp3/Bloom of Youth.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <img src="./img/page1/bj.png"/>
+              <img class="ani page1-logo" src="./img/page1/logo.png" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.5s"/>
+              <img class="ani page1-title" src="./img/page1/title.png" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="1s"/>
+              <img class="ani page1-vtitle" src="./img/page1/vtitle.png" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1.5s" swiper-animate-delay="2s"/>
+              <img class="ani page1-content" src="./img/page1/content.png" swiper-animate-effect="fadeInRight" swiper-animate-duration="1.5s" swiper-animate-delay="2s"/>
+              <img class="ani page1-time" src="./img/page1/time.png" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="3s"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/page2/bj.png">
+              <img class="ani page2-dtitle" src="./img/page2/d-title.png" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay=".5s"/>
+              <img class="ani page2-box" src="./img/page2/box.png" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="2s"/>
+              <img class="ani page2-title" src="./img/page2/title.png" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="2.5s"/>
+              <img class="ani page2-content" src="./img/page2/box-count.png" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s" swiper-animate-delay="3s"/>
+              
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/page3/bj.png"/>
+              <img class="ani page3-dtitle" src="./img/page3/d-title.png" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay=".5s"/>
+              <img class="ani page3-title" src="./img/page3/title.png" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="2s"/>
+              <img class="ani page3-dhImg" src="./img/page3/dh-img.png" swiper-animate-effect="rotateInDownLeft" swiper-animate-duration="1.5s" swiper-animate-delay="3s"/>
+              <img class="ani page3-time" src="./img/page3/time.png" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1.5s" swiper-animate-delay="4s"/>
+              <a class="ani page3-dhBtn" id="position" href="https://uri.amap.com/marker?position=106.7628700000,26.6007300000&name=贵州省贵阳市云岩区水东路南明河畔世界贸易中心半岛喷泉广场"
+              swiper-animate-effect="tada" swiper-animate-duration="1.5s" swiper-animate-delay="5s">
+                <img  src="./img/page3/dh-btn.png"/>
+              </a>
+              <img class="ani page3-number" src="./img/page3/number.png" swiper-animate-effect="fadeInRight" swiper-animate-duration="1.5s" swiper-animate-delay="4s"/>
+          </div>
+        </div>
+        <div class="tubiao" id="tubiao">
+            <img src="./img/arrow.png" style="width:30px;height:20px; top:90vh; left:45vw;" id="array" class="resize">
+        </div>
+      </div>
+      <div class="loading">
+        <img class="tLoading" src="./img/page1/logo.png"/>
+        <p>0%</p>
+    </div>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/swiper.animate.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

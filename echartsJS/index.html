@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>问卷调查后台结果</title>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            
+        }
+        .icons img{
+            width: 100%;
+            height: 100%;
+        }
+         div {
+            position: relative;
+            line-height: 30px;
+        }
+        
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+        }
+        
+        label {
+            position: absolute;
+            left: 5px;
+            top: 3px;
+            width: 20px;
+            height: 20px;
+            /* border-radius: 50%; */
+            border: 1px solid #999;
+　　　　　　　cursor: pointer;
+        }
+        
+        /*设置选中的input的样式*/
+        /* + 是兄弟选择器,获取选中后的label元素*/
+        input:checked+label { 
+            /* background-color: #fe6d32; */
+            border: 1px solid #2ee74d;
+        }
+         /*添加的加号与label进行拼接(一个矩形边框去掉上和左的边框),再旋转45度*/
+        input:checked+label::after {
+            position: absolute;
+            content: "";
+            width: 5px;
+            height: 10px;
+            top: 3px;
+            left: 6px;
+            border: 2px solid rgb(20, 224, 64);
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg);
+        }
+        h3{
+            color: rgb(32, 122, 130);
+        }
+        .options{
+            margin: 5%;
+        }
+        .info{
+            border-bottom: 1px dashed rgb(32, 122, 130);
+            padding-bottom: 5%;
+        }
+       
+    </style>
+</head>
+<body>
+    <section class="icons" style="display: none;" >
+        <img src="./img/bj1.jpg" alt="背景图片" />
+        <img id="nextPage" style="position: absolute;top: 90%;left: 0%;height: 8%;" src="./img/bj1.gif" alt="小标" />
+    </section>
+    <section class="radio" >
+        <img style="width: 100%;" src="./img/bj2.png" alt="背景"/>
+        
+        <div class="options">
+            <div class="info sum">
+                <h3 style="display: initial;">当前参与人数：</h3>
+                <span id="sum"></span> 人
+            </div>
+            <div class="info gender">
+                <h3>1.性别</h3>
+                <div>
+                    <span>男：</span>
+                    <span id="gender0"></span>%
+                </div>
+                <div>
+                    <span>女：</span>
+                    <span id="gender1"></span>%
+                </div>
+             
+            </div>
+            <div class="info grade">
+                <h3>2.年级</h3>
+                <div>
+                    <span>大一至大四：</span>
+                    <span id="grade0"></span>%
+                </div>
+                <div>
+                    <span>研究生：</span>
+                    <span id="grade1"></span>%
+                </div>
+                <div>
+                    <span>其他：</span>
+                    <span id="grade2"></span>%
+                </div>
+            </div>
+            <div class="info school">
+                    <h3>3.就读学校</h3>
+                    <div>
+                        <span>贵州大学：</span>
+                        <span id="school0"></span>%
+                    </div>
+                    <div>
+                        <span>贵州师范大学：</span>
+                        <span id="school1"></span>%
+                    </div>
+                    <div>
+                        <span>贵州财经大学：</span>
+                        <span id="school2"></span>%
+                    </div>
+                    <div>
+                        <span>贵州民族大学：</span>
+                        <span id="school3"></span>%
+                    </div>
+                    <div>
+                        <span>贵州医科大学：</span>
+                        <span id="school4"></span>%
+                    </div>
+                    <div>
+                        <span>贵阳中医学院：</span>
+                        <span id="school5"></span>%
+                    </div>
+                    <div>
+                        <span>贵州城市职业学院：</span>
+                        <span id="school6"></span>%
+                    </div>
+                    <div>
+                        <span>贵州理工学院：</span>
+                        <span id="school7"></span>%
+                    </div>
+                    <div>
+                        <span>贵州警察学院：</span>
+                        <span id="school8"></span>%
+                    </div>
+                    <div>
+                        <span>贵州轻工职业技术学院：</span>
+                        <span id="school9"></span>%
+                    </div>
+            </div>
+            <div class="info alimony">
+                    <h3>4.每月生活费区间</h3>
+                    <div>
+                        <span>1500以下：</span>
+                        <span id="alimony0"></span>%
+                    </div>
+                    <div>
+                        <span>1500-2500：</span>
+                        <span id="alimony1"></span>%
+                    </div>
+                    <div>
+                        <span>2500以上：</span>
+                        <span id="alimony2"></span>%
+                    </div>
+            </div>
+            <div class="info cost">
+                    <h3>5.每月费用在校外商业上的花销比例有多少</h3>
+                    <div>
+                        <span>0-20%：</span>
+                        <span id="cost0"></span>%
+                    </div>
+                    <div>
+                        <span>21%-40%：</span>
+                        <span id="cost1"></span>%
+                    </div>
+                    <div>
+                        <span>41%-60%：</span>
+                        <span id="cost2"></span>%
+                    </div>
+                    <div>
+                        <span>60%以上：</span>
+                        <span id="cost3"></span>%
+                    </div>
+            </div>
+            <div class="info internet">
+                    <h3>6.生活费在网上的花销比例</h3>
+                    <div>
+                        <span>20%以下：</span>
+                        <span id="internet0"></span>%
+                    </div>
+                    <div>
+                        <span>21%-40%：</span>
+                        <span id="internet1"></span>%
+                    </div>
+                    <div>
+                        <span>41%-60%：</span>
+                        <span id="internet2"></span>%
+                    </div>
+                    <div>
+                        <span>60%以上：</span>
+                        <span id="internet3"></span>%
+                    </div>
+            </div>
+            <div class="info after">
+                    <h3>7.课余时间主要的消费场所</h3>
+                    <div>
+                        <span>大学城内：</span>
+                        <span id="after0"></span>%
+                    </div>
+                    <div>
+                        <span>花溪城区：</span>
+                        <span id="after1"></span>%
+                    </div>
+                    <div>
+                        <span>小河城区：</span>
+                        <span id="after2"></span>%
+                    </div>
+                    <div>
+                        <span>主城区：</span>
+                        <span id="after3"></span>%
+                    </div>
+            </div>
+            <div class="info relaxation">
+                    <h3>8.休闲娱乐时会考虑的因素是什么(多选)</h3>
+                    <div>
+                        <span>品牌：</span>
+                        <span id="relaxation0"></span>%
+                    </div>
+                    <div>
+                        <span>价格：</span>
+                        <span id="relaxation1"></span>%
+                    </div>
+                    <div>
+                        <span>环境：</span>
+                        <span id="relaxation2"></span>%
+                    </div>
+                    <div>
+                        <span>体验：</span>
+                        <span id="relaxation3"></span>%
+                    </div>
+                    <div>
+                        <span>其他：</span>
+                        <span id="relaxation4"></span>%
+                    </div>
+            </div>
+            <div class="info activity">
+                    <h3>9.课余时间经常参加的休闲娱乐活动（多选）</h3>
+                    <div>
+                        <span>聚餐：</span>
+                        <span id="activity0"></span>%
+                    </div>
+                    <div>
+                        <span>购物：</span>
+                        <span id="activity1"></span>%
+                    </div>
+                    <div>
+                        <span>健身：</span>
+                        <span id="activity2"></span>%
+                    </div>
+                    <div>
+                        <span>KTV、跳舞：</span>
+                        <span id="activity3"></span>%
+                    </div>
+                    <div>
+                        <span>看电影：</span>
+                        <span id="activity4"></span>%
+                    </div>
+                    <div>
+                        <span>看展览、演出：</span>
+                        <span id="activity5"></span>%
+                    </div>
+                    <div>
+                        <span>参加社团活动：</span>
+                        <span id="activity6"></span>%
+                    </div>
+                    <div>
+                        <span>酒吧：</span>
+                        <span id="activity7"></span>%
+                    </div>
+                    <div>
+                        <span>专业培训班：</span>
+                        <span id="activity8"></span>%
+                    </div>
+                    <div>
+                        <span>其他：</span>
+                        <span id="activity9"></span>%
+                    </div>
+            </div>
+            <div class="info isActivity">
+                    <h3>10.学校周边休闲娱乐消费场所是否充足</h3>
+                    <div>
+                        <span>很充足：</span>
+                        <span id="isActivity0"></span>%
+                    </div>
+                    <div>
+                        <span>不太充足：</span>
+                        <span id="isActivity1"></span>%
+                    </div>
+                    <div>
+                        <span>几乎没有：</span>
+                        <span id="isActivity2"></span>%
+                    </div>
+            </div>
+            <div class="info bourn">
+                    <h3>11.在大学城附近的商业项目/商场中，你和你的同学/朋友经常去消费的是（多选）</h3>
+                    <div>
+                        <span>万宜广场：</span>
+                        <span id="bourn0"></span>%
+                    </div>
+                    <div>
+                        <span>亨特公园里：</span>
+                        <span id="bourn1"></span>%
+                    </div>
+                    <div>
+                        <span>万科大都会：</span>
+                        <span id="bourn2"></span>%
+                    </div>
+                    <div>
+                        <span>贵大学府里：</span>
+                        <span id="bourn3"></span>%
+                    </div>
+                    <div>
+                        <span>花溪公园步行街：</span>
+                        <span id="bourn4"></span>%
+                    </div>
+                    <div>
+                        <span>花溪地下商城：</span>
+                        <span id="bourn5"></span>%
+                    </div>
+                    <div>
+                        <span>思雅美食广场：</span>
+                        <span id="bourn6"></span>%
+                    </div>
+                    <div>
+                        <span>庭轩商业广场：</span>
+                        <span id="bourn7"></span>%
+                    </div>
+                </div>
+                    <!-- 第二部分 -->
+                    <div class="info factor">
+                        <h3>12.选择购物中心/商业街区最重要的因素有（多选）</h3>
+                        <div>
+                            <span>距离及交通便利：</span>
+                            <span id="factor0"></span>%
+                        </div>
+                        <div>
+                            <span>可消费可体验商业种类是否丰富：</span>
+                            <span id="factor1"></span>%
+                        </div>
+                        <div>
+                            <span>是否有自己喜欢的品牌：</span>
+                            <span id="factor2"></span>%
+                        </div>
+                        <div>
+                            <span>消费地点的知名度和形象：</span>
+                            <span id="factor3"></span>%
+                        </div>
+                        <div>
+                            <span>消费地点的规模：</span>
+                            <span id="factor4"></span>%
+                        </div>
+                        <div>
+                            <span>人流量是否旺盛：</span>
+                            <span id="factor5"></span>%
+                        </div>
+                        <div>
+                            <span>附近是否还有其他商业项目：</span>
+                            <span id="factor6"></span>%
+                        </div>
+                </div>
+                <div class="info frequency">
+                        <h3>13.逛购物中心/商业街区的频率是</h3>
+                        <div>
+                            <span>每周5次：</span>
+                            <span id="frequency0"></span>%
+                        </div>
+                        <div>
+                            <span>每周2-3次：</span>
+                            <span id="frequency1"></span>%
+                        </div>
+                        <div>
+                            <span>每周1-2次：</span>
+                            <span id="frequency2"></span>%
+                        </div>
+                        <div>
+                            <span>每月两次：</span>
+                            <span id="frequency3"></span>%
+                        </div>
+                </div>
+                <div class="info brand">
+                        <h3>14.花溪区域内是否有你特别喜欢的餐饮品牌</h3>
+                        <div>
+                            <span>有：</span>
+                            <span id="brand0"></span>%
+                        </div>
+                        <div>
+                            <span>否：</span>
+                            <span id="brand1"></span>%
+                        </div>
+                        
+                </div>
+                <div class="info goOut">
+                        <h3>15.外出就餐频率</h3>
+                        <div>
+                            <span>一周多次：</span>
+                            <span id="goOut0"></span>%
+                        </div>
+                        <div>
+                            <span>一周一次：</span>
+                            <span id="goOut1"></span>%
+                        </div>
+                        <div>
+                            <span>几乎不：</span>
+                            <span id="goOut2"></span>%
+                        </div>
+                </div>
+                <div class="info way">
+                        <h3>16.最常从哪个途径了解到知名度较高的餐饮品牌</h3>
+                        <div>
+                            <span>朋友推荐：</span>
+                            <span id="way0"></span>%
+                        </div>
+                        <div>
+                            <span>微博、抖音等美食博主推荐：</span>
+                            <span id="way1"></span>%
+                        </div>
+                        <div>
+                            <span>朋友圈晒图：</span>
+                            <span id="way2"></span>%
+                        </div>
+                        <div>
+                            <span>其他：</span>
+                            <span id="way3"></span>%
+                        </div>
+                </div>
+                <div class="info bar">
+                        <h3>17.酒吧、清吧等休闲娱乐场所消费频率</h3>
+                        <div>
+                            <span>一周多次：</span>
+                            <span id="bar0"></span>%
+                        </div>
+                        <div>
+                            <span>一周一次：</span>
+                            <span id="bar1"></span>%
+                        </div>
+                        <div>
+                            <span>一月一次：</span>
+                            <span id="bar2"></span>%
+                        </div>
+                        <div>
+                            <span>几乎不：</span>
+                            <span id="bar3"></span>%
+                        </div>
+                </div>
+                <div class="info ctf">
+                        <h3>18.选择酒吧、清吧等注重的因素是（多选）</h3>
+                        <div>
+                            <span>价格实惠：</span>
+                            <span id="ctf0"></span>%
+                        </div>
+                        <div>
+                            <span>酒吧形象及知名度：</span>
+                            <span id="ctf1"></span>%
+                        </div>
+                        <div>
+                            <span>酒水品类多：</span>
+                            <span id="ctf2"></span>%
+                        </div>
+                        <div>
+                            <span>酒吧氛围热闹、有没有现场驻唱：</span>
+                            <span id="ctf3"></span>%
+                        </div>
+                        <div>
+                            <span>主题性强：</span>
+                            <span id="ctf4"></span>%
+                        </div>
+                        <div>
+                            <span>其他：</span>
+                            <span id="ctf5"></span>%
+                        </div>
+                </div>
+                <div class="info film">
+                        <h3>19.周边最爱去的电影院</h3>
+                        <div>
+                            <span>亨特星空影城：</span>
+                            <span id="film0"></span>%
+                        </div>
+                        <div>
+                            <span>万宜中影国际影院：</span>
+                            <span id="film1"></span>%
+                        </div>
+                        <div>
+                            <span>溪城时代国际影院：</span>
+                            <span id="film2"></span>%
+                        </div>
+                        <div>
+                            <span>万科卢米埃影城：</span>
+                            <span id="film3"></span>%
+                        </div>
+                        <div>
+                            <span>贵大学府里中影南方影城：</span>
+                            <span id="film4"></span>%
+                        </div>
+                        <div>
+                            <span>大学城上影国际影城：</span>
+                            <span id="film5"></span>%
+                        </div>
+                        <div>
+                            <span>私人影院：</span>
+                            <span id="film6"></span>%
+                        </div>
+                </div>
+
+                <div class="info movie">
+                        <h3>20.看电影的频率</h3>
+                        <div>
+                            <span>每周一次：</span>
+                            <span id="movie0"></span>%
+                        </div>
+                        <div>
+                            <span>每月2-3次：</span>
+                            <span id="movie1"></span>%
+                        </div>
+                        <div>
+                            <span>基本新片上映就会看：</span>
+                            <span id="movie2"></span>%
+                        </div>
+                        <div>
+                            <span>看看有没有喜欢的片子：</span>
+                            <span id="movie3"></span>%
+                        </div>
+                        
+                </div>
+                <div class="info hp">
+                        <h3>21.对于轰趴馆更倾向的功能有（多选）</h3>
+                        <div>
+                            <span>台球、桌游：</span>
+                            <span id="hp0"></span>%
+                        </div>
+                        <div>
+                            <span>KTV：</span>
+                            <span id="hp1"></span>%
+                        </div>
+                        <div>
+                            <span>麻将：</span>
+                            <span id="hp2"></span>%
+                        </div>
+                        <div>
+                            <span>私人影院：</span>
+                            <span id="hp3"></span>%
+                        </div>
+                        <div>
+                            <span>X-BOX游戏机：</span>
+                            <span id="hp4"></span>%
+                        </div>
+                        <div>
+                            <span>联机电脑：</span>
+                            <span id="hp5"></span>%
+                        </div>
+                        <div>
+                            <span>投篮器、娃娃机：</span>
+                            <span id="hp6"></span>%
+                        </div>
+                        <div>
+                            <span>其他：</span>
+                            <span id="hp7"></span>%
+                        </div>
+                </div>
+                <div class="info space">
+                        <h3>22.学校及学校周边是否有完全满足个人需求的运动空间</h3>
+                        <div>
+                            <span>有：</span>
+                            <span id="space0"></span>%
+                        </div>
+                        <div>
+                            <span>没有：</span>
+                            <span id="space1"></span>%
+                        </div>
+                        
+                </div>
+                <!-- 第三部分 -->
+                <div class="info fortify">
+                        <h3>23.想要增加哪些运动项目（多选）</h3>
+                        <div>
+                            <span>游泳：</span>
+                            <span id="fortify0"></span>%
+                        </div>
+                        <div>
+                            <span>羽毛球：</span>
+                            <span id="fortify1"></span>%
+                        </div>
+                        <div>
+                            <span>射击：</span>
+                            <span id="fortify2"></span>%
+                        </div>
+                        <div>
+                            <span>滑冰场：</span>
+                            <span id="fortify3"></span>%
+                        </div>
+                        <div>
+                            <span>网球：</span>
+                            <span id="fortify4"></span>%
+                        </div>
+                        <div>
+                            <span>攀岩：</span>
+                            <span id="fortify5"></span>%
+                        </div>
+                        <div>
+                            <span>壁球：</span>
+                            <span id="fortify6"></span>%
+                        </div>
+                        <div>
+                            <span>搏击馆：</span>
+                            <span id="fortify7"></span>%
+                        </div>
+                </div>
+                <div class="info attraction">
+                        <h3>24.下面哪个零售品牌更具消费吸引力（多选）</h3>
+                        <div>
+                            <span>优衣库：</span>
+                            <span id="attraction0"></span>%
+                        </div>
+                        <div>
+                            <span>无印良品：</span>
+                            <span id="attraction1"></span>%
+                        </div>
+                        <div>
+                            <span>丝芙兰：</span>
+                            <span id="attraction2"></span>%
+                        </div>
+                        <div>
+                            <span>迪卡侬：</span>
+                            <span id="attraction3"></span>%
+                        </div>
+                        <div>
+                            <span>ZARA HOME：</span>
+                            <span id="attraction4"></span>%
+                        </div>
+                        <div>
+                            <span>名创优品：</span>
+                            <span id="attraction5"></span>%
+                        </div>
+                </div>
+                <div class="info trench">
+                        <h3>25.日常零售商品的购买渠道</h3>
+                        <div>
+                            <span>实体店：</span>
+                            <span id="trench0"></span>%
+                        </div>
+                        <div>
+                            <span>网购：</span>
+                            <span id="trench1"></span>%
+                        </div>
+                        
+                </div>
+                <div class="info stockpile">
+                        <h3>26.每周会逛一次超市囤货吗</h3>
+                        <div>
+                            <span>会：</span>
+                            <span id="stockpile0"></span>%
+                        </div>
+                        <div>
+                            <span>不会：</span>
+                            <span id="stockpile1"></span>%
+                        </div>
+                </div>
+                <div class="info bookshop">
+                        <h3>27.是否经常逛书店或者图书馆</h3>
+                        <div>
+                            <span>是：</span>
+                            <span id="bookshop0"></span>%
+                        </div>
+                        <div>
+                            <span>否：</span>
+                            <span id="bookshop1"></span>%
+                        </div>
+                </div>
+                <div class="info xyl">
+                        <h3>28.以下书店品牌哪个更具吸引力</h3>
+                        <div>
+                            <span>钟书阁：</span>
+                            <span id="xyl0"></span>%
+                        </div>
+                        <div>
+                            <span>西西弗：</span>
+                            <span id="xyl1"></span>%
+                        </div>
+                        <div>
+                            <span>大众书局：</span>
+                            <span id="xyl2"></span>%
+                        </div>
+                        <div>
+                            <span>方所：</span>
+                            <span id="xyl3"></span>%
+                        </div>
+                        <div>
+                            <span>当当书店：</span>
+                            <span id="xyl4"></span>%
+                        </div>
+                        <div>
+                            <span>千翻与作：</span>
+                            <span id="xyl5"></span>%
+                        </div>
+                        <div>
+                            <span>言几又：</span>
+                            <span id="xyl6"></span>%
+                        </div>
+                        <div>
+                            <span>乐转城市书房：</span>
+                            <span id="xyl7"></span>%
+                        </div>
+                        <div>
+                            <span>集文里：</span>
+                            <span id="xyl8"></span>%
+                        </div>
+                        <div>
+                            <span>百无一用：</span>
+                            <span id="xyl9"></span>%
+                        </div>
+                        <div>
+                            <span>新华书店：</span>
+                            <span id="xyl10"></span>%
+                        </div>
+                        <div>
+                            <span>五之堂：</span>
+                            <span id="xyl11"></span>%
+                        </div>
+                </div>
+                <div class="info condition">
+                        <h3>29.你认为一个吸引你的书店具备的条件（多选）</h3>
+                        <div>
+                            <span>书店良好的氛围环境及独特个性：</span>
+                            <span id="condition0"></span>%
+                        </div>
+                        <div>
+                            <span>可以找到一些比较稀有的书：</span>
+                            <span id="condition1"></span>%
+                        </div>
+                        <div>
+                            <span>可以边看书边喝咖啡或茶饮：</span>
+                            <span id="condition2"></span>%
+                        </div>
+                        <div>
+                            <span>定期举办特色文化活动：</span>
+                            <span id="condition3"></span>%
+                        </div>
+                        <div>
+                            <span>地理位置交通便捷：</span>
+                            <span id="condition4"></span>%
+                        </div>
+                        <div>
+                            <span>其他：</span>
+                            <span id="condition5"></span>%
+                        </div>
+                </div>
+                <div class="info clockIn">
+                        <h3>30.文创手作或大学生文创商品店铺能否吸引你前往打卡</h3>
+                        <div>
+                            <span>是：</span>
+                            <span id="clockIn0"></span>%
+                        </div>
+                        <div>
+                            <span>否：</span>
+                            <span id="clockIn1"></span>%
+                        </div>
+                        
+                </div>
+                <div class="info hobby">
+                        <h3>31.你对喜欢的商业消费场所的偏好是</h3>
+                        <div>
+                            
+                            <span>以美食、休闲娱乐为主导的休闲街区：</span>
+                            <span id="hobby0"></span>%
+                        </div>
+                        <div>
+                            <span>酒吧、夜宵及小商品的夜市：</span>
+                            <span id="hobby1"></span>%
+                        </div>
+                        <div>
+                            <span>类似的亨特或国贸购物中心：</span>
+                            <span id="hobby2"></span>%
+                        </div>
+                        
+                </div>
+                <div class="info terrace">
+                        <h3>32.是否倾向于有一个聚焦大学生才艺的展示平台</h3>
+                        <div>
+                            <span>是：</span>
+                            <span id="terrace0"></span>%
+                        </div>
+                        <div>
+                            <span>否：</span>
+                            <span id="terrace1"></span>%
+                        </div>           
+                </div>   
+                
+            </div> 
+            
+    </section>
+    <script src="./js/index.js"></script>
+</body>
+</html>

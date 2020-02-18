@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>脑筋急转弯</title>
+	<script src="./jquery-3.1.1.min.js"></script>
+	<script src="./sound.js"></script>
+	<script src="./timeDate.js"></script>
+</head>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'STHeiti-Light';
+}
+body,html {
+	max-width: 750px;
+	margin: auto;
+}
+	.lock {
+		position: relative;
+		width: 100%;
+		background: url(images/lock.jpg) no-repeat center; 
+		background-size: 100%;
+	}
+		.l_time {
+			position: absolute;
+			top: 10%;
+			width: 100%;
+			color: white;
+			text-align: center;
+		}
+			.l_date {
+				font-size: 2rem;
+			}
+			.l_year {
+				font-size: 1.1rem;
+			}
+		.l_btn,.l_btn2 {
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width: 40%;
+			height: 35px;
+			line-height: 30px;
+			text-align: center;
+			background: white;
+			border-radius: 45px;
+		}
+		.l_btn {
+			bottom: 50px;	
+		}
+		.l_btn2 {
+			bottom: 120px;
+		}
+	.main {
+		position: relative;
+		width: 100%;
+		background: url(images/bg2.jpg) no-repeat;
+		background-size: 100%; 
+		display: none;
+	}
+		.cover {
+			z-index: 3;
+			position: absolute;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			background: rgba(54,54,52,.8);
+			display: none;
+		}
+		.question {
+			position: absolute;
+			bottom: 29%;
+			left: 13%;
+			width: 74%;
+			height: 23%;
+			background: rgba(255,255,255,.2);
+			border-radius: 20px;
+			border: 1px solid #8B8E8E;
+		}
+			.font {
+				width: 80%;
+				margin-top: 5%;
+				margin-left: 10%;
+				line-height: 24px;
+				font-weight: bold;
+			}
+		.answer {
+			z-index: 5;
+			position: absolute;
+			bottom: 40%;
+			left: 15%;
+			width: 70%;
+			height: 30%;
+			background: white;
+			display: none;
+		}
+			.logo {
+				text-align: right;
+				margin-top: 2%;
+				width: 95%;
+			}
+			.text {
+				margin-left: 10%;
+				width: 80%;
+			}
+			.next {
+				margin-left: 27%;
+				margin-top: 15%;
+				width: 40%;
+				text-align: center;
+				padding: 3% 5%;
+				background: red;
+			}
+		.btn {
+			position: absolute;
+			bottom: 15%;
+			padding: 2% 10%;
+			left: 29%;
+			color: #FAFBFB;
+			font-size: 1.2rem;
+			background: rgba(145,102,46,0.9);
+			border-radius: 10px;
+			box-shadow: 2px 3px 3px rgba(250,251,251,.4);
+		}
+		.media {
+			display: none;
+		}
+	@media screen and (min-width:760px){
+	    .main,.lock {
+	        display: none;
+	    }
+	    .media {
+	    	text-align: center;
+	    	display: block;
+	    }
+	}
+</style>
+<body>
+	<div class="lock">
+		<div class="l_time">
+			<div class="l_date">20:22</div>
+			<div class="l_year">2018年1月3日</div>
+		</div>
+		<div class="l_btn">Restart</div>
+		<div class="l_btn2">Continue</div>
+	</div>
+	<div class="main">
+		<div class="cover"></div>
+		<div class="answer">
+			<div class="logo">X</div>
+			<div class="text"></div>
+			<div class="next">下一题</div>
+		</div>
+		<div class="question">
+			<div class="font"></div>
+		</div>
+		<div class="btn">查看答案</div>
+	</div>
+	<div class="media">该页面不支持电脑端浏览，请用手机浏览。</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$(".l_btn,.l_btn2").click(function() {
+			$(".lock").hide();
+			$(".main").fadeIn(700);
+			var Name = $(this)[0].className;
+			if(Name == "l_btn") {
+				storage.c = 0;
+				storage.i = 1;
+				ajax();
+			}	
+		});
+		(function() {
+			$("body").bind('touchmove',function(e) {
+				e.preventDefault()
+			});
+			var winH = $(window).height();
+		  	$(".main,.lock").css('minHeight', winH);
+		}());
+
+		var storage = window.localStorage;
+		storage.c = storage.c || 0;
+		storage.i = storage.i || 1;
+		$(".next").click(function() {
+			$(".answer").hide();
+			$(".cover").hide();
+			storage.c++;
+			if(storage.c > 19) {
+				storage.i ++;
+				storage.c= 0;
+				ajax();
+				return storage.c,storage.i;
+			};
+			ajax();
+		});
+		function ajax() {
+			$.get("http://route.showapi.com/151-4?showapi_appid=36844&showapi_sign=858dfaba2d9549608fca5e3af273f36e&use_my_sign&typeId=njmy&page="+storage.i+"&", function (data, textStatus){
+					//返回的 data 可以是 xmlDoc, jsonObj, html, text, 等等.
+					//console.log(data); // 在这里this指向的是Ajax请求的选项配置信息，请参考下图
+					var answer = data.showapi_res_body.pb.contentlist;
+					$(".font").html(answer[storage.c].title);
+					$(".text").html(answer[storage.c].answer);
+			});	
+		};
+		ajax();
+		$(".logo,.cover").click(function() {
+			$(".answer").hide();
+			$(".cover").hide();
+		});
+		$(".btn").click(function() {
+			$(".answer").show();
+			$(".cover").show();
+		});
+
+		$(".btn").audioPlay({
+	        name: "playOnce",
+	        urlMp3: "images/Button17.wav",  // 14  17  23 42  43 48 49
+	    });
+
+	    $(".l_btn,.l_btn2").audioPlay({
+	    	name: "playTwo",
+	        urlMp3: "images/Button49.wav",
+	    });
+	    $(".l_date").timeDate({show:"H-m"});
+	    $(".l_year").timeDate({show:"M-D-W"});
+	})
+</script>

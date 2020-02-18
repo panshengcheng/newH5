@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载特效</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            background: #34495e;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "montserrat", sans-serif;
+        }
+        .loading{
+            width: 200px;
+            height: 200px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            /* border: 10px solid #e74c3c; */
+            border-top: 10px solid red;
+            position: relative;
+            animation: a1 4s linear infinite;
+        }
+        .loading::before, .loading::after{
+            content: '';
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: -10px;
+            box-sizing: border-box;
+            border-radius: 50%;
+        }
+        
+        .loading::before{
+            border-top: 10px solid #e67e22;
+            transform: rotate(120deg);
+        }
+        .loading::after{
+            border-top: 10px solid #3498db;
+            transform: rotate(240deg);
+        }
+        .loading span{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            animation: a2 4s linear infinite;
+        }
+        @keyframes a1{
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes a2{
+            to{
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <span>loading........</span>
+    </div>
+</body>
+</html>

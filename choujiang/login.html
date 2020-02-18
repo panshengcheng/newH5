@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽奖报名页面</title>
+    <link rel="stylesheet" type="text/css" href="./css/login.css"/>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <!-- 抽奖展示界面 -->
+    <div class="zjm">
+        <img class="gifImg" src="./images/shake-yes1.gif"/>
+        <div class="yaojiang">
+            <div class="zImages">
+                <img class="help" id="help" src="./images/help.png"/>
+                <img class="server" id="server" src="./images/service.png"/>
+            </div>
+            <div class="myInfo">
+                    @潘盛城 版权所有
+            </div>
+        </div>
+    </div>
+    <!-- 奖品规则界面（隐藏） -->
+    <div class="gz">
+        <div class="drawInfo">
+            <div class="rule">
+                <h1>活动规则</h1>
+                <p>1.摇晃手机参与抽奖</p>
+                <p>2.每个用户每天都有三次抽奖机会</p>
+                <p>3.分享后，额外可获得3次抽奖机会</p>
+                <p>4.每个用户只能中一奖</p>
+            </div>
+            <div class="awardes">
+                <h1>奖项设置</h1>
+                <p>一等奖：超跑一辆（1台）</p>
+                <p>二等奖：智能手机一部（3部）</p>
+                <p>三等奖：鼠标一个（10个）</p>
+            </div>     
+        </div>
+        <div class="imgs">
+            <img id="closer" src="./images/close.png"/>
+        </div>
+        <button class="buttom" id="btn">知道了</button>
+        
+    </div>
+    <!-- 本人中奖界面(隐藏) -->
+    <div class="myDraw">
+        <div class="advertising">
+            <h1>恭喜您中奖啦!!!</h1>
+            <img src="./images/180-160.png"/>
+            <p>一等奖：超跑一辆</p>
+            <p>领奖方式：带着您个人的有效</p>
+            <p>身份证件和当前截图，到现场</p>
+            <p>进行兑奖</p>
+        </div>
+        <button class="buttom" id="closerMy">知道了</button>
+    </div>
+    <!-- 填写个人信息 -->
+
+    <!-- 中奖界面 -->
+
+    <!-- 未中奖界面 -->
+    
+    <script>
+        (function(){
+            let help = document.getElementById("help");
+            help.addEventListener("touchend", cutDraw);
+
+            let btn = document.getElementById("btn");
+            btn.addEventListener("touchend", closerDraw);
+            let closer = document.getElementById("closer");
+            closer.addEventListener("touchend", closerDraw);
+
+            let server = document.getElementById("server");
+            server.addEventListener("touchend", openMyInfo);
+
+            let closerMy = document.getElementById("closerMy");
+            closerMy.addEventListener("touchend", closerMyInfo);
+
+        })()
+
+        function cutDraw(){
+            $(".gz").css("display","inherit");
+            $(".zjm").css("display","none");
+        }
+
+        function closerDraw(){
+            $(".gz").css("display","none");
+            $(".zjm").css("display","inherit");
+        }
+
+        function openMyInfo(){
+            $(".myDraw").css("display","inherit");
+            $(".zjm").css("display","none");
+        }
+
+        function closerMyInfo(){
+            $(".myDraw").css("display","none");
+            $(".zjm").css("display","inherit");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一天</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-cloak可以解决文本闪烁的问题,但是不会替换标签中已有的内容 -->
+        <div v-cloak>{{msg}}</div>
+        <!-- v-text也可以解决文本闪烁的问题，但是会替换标签中已有的内容 -->
+        <div v-text="msg"></div>
+        <!-- v-html 可以解析文本中含有的html标签-->
+        <div v-text="msg2"></div>
+        <div v-html="msg2"></div>
+        <!-- v-bind 指令是vue中用于提供属性绑定的指令 -->
+        <input type="button" value="按钮" v-bind:title="mytitle + '123'">
+        <!-- 简写:可以写合法的JS表达式 -->
+        <input type="button" value="按钮" :title="mytitle + '123'">
+        <!-- v-on 事件绑定指令，除了click之外其他常用的事件都支持,缩写：@ -->
+        <input type="button" value="按钮" v-on:click="show"/>
+    </div>
+    <script>
+        //vue指令v-cloak v-text v-html v-bind v-on
+        let vu = new Vue({
+            el:"#app",
+            data:{
+                msg:"12345",
+                msg2:"<h1>这是H1标签解析出来的</h1>",
+                mytitle:"这是一个自定义属性"
+            },
+            methods:{//methods中定义了当前vue所有可用的方法
+                show:function(){
+                    alert("你好");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP文件上传</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"/>
+    <script src="../../../26dome/libs/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #formInfo{
+            display: flex;
+            text-align: center;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        .imgPreview {
+            width: 179.5px;
+            height: 272.61px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 19px;
+            position: relative;
+        }
+        .prompt3 {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .img1{
+            width: 100%;
+            height: 100%;
+        }
+        .imgSpan {
+            position: absolute;
+            top: 60px;
+            left: 40px;
+            z-index: 20;
+            color: white;
+        }
+        .filepath {
+            position: absolute;
+            top: 0%;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            left: 0;
+            z-index:19;
+        }
+        .submit{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form action="updataFile.php" id="formInfo" method="post" enctype="multipart/form-data">
+        <div class="imgPreview">
+            <div class="prompt3">
+                <img src="../../img/bj.jpg" id="img1" class="img1"/>
+                <span class="imgSpan">
+                    <i class="aui-iconfont aui-icon-plus"></i>
+                </span>
+                <input type="file" name="file" id="file1" class="filepath" onchange="exchangeImg()" accept="image/jpg,image/jpeg,image/png,image/PNG">
+            </div>
+            <input type="submit" class="submit" value="上传图片" />
+        </div>
+    </form>
+    <script>
+        function exchangeImg(){
+            let file = $("#file1")[0].files[0];
+            var reads = new FileReader();
+            reads.readAsDataURL(file);
+            reads.onload = function(e) {
+                $("#img1").attr("src", this.result)
+            };
+        }
+    </script>
+</body>
+</html>

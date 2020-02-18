@@ -1,0 +1,560 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.page{
+    width: 100%;
+    height: 100%;
+}
+.one{
+    display: none;
+}
+.wapp{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    filter: brightness(1.2);
+    -webkit-filter: brightness(1.2);
+}
+.bj{
+    width: 100%;
+    height: 100%;
+    animation: bjFilter 2s ease-in;
+}
+.logo{
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    width: 90vw;
+    padding: 5vw;
+    opacity: 0;
+}
+.tileInfo{
+    position: absolute;
+    top: 28vh;
+    left: 15vw;
+    width: 70vw;
+    height: 21vh;
+}
+.tileInfo .box{
+    width: 100%;
+    height: 88%;
+    position: absolute;
+    opacity: 0;
+}
+.countent{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+}
+.countent img:nth-of-type(1){
+    width: 80%;
+    height: 20%;
+    padding: 10% 10% 2% 10%;
+    opacity: 0;
+}
+.countent img:nth-of-type(2){
+    width: 63%;
+    height: 20%;
+    opacity: 0;
+}
+.hicetea8{
+    position: absolute;
+    top: 36vh;
+    right: 5vw;
+    width: 22vw;
+    height: 10vh;
+    
+}
+.hicetea3{
+    position: absolute;
+    top: 50vh;
+    width: 40vw;
+    left: 30vw;
+    height: 5vh;
+    opacity: 0;
+}
+.hicetea13{
+    position: absolute;
+    top: 60vh;
+    right: 4vw;
+    width: 11vw;
+    opacity: 1;
+}
+.hicetea11{
+    position: absolute;
+    top: 86vh;
+    left: 0;
+    width: 100vw;
+    height: 1vh;
+    z-index: 5;
+}
+.hicetea12{
+    position: absolute;
+    top: 78.9vh;
+    left: -66vw;
+    width: 130vw;
+    height: 15vh;
+}
+.hicetea10{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 37vw;
+    height: 17vh;
+    z-index: 10;
+}
+.startbtn{
+    position: absolute;
+    bottom: 35vh;
+    width: 30vw;
+    height: 4vh;
+    left: 35vw;
+    opacity: 0;
+}
+.startbtnScale{
+    animation: scaleout 2s ease-in-out infinite;
+    -moz-animation: scaleout 2s ease-in-out infinite;
+    -webkit-animation: scaleout 2s ease-in-out infinite;
+}
+.two{
+    display: block;
+    filter: brightness(1.2);
+    -webkit-filter: brightness(1.2);
+}
+.bj2{
+    width: 100%;
+    height: 366vh;
+}
+.page2Info{
+    width: 100%;
+}
+.page2Info img{
+    position: absolute;
+}
+
+.title{
+    top: 2vh;
+    right: 5vw;
+    width: 20vw;
+    opacity: 0;
+}
+.pavilion{
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 20vh;
+}
+.train{
+    top: 0;
+    left: 11vw;
+    width: 20vw;
+    height: 322vh;
+}
+.xian{
+    top: 0;
+    left: 18vw;
+    height: 322vh;
+}
+
+.hicetea15{
+    top: 32vh;
+    right: 10vw;
+    width: 47vw;
+    height: 33vh;
+    opacity: 0;
+}
+
+.hicetea16{
+    top: 81vh;
+    right: 7vw;
+    width: 22vw;
+    opacity: 0;
+}
+.hicetea18{
+    top: 130vh;
+    right: 7vw;
+    width: 22vw;
+    opacity: 0;
+}
+.hicetea20{
+    top: 184vh;
+    right: 7vw;
+    width: 22vw;
+
+}
+.DJ{
+    opacity: 0;
+}
+
+.DJ1{
+    position: absolute;
+    top: 89vh;
+    right: 10vw;
+    width: 42vw;
+    height: 29vh;
+}
+.DJ1 img:nth-of-type(1){
+    width: 32vw;
+}
+.DJ1 img:nth-of-type(2){
+    width: 32vw;
+}
+.DJ1 img:nth-of-type(3){
+    width: 45vw;
+}
+.people1{
+    position: absolute;
+    top: 73vh;
+    left: 0;
+    width: 20vw;
+    height: 20vh;
+}
+.people1 img:nth-of-type(3){
+    top: 0%;
+    left: 27%;
+    width: 16vw;
+}
+.people1 img:nth-of-type(2){
+    top: 12%;
+    left: 27%;
+    width: 11vw;
+}
+.people1 img:nth-of-type(1){
+    top: 81%;
+    left: 8%;
+    width: 16vw;
+}
+.people1 img:nth-of-type(4){
+    left: 6%;
+    width: 2.5vw;
+}
+
+.DJ2{
+    position: absolute;
+    top: 139vh;
+    right: 10vw;
+    width: 51vw;
+    height: 30vh;
+}
+.DJ2 img:nth-of-type(1){
+    width: 64%;
+    top: 0;
+    right: 0;
+}
+.DJ2 img:nth-of-type(2){
+    width: 37vw;
+}
+.DJ2 img:nth-of-type(3){
+    width: 41vw;
+}
+.people2{
+    position: absolute;
+    top: 124vh;
+    left: 0vw;
+    width: 20vw;
+    height: 22vh;
+}
+.people2 img:nth-of-type(1){
+    top: 0;
+    right: 4%;
+    width: 41%;
+}
+.people2 img:nth-of-type(2){
+    top: 66%;
+    left: 30%;
+    width: 13vw;
+    z-index: 4;
+}
+.people2 img:nth-of-type(3){
+    top: 68%;
+    left: 0;
+    width: 23vw;
+}
+
+.DJ3{
+    position: absolute;
+    top: 192vh;
+    right: 10vw;
+    width: 40vw;
+    height: 30vh;
+}
+.DJ3 img:nth-of-type(1){
+    width: 26vw;
+}
+.DJ3 img:nth-of-type(2){
+    width: 34vw;
+}
+.DJ3 img:nth-of-type(3){
+    width: 31vw;
+}
+.click img{
+    top: 0;
+    right: 0;
+}
+/* .click img:nth-of-type(1){
+    display: block;
+} */
+#fBtn5{
+    top: 239vh;
+    left: 0;
+    width: 24vw;
+}
+.people3{
+    position: absolute;
+    top: 196vh;
+    left: 6vw;
+    width: 18vw;
+    height: 20vw;
+}
+.people3 img{
+    width: 100%;
+}
+.people3 img:nth-of-type(1){
+    top: 0;
+}
+.people3 img:nth-of-type(2){
+    top: 26%;
+}
+.people3 img:nth-of-type(3){
+    top: 68%;
+}
+.tree{
+    top: 283vh;
+    left: 0;
+    width: 23vw;
+}
+.hicetea22{
+    top: 231vh;
+    right: 7vw;
+    width: 22vw;
+}
+.hicetea23{
+    top: 237vh;
+    right: 10vw;
+    width: 36vw;
+    opacity: 0;
+}
+.hicetea24{
+    top: 301vh;
+    right: 13vw;
+    width: 15vw;
+}
+.hicetea25{
+    top: 315vh;
+    right: 13vw;
+    width: 26vw;
+}
+.hicetea27{
+    top: 324vh;
+    left: 2vw;
+    width: 16vw;
+}
+.hicetea26{
+    top: 355.5vh;
+    right: 3.5vw;
+    width: 12vw;
+}
+
+
+.loading{
+    /* background-color: rgb(202,187,155); */
+    background-color: black;
+}
+.loading .loadingInfo{
+    position: relative;
+    top: 40vh;
+    left: 35vw;
+    width: 30vw;
+    height: 20vh;
+    text-align: center;
+
+}
+.loadingInfo img{
+    border-radius: 50%;
+    padding: 10%;
+
+}
+.loadingInfo p{
+    color: white;
+    font-size: 20px;
+}
+#mask{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    display:none;
+}
+.prompt{
+    top: 14%;
+    left: 1vw;
+    width: 2.5vw;
+}
+
+.prompt3{
+    left: 1vw;
+    top: 195vh;
+    width: 2.5vw;
+}
+.prompt4{
+    left: 1vw;
+    top: 242vh;
+    width: 2.5vw;
+}
+
+.taiyang{
+    top: 42vh;
+    left: 46vw;
+    width: 9vw;
+}
+@keyframes bjFilter{
+    from{
+        filter: grayscale(1);
+    }
+    to{
+        filter: grayscale(0);
+    }
+}
+
+@-webkit-keyframes bjFilter{
+    from{
+        filter: grayscale(1);
+    }
+    to{
+        filter: grayscale(0);
+    }
+}
+.music{
+    width:30px;
+    height: 30px;
+    position: fixed;
+    top: 4%;
+    right: 7%;
+    z-index: 100;
+
+}
+.musicPlay{
+    background: url(../img/Music.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-animation: reverseRotataZ 1.2s linear infinite;
+}
+
+.musicStop{
+    background: url(../img/Music.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+@-webkit-keyframes reverseRotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(-360deg);}
+}
+@-webkit-keyframes rotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(0deg);}
+}
+
+.tm{
+    animation: 2s opacitys linear;
+    -webkit-animation: 2s opacitys linear;
+}
+@-webkit-keyframes opacitys{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@keyframes opacitys{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+.scaleout{
+	width: 6vw;
+    position: absolute;
+	animation: scaleout 1.3s ease-in-out infinite;
+    -moz-animation: scaleout 1.3s ease-in-out infinite;
+    -webkit-animation: scaleout 1.3s ease-in-out infinite;
+}
+#scaleout1{
+    top: -2%;
+    left: 53%;
+}
+#scaleout2{
+    top: 18%;
+    left: 34%;
+}
+#scaleout3{
+    top: 105%;
+    left: 53%;
+}
+#scaleout4{
+    top: 4%;
+    left: 64%;
+}
+#scaleout5{
+    top: 65%;
+    left: 51%;
+    z-index: 5;
+}
+#scaleout6{
+    top: 77%;
+    left: 69%;
+}
+#scaleout7{
+    top: -2%;
+    left: 48%;
+    width: 6vw;
+}
+#scaleout8{
+    top: 26%;
+    left: 34%;
+    width: 6vw;
+}
+#scaleout9{
+    top: 71%;
+    left: 53%;
+    width: 6vw;
+}
+#scaleout10{
+    top: 255vh;
+    left: 12vw;
+}
+@keyframes scaleout { 0% {
+ transform: scale(1);
+}
+100% {
+ opacity: 0;
+ transform: scale(1.1);
+}
+}
+@-moz-keyframes scaleout { 0% {
+ -moz-transform: scale(1);
+}
+100% {
+ opacity: 0;
+ -moz-transform: scale(1.1);
+}
+}
+@-webkit-keyframes scaleout { 0% {
+ -webkit-transform: scale(1);
+}
+100% {
+ opacity: 0;
+ -webkit-transform: scale(1.1);
+}
+}

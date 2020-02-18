@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="user-scalable=no width=750 maximum-scale=1.0"/>
+    <meta content="telephone=no" name="format-detection">
+    <title>测试Demo</title>
+    <link rel="stylesheet" href="css/dragdealer.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<audio id="bg" src="http://images.fifad.cn/20190919/audios/a1.mp3"  preload="auto"  style="display: none">
+</audio>
+<div id="loadIng">
+    <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/bj.jpg" alt="" id="bj">
+    <div id="loadBox">
+        <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/loading.gif" alt="" style="width: 300px">
+        <div id="baifenbi">0%</div>
+    </div>
+</div>
+    <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/musicp.png" alt="" id="music">
+    <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/back.png" alt="" id="backTop">
+    <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/fx.png" alt="" id="fx">
+    <div id="box" class="dragdealer" >
+        <div class="handle" id="bar">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_01.gif" alt="" style="width: 100%">
+            <img src="./img/donghua_02.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_03.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_04.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_05.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_06.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_07.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_08.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_09.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_10.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_11.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_12.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_13.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_14.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_15.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_16.gif" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/donghua_17.jpg" alt="" style="width: 100%">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/back.png" alt="" id="backTop1">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/fx.png" alt="" id="fx1">
+            <!--按钮-->
+            <!--<div class="quanW" id="quan1" data-num="1">-->
+                <!--<div class="quanN"></div>-->
+            <!--</div>-->
+            <div class="quanW" id="quan2" data-num="2">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan3" data-num="3">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan4" data-num="4">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan5" data-num="5">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan6" data-num="6">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan7" data-num="7">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan8" data-num="8">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan9" data-num="9">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan10" data-num="10">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <div class="quanW" id="quan11" data-num="11">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+            <!--新增的泊寓按钮-->
+            <div class="quanW" id="quan12" data-num="12">
+                <!--<div class="quanN"></div>-->
+                <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/shou.gif" alt="" class="shou">
+            </div>
+        </div>
+    </div>
+
+<!--<span>1111111111111</span>-->
+    <!--<div class="mask" id="mask1" style="display: block">-->
+        <!--<div class="maskBox" style="width: 478px;height: 143px">-->
+            <!--<img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t1.png" alt="">-->
+            <!--<span class="close" style="top: -3px;right: -10px;"></span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="mask" id="mask2" >
+        <div class="maskBox" style="width: 538px;height: 449px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t2.png" alt="">
+            <span class="close" style="top: -10px;right: -10px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask3" >
+        <div class="maskBox" style="width: 422px;height: 143px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t3.png" alt="">
+            <span class="close" style="top: -8px;right:-13px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask4">
+        <div class="maskBox" style="width: 538px;height: 504px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t4.png" alt="">
+            <span class="close" style="top: 77px;right: -9px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask5" >
+        <div class="maskBox" style="width: 549px;height: 497px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t5.png" alt="">
+            <span class="close" style="top: -8px;right: -7px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask6" >
+        <div class="maskBox" style="width: 544px;height: 499px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t6.png" alt="">
+            <span class="close" style="top: -10px;right: -7px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask7" >
+        <div class="maskBox" style="width: 548px;height: 492px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t7.png" alt="">
+            <span class="close" style="top: 40px;right: -8px;"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask8" >
+        <div class="maskBox" style="width: 535px;height: 490px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t8.png" alt="">
+            <span class="close" style="top: 3px; right: -9px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask9" >
+        <div class="maskBox" style="width: 530px;height: 493px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t9.png" alt="">
+            <span class="close" style="top: -10px;right: -8px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask10" >
+        <div class="maskBox" style="width: 516px;height: 575px">
+            <img src="img/t10.png" alt="">
+            <span class="close" style="top: -9px;right: -11px"></span>
+        </div>
+    </div>
+    <div class="mask" id="mask11">
+        <div class="maskBox" style="width: 554px;height: 467px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t11.png" alt="">
+            <span class="close" style="top:3px;"></span>
+        </div>
+    </div>
+    <!--新增的泊寓弹窗-->
+    <div class="mask" id="mask12">
+        <div class="maskBox" style="width: 530px;height: 574px">
+            <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/t12.png" alt="">
+            <span class="close" style="top:-13px;right: -10px"></span>
+        </div>
+    </div>
+    <div class="mask" id="maskFx">
+        <img src="http://images.fifad.cn/20190919/vankeChangTu/img3/fxPic.png" alt="" style="width: 300px;position: absolute;right: 20px;
+top: 20px">
+    </div>
+<script src="lib/jquery-1.8.3.min.js"></script>
+<script src="lib/jweixin-1.0.0.js"></script>
+<script src="lib/newShare.js"></script>
+<script src="lib/hammer.min.js"></script>
+<script src="lib/dragdealer.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

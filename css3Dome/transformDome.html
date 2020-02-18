@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform演示</title>
+    <style>
+        .cent{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            border-radius: 20px;/*圆角边框*/
+            box-shadow: 5px 5px 15px #888888;/*背景阴影*/
+            /* background: linear-gradient(red,yellow); */
+            background: -webkit-linear-gradient(right,red,yellow);
+            /*旋转图形*/
+            transform: rotate(45deg);
+            /*移动图形*/
+            transform: translate(100px, 100px);
+            transition: width 2s,height 2s,transform 2s;
+            
+        }
+        @keyframes myfirst{
+            0% {background: rgba(223, 35, 22, 0.1); left: 0px; top: 0px;}
+            25% {background: rgba(178, 235, 23, 0.2); left: 200px; top: 0px;}
+            50% {background: rgb(59, 224, 216,0.5); left: 200px; top: 200px;}
+            75% {background: rgb(37, 12, 128,0.7); left: 0px; top: 200px;}
+            100% {background: rgba(207, 13, 13, 0.9); left: 0px; top: 0px;}
+        }
+        .cent:hover{
+            /*图形缩放*/
+            /* transform: rotate(180deg);
+            /*图形倾斜角度X,Y*/
+            /* transform: skew(20deg,30deg); */
+            transform: scale(0.5,1); 
+            /*动画过度*/
+            transition: rotate(180deg); 
+            /*添加动画*/
+            animation: myfirst 5s;
+            -webkit-animation: myfirst 5s;
+            
+        }
+        .text h1{
+            text-shadow: 5px 5px 5px red;
+            transform: translate(100px,100px);
+            -webkit-filter: blur(50%);
+            filter: blur(50%);
+        }
+        /*设置文本字体*/
+        @font-face{
+            font-family: myFirstFont;
+            src: url('Sansation_Light.ttf');
+        }
+        h1:hover{
+            /* font-family: myFirstFont; */
+           
+        }
+        .divImg{
+            left: 40px;
+            top: 100px;
+            width: 50%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid red;
+        }
+        .divImg img{
+            width: 75%;
+           position: absolute;
+           top: 30px;
+           left: 30px;
+           border-radius: 15px;
+           z-index: 2;
+           -webkit-filter: grayscale(300%);
+           filter: grayscale(300%);
+        }
+        img:hover{
+            -webkit-filter: grayscale(0%);
+            filter: grayscale(0%);
+        }
+        h3{
+            position: absolute;
+            z-index: 3;
+            top: 130px;
+            left: 40px;
+            color: aliceblue;
+        }
+        /*设置当鼠标移上去的时候字体前往右上角*/
+        h3:hover{
+            /* top: 20px;
+            left: 400px; */
+            transform: translate(350px,5px); 
+            transition: width 2s, height 2s, transform 3s; 
+            background: -webkit-linear-gradient(right,red,yellow);
+            background: linear-gradient(right,red,yellow);
+            
+        }
+        /*设置媒体查询*/
+        @media screen and (min-width:640px) and (max-width:540px){
+            .divImg img{
+                width: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                border-radius: 0px;
+                z-index: 2;
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="cent">
+
+    </div>
+    <div class="text">
+        <h1>你是认真的吗？</h1>
+    </div>
+    <div class="divImg">
+        <img src="//www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" alt="感受大自然"/>
+        <h3>@感受大自然</h3>
+    </div>
+</body>
+</html>

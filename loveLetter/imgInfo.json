@@ -1,0 +1,11 @@
+{
+    "imgInfo":[
+        "./images/bg.png","./images/xf.png","./images/xf.gif","./images/save-tips.png","./images/musicPlay.png","./images/musicStop.png",
+        "./images/two/name.png","./images/two/g.png","./images/two/n.png","./images/two/gender.png","./images/two/bj2.jpg","./images/two/btn.png",
+        "./images/three/00.png","./images/three/80.png","./images/three/90.png","./images/three/btnImg1.png","./images/three/title.png",
+        "./images/four/00.png","./images/four/80.png","./images/four/90.png","./images/four/btnImg2.png","./images/four/title.png",
+        "./images/five/btnImg2.png","./images/five/isSingleton.png","./images/five/isSinleton.png","./images/five/noSingleton.png",
+        "./images/xb/6.png","./images/xb/5.png","./images/xb/4.png","./images/xb/3.png","./images/xb/2.png","./images/xb/1.png",
+        "./music/bj.mp3"
+    ]
+}

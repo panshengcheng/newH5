@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>水流背景字体</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+            /* background-image: url(./img/shouye1.png);
+            background-size: cover;
+            background-repeat: no-repeat; */
+            background-color: #000;
+        }
+        .container{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container p{
+            font-size: 6em;
+            color: rgba(255, 255, 255, 0.3);
+            background-image: url(./img/user1.png);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            -webkit-background-clip: text;
+            font-weight: 500;
+            animation: wave 30s linear infinite;
+        }
+        @keyframes wave{
+            from{
+                background-position: 0 0;
+            }
+            to{
+                background-position: 100% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>codemagic</p>
+    </div>
+</body>
+</html>

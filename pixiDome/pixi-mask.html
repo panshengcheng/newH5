@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi-mask</title>
+    <script src="./lib/pixi5.min.js"></script>
+    <script src="./lib/jquery.min.js"></script>
+    <style>
+        *{margin: 0;}
+    </style>
+</head>
+<body>
+    <script>
+        let option = {
+            width:window.innerWidth,
+            height:window.innerHeight,
+            backgroundColor:0xccc,
+            transparent:true
+        }    
+        let app = new PIXI.Application(option);
+        let stage = app.stage;
+        let renderer = app.renderer;
+        document.body.appendChild(renderer.view);
+        let imgURL = "./img/timg.jpg";
+        PIXI.loader.add(imgURL).load(setUp);
+        function setUp(){
+            //创建一个精灵
+            let Pikachu = new PIXI.Sprite(PIXI.loader.resources[imgURL].texture);
+            //设置精灵的宽高
+            Pikachu.width = app.screen.width;
+            Pikachu.height = app.screen.height;
+            console.log(Pikachu);
+            //创建一个正方形对象
+            let rectangle = new PIXI.Graphics();
+            rectangle.beginFill(0X66ccfff);
+            rectangle.drawRect(0,0,200,200);
+            rectangle.endFill();
+            rectangle.x = 100;
+            rectangle.y = 100;
+            //给精灵设置蒙版
+            Pikachu.mask = rectangle;
+            //把精灵添加到舞台上
+            stage.addChild(Pikachu);
+            stage.addChild(rectangle);
+        }
+    </script>
+</body>
+</html>

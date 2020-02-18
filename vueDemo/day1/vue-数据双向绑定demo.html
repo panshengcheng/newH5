@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据双向绑定案例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model="n1"/>
+        <select v-model="opt">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="number" v-model="n2"/>
+        <button @click="jisuan">=</button>
+        <input type="text" v-model="result"/>
+    </div>
+    <script>
+        let vue = new Vue({
+            el:"#app",
+            data:{
+                n1:0,
+                n2:0,
+                opt:"+",
+                result:0
+            },
+            methods:{
+                jisuan(){
+                    //办法一
+                    // switch (this.opt) {
+                    //     case "+":
+                    //         this.result=parseInt(this.n1)+parseInt(this.n2);
+                    //         break;
+                    //     case "-":
+                    //         this.result=parseInt(this.n1)-parseInt(this.n2);
+                    //         break;
+                    //     case "*":
+                    //         this.result=parseInt(this.n1)*parseInt(this.n2);
+                    //         break;
+                    //     case "/":
+                    //         if(parseInt(this.n1) !=0){
+                    //             this.result=parseInt(this.n1)/parseInt(this.n2);
+                    //             break;
+                    //         }else{
+                    //             this.result="除数不能等于0";
+                    //             break;
+                    //         }
+                            
+                    // }
+                    //方法2：投机取巧慎用
+                    if(parseInt(this.n1) !=0){
+                        let result = 'parseInt(this.n1)'+this.opt+'parseInt(this.n2)';
+                        this.result=eval(result);
+                    }else{
+                        this.result="除数不能等于0";
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

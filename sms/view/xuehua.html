@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas雪花效果</title>
+    <style>
+        html, body{
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+        #canvas{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let can = document.getElementById('canvas');
+        let ctx = can.getContext('2d');//设置canvas环境
+        //设置canvas的宽高
+        let w = can.width = window.innerWidth;
+        let h = can.height = window.innerHeight;
+        //如果为PC端浏览器当浏览器大小发生改变时进行重新获取浏览器的宽高 window.onresize
+        window.onresize = function(){
+            let w = can.width = window.innerWidth;
+            let h = can.height = window.innerHeight;
+        }
+        //开始绘制雪花
+        let xh = 1000;
+        let xhArray = [];//用于保存绘制的雪花数量
+
+        for(let i=0; i<xh; i++){
+            xhArray.push({
+                x:Math.random()*w,
+                y:Math.random()*h,
+                r:Math.random()*3,
+            })
+        }
+
+        function snowflake(){
+            ctx.beginPath();//开始绘制路径
+            ctx.fillStyle = '#fff';
+            for(let i=0; i<xh; i++){
+                ctx.moveTo(xhArray[i].x, xhArray[i].y,)//重新寻找绘制起点
+                ctx.arc(xhArray[i].x, xhArray[i].y, xhArray[i].r, 0, 2*Math.PI, false);
+            }
+            ctx.fill();//绘制图形
+            changeY();
+            
+        }
+        snowflake();
+        function changeY(){//雪花飘落效果
+            for(let i=0; i<xh; i++){
+                xhArray[i].y +=Math.random()*5;
+                if(xhArray[i].y > h){//当粒子到达浏览器底部时，重新回到页面顶部
+                    xhArray[i].y =0;
+                }
+               
+            }
+           
+        }
+        //循环跑动
+        setInterval(function(){
+            ctx.clearRect(0,0,w,h);//清空画布
+            snowflake();
+        }, 100);
+    </script>
+</body>
+</html>

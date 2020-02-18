@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扇形导航栏</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            background-color: #f9f9f9;
+        }
+        #menu{
+            width: 50px;height: 50px;position: fixed;right: 20px;bottom: 20px;
+        }
+        #menu_list{height: 42px;width: 42px;position: relative;margin: 4px;}
+        #menu_list img{width:100%;height: 100%; border-radius: 21px;position: absolute;left: 0;top: 0;-webkit-transition: 0.5s all ease;}
+        #home{width: 50px; height: 50px;background:url(./img/wechat.png) no-repeat;background-size: 100% 100%; border-radius: 25px;position: absolute;left: 0; top: 0;
+        transition: 1s;background-color: aliceblue;}
+    </style>
+    <script>
+        //图片预加载
+        window.onload = function(){
+            var oHome = document.getElementById("home");
+            var aImg = document.getElementById("menu_list").getElementsByTagName("img");
+            var bOff = true;
+            var iR = -150;
+            //给所有图片添加点击事件
+            for(var i=0; i<aImg.length; i++){
+                aImg[i].onclick=function(){
+                    this.style.transition = "0.3s";
+                    this.style.WebkitTransform="scale(2) rotate(-720deg)";//保证回来后，第二次还是会有当前最初状态
+                    this.style.opacity = 0.1;
+                    addEnd(this,end);
+                }
+            }
+            function end(){
+                this.style.transition = "0.1s";
+                this.style.WebkitTransform="scale(1) rotate(-720deg)";
+                this.style.opacity = 1;
+                removeEnd(this, end);//点击事件结束后，回到最初状态
+            }
+            //给主按钮添加点击事件
+            oHome.onclick=function(){
+                this.style.WebkitTransform = "rotate(-360deg)";
+                if(bOff){
+                    this.style.WebkitTransform = "rotate(-360deg)";
+                    for(var i=0; i<aImg.length; i++){
+                        var oLT = toLT(iR, 90/4*i);
+                        aImg[i].style.transition = "0.5s "+i*100+"ms";
+                        aImg[i].style.left = oLT.l+"px";
+                        aImg[i].style.top = oLT.t+"px";
+                        aImg[i].style.WebkitTransform = "scale(1) rotate(-720deg)";
+                    }
+                }else{
+                    this.style.WebkitTransform = "rotate(0deg)";
+                    for(var i=0; i<aImg.length; i++){
+                        aImg[i].style.transition = "0.5s "+(aImg.length-i-1)*100+"ms";
+                        aImg[i].style.left = 0+"px";
+                        aImg[i].style.top = 0+"px";
+                        aImg[i].style.WebkitTransform = "scale(1) rotate(0deg)";
+                    }
+                }
+                bOff = !bOff;
+            };
+        };
+        //求斜边和对边：斜边sin()  对边cos()
+        function toLT(iR, iDeg){
+            var iLeft =Math.round(Math.sin(iDeg/180*Math.PI)*iR);
+            var iTop = Math.round(Math.cos(iDeg/180*Math.PI)*iR); 
+            return {l:iLeft, t:iTop};
+        }
+
+        function addEnd(obj, fn){
+            obj.addEventListener('WebkitTransitionEnd',fn,false);
+            obj.addEventListener('transitionend',fn,false);
+        }
+        function removeEnd(obj, fn){
+            obj.removeEventListener('WebkitTransitionEnd',fn,false);
+            obj.removeEventListener('transitionend',fn,false);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="menu">
+        <div id="menu_list">
+            <img src="./img/homePage.png" alt="">
+            <img src="./img/filter.png" alt="">
+            <img src="./img/renew.png" alt="">
+            <img src="./img/user.png" alt="">
+            <img src="./img/setting.png" alt="">
+        </div>
+        <div id="home"></div>
+    </div>
+</body>
+</html>

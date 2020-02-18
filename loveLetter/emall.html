@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="mailto:收件人邮箱?subject=test&cc=抄送人邮箱&subject=主题&body=内容">调用邮箱本地发送邮件</a>
+    <script>
+        /*js调用本地邮箱发送邮件*/
+        function mailsome1() {
+            var who = prompt("请输入收件人邮箱: ", "sample@sample.net");
+            var what = prompt("输入主题: ", "none");
+            if (confirm("你确定要向" + who + "发送主题为 " + what + "的邮件么?") == true) {
+                parent.location.href = 'mailto:' + who + '?subject=' + what + '';
+            }
+        }
+    </script>
+</body>
+</html>

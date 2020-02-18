@@ -1,0 +1,144 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+/* * {
+  overflow: scroll;
+} */
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* padding-bottom: 100px; */
+  transform: rotate(90deg) scale(1.5);
+}
+.loading-main {
+  width: 283px;
+  /* height: 328px; */
+  background: url("../imgs/loading.jpg")no-repeat;
+  animation: loading 5s linear infinite;
+  animation-timing-function: step-start;
+}
+#canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#percent {
+  font-size: 30px;
+  /* margin-top: 24px; */
+}
+#form-panel {
+  position: absolute;
+  /* bottom: 30px; */
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+#form.heng {
+  margin-bottom: -200px;
+}
+#form.rotate {
+  transform: rotate(90deg);
+  margin-left: -195px;
+}
+#rule-link.rotate {
+  transform: rotate(90deg);
+  bottom: 66px;
+  right: -22px;
+}
+#rule-link {
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+  font-size: 14px;
+  position: fixed;
+  border-radius: 35px;
+  height: 28px;
+  line-height: 28px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 2px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.shu {
+  top: 14px;
+  right: 12px;
+}
+.input {
+  color: rgb(69,69,69);
+  font-size: 16px;
+  border-radius: 20px;
+  width: 260px;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  padding-left: 28px;
+  border: none;
+  margin-bottom: 16px;
+}
+.btn {
+  background: #e2a924;
+  color: rgb(116,49,40);
+  font-size: 18px;
+  width: 240px;
+  border-radius: 40px;
+  height: 54px;
+  line-height: 54px;
+  border:none;
+  font-weight: bold;
+}
+@media screen and (orientation: portrait) {
+  /*竖屏 css*/
+}
+@media screen and (orientation: landscape) {
+  /*横屏 css*/
+  #loading {
+    /* padding-bottom: 100px; */
+    transform: rotate(0deg) scale(1.5);
+  }
+  #form.heng {
+    margin-bottom: -170px;
+    margin-left: 30px;
+  }
+  .input {
+    margin-bottom: 10px;
+  }
+}
+@-webkit-keyframes loading {
+  from to{background-position:0 0}
+  7.142857142857143%{background-position:-566px -328px}
+  14.285714285714286%{background-position:-849px -328px}
+  21.42857142857143%{background-position:0 -656px}
+  28.571428571428573%{background-position:-283px -656px}
+  35.714285714285715%{background-position:-566px -656px}
+  42.85714285714286%{background-position:-849px -656px}
+  50%{background-position:-1132px 0}
+  57.142857142857146%{background-position:-1132px -328px}
+  64.28571428571429%{background-position:-283px 0}
+  71.42857142857143%{background-position:-566px 0}
+  78.57142857142857%{background-position:-849px 0}
+  85.71428571428572%{background-position:0 -328px}
+  92.85714285714286%{background-position:-283px -328px}
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es7之async和awasi</title>
+    <script>
+        async function getValue(sum){//async异步执行 await后面跟的函数执行完成才会执行下一个任务，但前提是该函数前面必须添加async
+            await new Promise((resolve,reject)=>{
+                setTimeout(function(){
+                    resolve(sum * 10);
+                })
+            })
+        }
+        try{
+            let s =  getValue(10);
+            console.log(s);
+
+            let a =  getValue(20);
+            console.log(a);
+        }catch(e){
+            console.log(e);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

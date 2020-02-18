@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>霓虹灯字体</title>
+    <link href="https://fonts.font.im/css?family=Pacifico" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        .neno-wrap{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .neno-wrap{
+            display: block;
+        }
+        .neno-text{
+            font-family: 'Pacifico', cursive;
+            font-size: 100px;
+            /* color: #e91e63;
+            text-shadow: -3px 0px 5px #e91e63,0px 0px 2px #e91e63; */
+            /* color: #222;
+            text-shadow: -3px 0px 5px #222,0px 0px 2px #222; */
+            animation: neno 4s infinite;
+        }
+        .neno-by{
+            color: #e91e63;
+            text-shadow: -3px 0px 5px #e91e63,0px 0px 2px #e91e63;
+        }
+        @keyframes neno{
+            0%,30%,32%,34%{
+                color: #222;
+                text-shadow: -3px 0px 5px #222,0px 0px 2px #222;
+            }
+            31%,32%,33%,100%{
+                color: #e91e63;
+                text-shadow: -3px 0px 5px #e91e63,0px 0px 2px #e91e63;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="neno-wrap">
+        <span class="neno-text">CSS</span>
+        <span class="neno-by">by @VincentTV</span>
+    </div>
+</body>
+</html>

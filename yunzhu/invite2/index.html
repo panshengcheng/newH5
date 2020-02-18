@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中铁 逸都国际</title>
+    <script>
+        (function () {
+            var html = document.documentElement;
+            var width = html.getBoundingClientRect().width;
+            var fs = width/16;
+            html.style.fontSize = fs+"px";
+        })()
+    </script>
+    <link rel="stylesheet" href="../invite4/css/animate.min.css"/>
+    <link rel="stylesheet" href="../invite4/css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="../invite1/js/jquery.min.js"></script>
+    <script src="./js/jquery.fireworks.js"></script>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="../invite1/mp3/Bloom of Youth.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <img src="./img/page1/bj.png"/>
+              <div id="canvas"></div>
+              
+              <img class="ani page1-title" src="./img/page1/title.png" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="0.3s"/>
+              <img class="ani page1-vtitle" src="./img/page1/vtitle.png" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="1.5s"/>
+              <img class="ani page1-dibu" src="./img/page1/dibu.png"/>
+        
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/page2/bj.png">
+              <img class="ani page2-count" src="./img/page2/count.png" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="0.3s"/>
+          </div>
+          <div class="swiper-slide">
+                <img src="./img/page3/bj.png">
+                <img class="ani page3-count" src="./img/page3/count.png" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="1.2s" swiper-animate-delay="0.3s"/>
+                <img class="ani page3-img" src="./img/page3/img.png" swiper-animate-effect="rotateIn" swiper-animate-duration="1.5s" swiper-animate-delay="1.3s"/>
+          </div>
+          <div class="swiper-slide">
+                <img src="./img/page4/bj.png">
+                <img class="ani page4-count" src="./img/page4/count.png" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="0.3s"/>
+                <img class="page4-yun" src="./img/page4/yuan.png"/>
+                <img class="page4-ys" src="./img/page4/yuanshang.png"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/page5/bj.png"/>
+              <img class="ani page5-title" swiper-animate-effect="bounceIn" swiper-animate-duration="1.5s" swiper-animate-delay="0.3s" src="img/page5/title.png"/>
+              <img class="ani page5-time" swiper-animate-effect="fadeInUp" swiper-animate-duration="2.5s" swiper-animate-delay="0.8s" src="img/page5/time.png"/>
+          </div>
+          <div class="swiper-slide">
+              <img id="baoming" src="./img/6.png"/>
+              <div id="form">
+                  <input type="text" id="name" maxlength="6" placeholder="您的姓名："/>
+                  <input type="number" id="phone" maxlength="11" placeholder="联系电话："/>
+                  <button id="submit">报名提交</button>
+              </div>
+              <a id="position" href="https://uri.amap.com/marker?position=106.6006636620,26.6313092609&name=贵州省贵阳市观山湖区观山西路悦湖薹艺术馆中国中铁置业贵州公司">
+                   一键导航
+
+                </a>
+          </div>
+        </div>
+        <div class="tubiao" id="tubiao">
+            <img src="../invite1/img/arrow.png" style="width:30px;height:20px; top:90vh; left:45vw;" id="array" class="resize">
+        </div>
+      </div>
+      <div class="loading">
+            <img class="tLoading" src="./img/fengxiang.jpg"/>
+            <p>0%</p>
+        </div>
+    <script src="../invite4/js/swiper.animate.min.js"></script>
+    <script src="../invite1/js/swiper.min.js"></script>
+    
+    <script src="./js/index.js"></script>
+    <script>
+        //音乐
+        let objMusic = document.getElementById('bgMusic');
+        let musicState = true;
+        function musicPlay(){
+            $(".music").removeClass('musicStop').addClass('musicPlay');  
+            if(objMusic.paused){
+                objMusic.play();
+                objMusic.muted=false;
+            } 
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.play();
+                objMusic.muted=false;
+            },false)    
+        }
+        function musicStop(){
+            objMusic.pause();
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.pause();
+                objMusic.muted=true;
+            },false)
+            $(".music").removeClass('musicPlay').addClass('musicStop');
+            
+        }
+        musicPlay();
+        $('.music').bind("touchend",function(){
+            if(musicState){
+                musicStop();
+                musicState=false;
+            }else{
+                musicPlay();
+                musicState=true;
+            }
+        })
+        let mySwiper = new Swiper('.swiper-container',{
+            direction: 'vertical',
+            touchRatio : 0.1,
+            on:{
+                init: function(){
+                    swiperAnimateCache(this); 
+                    swiperAnimate(this); 
+                },
+                slideChangeTransitionEnd: function(){ 
+                    swiperAnimate(this); 
+                },
+                slideChangeTransitionStart:function(){
+                    if(this.activeIndex === 5){
+                        $("#tubiao").css("display","none");
+                    }else{
+                        $("#tubiao").css("display","block");
+                    }
+                }
+            }
+        })
+        
+    </script>
+     <?php
+        include_once "wechat.php";
+    ?>
+</body>
+</html>

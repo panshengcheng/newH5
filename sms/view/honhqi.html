@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk">
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<title></title>
+<style>
+    html,body{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+
+/**
+使用HTML5绘制标准五星红旗
+*/
+var canvas = document.getElementById("canvas");
+canvas.width=window.screen.width;
+canvas.height = window.screen.height;
+
+ //canvas.style.marginLeft =(canvas.width / 3) + 'px';
+ //canvas.style.marginTop =(canvas.height / 4) + 'px';
+drawFiveStarFlag(canvas);
+var timer = waveFlag(canvas, 30, 20, 100, 200, 0.2);
+function drawFiveStarFlag(canvas){
+    var context = canvas.getContext('2d');
+    var width=canvas.width;
+    var height=width*2/3;
+    context.fillStyle="red";
+    context.fillRect(0,0,width,height);
+    var maxR = 0.15, minR = 0.05;//
+    var maxX = 0.25, maxY = 0.25;//大五星的位置
+    var minX = [0.50, 0.60, 0.60, 0.50];
+    var minY = [0.10, 0.20, 0.35, 0.45];
+    // 画大☆
+    var ox = height * maxX, oy = height * maxY;
+    create5star(context,ox,oy,height * maxR,"#ff0",0);//绘制五角星
+    // 画小★
+    for (var idx = 0; idx < 4; idx++) {
+        var sx = minX[idx] * height, sy = minY[idx] * height;
+        var theta = Math.atan((oy - sy)/(ox - sx));
+        create5star(context,sx, sy, height * minR, "#ff0",-Math.PI/2+theta);
+    }
+}
+//绘制五角星
+/**
+* 创建一个五角星形状. 该五角星的中心坐标为(sx,sy),中心到顶点的距离为radius,rotate=0时一个顶点在对称轴上
+* rotate:绕对称轴旋转rotate弧度
+*/
+function create5star(context,sx,sy,radius,color,rotato){
+context.save();
+context.fillStyle=color;
+context.translate(sx,sy);//移动坐标原点
+context.rotate(Math.PI+rotato);//旋转
+context.beginPath();//创建路径
+var x = Math.sin(0);
+var y= Math.cos(0);
+var dig = Math.PI/5 *4;
+for(var i = 0;i< 5;i++){//画五角星的五条边
+var x = Math.sin(i*dig);
+var y = Math.cos(i*dig);
+context.lineTo(x*radius,y*radius);
+}
+context.closePath();
+context.stroke();
+context.fill();
+context.restore();
+}
+function waveFlag(canvas, wavelength, amplitude, period, shading, squeeze) {
+if (!squeeze) squeeze = 0;//挤压
+if (!shading) shading = 100;//阴影
+if (!period) period = 200;//周期
+if (!amplitude) amplitude = 10;//振幅
+if (!wavelength) wavelength = canvas.width / 10;
+var fps = 30;//每秒帧数
+var ctx = canvas.getContext('2d');
+var w = canvas.width,
+h = canvas.height;
+var od = ctx.getImageData(0, 0, w, h).data;//获取canvas的像素数据数组
+// var ct = 0, st=new Date;
+return setInterval(function() {
+var id = ctx.getImageData(0, 0, w, h);
+var d = id.data;
+var now = (new Date) / period;
+for (var y = 0; y < h; ++y) {
+var lastO = 0,
+shade = 0;
+var sq = (y - h / 2) * squeeze;
+for (var x = 0; x < w; ++x) {
+var px = (y * w + x) * 4;
+var pct = x / w;
+var o = Math.sin(x / wavelength - now) * amplitude * pct;
+var y2 = y + (o + sq * pct) < 0;
+var opx = (y2 * w + x) * 4;
+shade = (o - lastO) * shading;
+d[px] = od[opx] + shade;
+d[px + 1] = od[opx + 1] + shade;
+d[px + 2] = od[opx + 2] + shade;
+d[px + 3] = od[opx + 3];
+lastO = o;
+}
+}
+ctx.putImageData(id, 0, 0);
+// if ((++ct)%100 == 0) console.log( 1000 * ct / (new Date - st));
+}, 1000 / fps);
+}
+
+</script>
+</body>
+</html

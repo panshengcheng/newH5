@@ -1,0 +1,875 @@
+
+	body{
+		margin: 0;
+		height: 100%;
+		overflow: hidden;
+	}
+	html{
+		height: 100%;
+		background: #f9b92e;
+		overflow: hidden;
+	}
+	
+	p{
+		margin: 0;			
+	}
+	img{
+		vertical-align: top;
+	}
+	em{
+		font-style: normal;
+	}
+	input,
+	a,
+	button {
+	  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	  -webkit-appearance: none;
+	}
+	a {
+	  text-decoration: none;
+	}
+	#weixinLogo{
+		display: none;
+	}
+	.loading{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: url(../img/loading.gif) no-repeat 60% 40% #f9b92e;
+		background-size: 7.96875rem 6.40625rem;
+		z-index: 999999;
+		color: #fff;
+		font-size: 1.09rem;
+	}
+	.loading p{
+		text-align: center;
+		width: 100%;
+		position: absolute;
+		font-family: helvetica "微软雅黑";
+		top: 40%;
+		transform: translateY(4rem);
+	}
+	.swiper-wrapper{
+		height: 100%;
+		opacity: 0;
+		position: relative;
+		/*transform-style: preserve-3d;*/
+		/*perspective: 800px;*/
+	}
+	.swiper-container{
+		height: 100%;
+	}
+	.swiper-slide{
+		transition: 800ms;
+		width: 100%;
+		background-color: #f00;
+		height: 100%;
+		color: #fff;
+		overflow: hidden;
+	}
+	/*.swiper-wrapper .swiper-slide{
+		position: absolute;
+	}*/
+	.next{
+		width: 2rem;
+		height: 1.125rem;
+		position: absolute;
+		bottom: 0.9375rem;
+		left: 7rem;
+		background: url(../img/next.png) no-repeat;
+		background-size: 100% 100%;
+		transform: translateY(0);
+		animation: moveNext .5s infinite alternate-reverse;
+	}
+	@keyframes moveNext{
+		from{transform: translateY(0);}
+		to{transform: translateY(5px);}
+	}
+	
+	
+	/*第一部分*/
+	.first{
+		/*-webkit-filter: brightness(1);*/
+		/*transition: 0.5s -webkit-filter;*/
+		background: url(../img/bg1.png) no-repeat ;
+		background-size: cover;
+		position: relative;
+	}
+	.fence{
+		position: relative;
+		z-index: 99;
+	}
+	.timeBox{
+		position: absolute;
+		width: 9.96875rem;
+		height: 11.8125rem;
+		left: 50%;
+		top: -3rem;
+		margin-left: -4.984rem;
+		background:url(../img/fence.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.timeBox span{
+		position: absolute;
+		background-size: contain !important;
+		transform: scale(0);
+	}
+	.timeBox span:nth-of-type(1){
+		width: 3.359375rem;
+		height: 3.703125rem;
+		background: url(../img/2017_2.png) no-repeat;
+		left: 0.7375rem;
+		top: 4.53125rem;
+	}
+	.timeBox span:nth-of-type(2){
+		width: 3.390625rem;
+		height: 3.203125rem;
+		background: url(../img/2017_0.png) no-repeat;
+		left: 2.89375rem;
+		top: 4.53125rem;
+	}
+	.timeBox span:nth-of-type(3){
+		width: 1.671875rem;
+		height: 3.578125rem;
+		background: url(../img/2017_1.png) no-repeat;
+		left: 5.503125rem;
+		top: 4.390625rem;
+	}
+	.timeBox span:nth-of-type(4){
+		width: 2.96875rem;
+		height: 3.453125rem;
+		background: url(../img/2017_7.png) no-repeat;
+		left: 6.284375rem;
+		top: 4.625rem;
+	}
+	.goUp {
+		animation: 2.5s  goUpDown infinite ease-in-out alternate-reverse ;
+	}
+	.goDown {
+		animation: 2s  goUpDown infinite ease-in-out alternate-reverse ;
+	}
+	.goDown2 {
+		animation: 2.4s  goUpDown infinite ease-in-out alternate-reverse ;
+	}
+	@keyframes goUpDown{
+		0%{transform: translateY(14px)}
+		100%{transform: translateY(0px)}
+	}
+	/*中间齿轮部分*/
+	.gears{
+		width: 14.921875rem;
+		height: 12.609375rem;
+		position: absolute;
+		top: 7.5rem;
+		left: 0.8rem;
+		background: url(../img/first_circle.png) no-repeat;
+		background-size: contain;
+		font-size: 50px;
+		line-height: 12rem;
+		text-align: center;
+		color: #fff;
+	}
+	.gears img{
+		position: absolute;
+	}
+	.gears img[class^="line"]{
+		opacity: 0.7;
+	}
+	.gear1{
+		width: 5.34375rem;
+		height: 5.34375rem;
+		left: 2.71875rem;
+		top: 0.828125rem;
+		animation: clockwise 6s infinite linear;
+	}
+	.gear2{
+		width: 3.875rem;
+		height: 3.90625rem;
+		left: 7.546875rem;
+		top: 2.953125rem;
+		animation: clockwise 5s infinite reverse linear;
+	}
+	.gear3{
+		width: 3.46875rem;
+		height: 3.5rem;
+		left: 1rem;
+		top: 4.921875rem;
+		animation: clockwise 4s infinite linear;
+	}
+	.gear4{
+		width: 3.359375rem;
+		height: 3.359375rem;
+		left: 9.828125rem;
+		top: 6.1875rem;
+		animation: clockwise 4s infinite reverse linear;
+	}
+	.gear5{
+		width: 2.140625rem;
+		height: 2.15625rem;
+		left: 1.203125rem;
+		top: 3.1875rem;
+		animation: clockwise 3s infinite reverse linear;
+	}
+	.gear6{
+		width: 1.84375rem;
+		height: 1.84375rem;
+		left: 6.703125rem;
+		top: 7.953125rem;
+		animation: clockwise 2s infinite linear;
+	}
+	.gear7{
+		width: 1.65625rem;
+		height: 1.65625rem;
+		left: 12.484375rem;
+		top: 5.484375rem;
+		animation: clockwise 1s infinite linear;
+	}
+	.gear8{
+		width: 1.40625rem;
+		height: 1.40625rem;
+		left: 3.90625rem;
+		top: 5.46875rem;
+		animation: clockwise 1s infinite reverse linear;
+	}
+	.line1{
+		width: 4.359375rem;
+		height: 2.453125rem;
+		left: 6.265625rem;
+		top: 1.390625rem;
+	}
+	.line2{
+		width: 1.375rem;
+		height: 2.109375rem;
+		left: 12.5625rem;
+		top: 6.65625rem;
+	}
+	.line3{
+		width: 1.421875rem;
+		height: 2.8125rem;
+		left: 2.859375rem;
+		top: 3.71875rem;
+	}
+	.line4{
+		width: 2.359375rem;
+		height: 1.125rem;
+		left: 10.78125rem;
+		top: 5.734375rem;
+	}
+	.line5{
+		width: 5.015625rem;
+		height: 1.125rem;
+		left: 4.59375rem;
+		top: 5.546875rem;
+	}
+	.line6{
+		width: 3.34375rem;
+		height: 2.75rem;
+		left: 3.3125rem;
+		top: 5.3125rem;
+	}
+	.line7{
+		width: 2.40625rem;
+		height: 2.1875rem;
+		left: 1.734375rem;
+		top: 1.625rem;
+	}
+	.line8{
+		width: 0.390625rem;
+		height: 2.9375rem;
+		left: 1.28125rem;
+		top: 4.0625rem;
+	}
+	.line9{
+		width: 2.0625rem;
+		height: 1.15625rem;
+		left: 3.025rem;
+		top: 6.459375rem;
+	}
+	.line10{
+		width: 2.25rem;
+		height: 0.359375rem;
+		left: 2.65625rem;
+		top: 5.55rem;
+	}
+	.line11{
+		width: 1.8125rem;
+		height: 4.375rem;
+		left: 6.76875rem;
+		top: 4.71875rem;
+	}
+	.line12{
+		width: 2.484375rem;
+		height: 4.171875rem;
+		left: 8.01875rem;
+		top: 5.284375rem;
+	}
+	.line13{
+		width: 1.7230rem;
+		height: 3.65625rem;
+		left: 8.84375rem;
+		top: 5.34375rem;
+	}
+	.line14{
+		width: 2.625rem;
+		height: 2.625rem;
+		left: 9.921875rem;
+		top: 4.609375rem;
+	}
+	@keyframes clockwise{
+		from{
+			transform: rotate(0deg);
+		}
+		to{
+			transform: rotate(360deg);
+		}
+	}
+	
+	/*爪子*/
+	.pawsbox{
+		width: 12rem;
+		height: 20rem;
+		position: absolute;
+		z-index: 999;
+		top: -20rem;
+		left: 2.5rem;
+		/*opacity: 0.5;*/
+	}
+	.paw{
+		width: 4rem;
+		height: 10.203125rem;
+		position: absolute;
+		left: 4rem;
+		top: 0;
+		transform-origin: bottom;
+		background: url(../img/paw.png) no-repeat 0.7rem 0rem;
+		background-size: 2.90625rem 11.046875rem;
+	}
+	.pawLeft{
+		width: 1.09375rem;
+		height: 2.921875rem;
+		background: url(../img/pawLeft.png) no-repeat ;
+		background-size: 100% 100%;
+		position: absolute;
+		bottom: -0.55rem;
+		left: 0.75rem;
+		transform-origin: right top;
+	}
+	.pawRight{
+		width: 1.34375rem;
+		height: 2.828125rem;
+		background: url(../img/pawRight.png) no-repeat;
+		background-size: 100% 100%;
+		position: absolute;
+		right: 0.65rem;
+		bottom: -0.5rem;
+		transform-origin: left top;
+	}
+	.pawsbox .M{
+		width: 15.984375rem;
+		height: 12.921875rem;
+		position: absolute;
+		/*起点*/
+		top: 6rem;
+		/*终点*/
+		/*top: 12.0625rem;*/
+		left: -2.5rem;
+		background: url(../img/M.png) no-repeat 4rem 0;
+		background-size: 8.953125rem 11.953125rem;
+	}
+	.chain{
+		opacity: 0;
+	}
+	.leftchain{
+		position: absolute;
+		width: 3.828125rem;
+		height: 6.125rem;
+		background: url(../img/chainLeft.png) no-repeat ;
+		background-size: 100% 100%;
+		left:0.5rem;
+		top:5.5rem;
+	}
+	.rightchain{
+		position: absolute;
+		width: 3.0625rem;
+		height: 4.9375rem;
+		background: url(../img/chainRight.png) no-repeat ;
+		background-size: 100% 100%;
+		left:12.3rem;
+		top:6.5rem;
+	}
+	.firstPeople{
+		position: absolute;
+		z-index: 999;
+		width: 1.734375rem;
+		height: 3.296875rem;
+		left: 12rem;
+		top: 17.5rem;
+	}
+	.firstPeople2{
+		position: absolute;
+		z-index: 999;
+		width: 1.734375rem;
+		height: 2.4375rem;
+		left: 2rem;
+		top: 18rem;
+	}
+	.swiper-slide:nth-of-type(2){
+		background-color: #0f0;
+	}
+	.swiper-slide:nth-of-type(3){
+		background-color: #00f;
+	}
+	
+	/*第二部分*/
+	.second{
+		background: url(../img/bg2.png) no-repeat ;
+		background-size: cover;
+		position: relative;
+	}
+	.second .word {
+		position: absolute;
+		width: 14rem;
+		height: 14rem;
+		/*background: url(../img/second_words.png) no-repeat;
+		background-size: 100% 100%;*/
+		left: 0.875rem;
+		top: 3rem;
+		transform: rotate(-45deg) scale(0.8);
+		/*transform-style: preserve-3d;*/
+	}
+	.word .ori{
+		width: 14rem;
+		height: 0rem;
+		background: url(../img/second_words.png) no-repeat;
+		background-size: 14rem 14rem;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: -99;
+		/*overflow: hidden;*/
+		/*-webkit-mask: url(../img/mask.png) no-repeat;
+		-webkit-mask-size:15rem 15rem;
+		-webkit-mask-position: 0rem -15rem;*/
+	}
+	.word .outer{
+		float: left;
+		width: 1rem;
+		height: 1rem;
+		/*background: url(../img/second_words.png) no-repeat
+		background-size: 14rem 14rem;*/
+		border-radius: 0.5rem;
+		transition: 0.15s opacity;
+	}
+	.bottomText{
+		position: absolute;
+		width: 12.34375rem;
+		height: 5.84375rem;
+		bottom: 2rem;
+		left: 1.828125rem;
+		box-sizing: border-box;
+		padding: 2rem 1.296rem 0;
+	}
+	.bottomText em {
+		display: block;
+	}
+	.bottomText>div{
+		box-shadow: 0px 0px 30px 0px #333;
+	}
+	.bottomBorder{
+		height: 0.15625rem;
+		width: 12.34rem;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		background-color: #fff;
+	}
+	.sideBorder{
+		position: absolute;
+		width: 0.15625rem;	
+		height: 5.140625rem;
+		bottom: 0;
+		background-color: #fff;
+	}
+	.leftSide{
+		left: 0;
+	}
+	.rightSide{
+		right: 0;
+	}
+	.topBorder{
+		height: 0.15625rem;
+		width: 3rem;
+		position: absolute;
+		background-color: #fff;
+		top: 0.7rem;
+	}
+	.bottomText p{
+		line-height: 1.09375rem;
+		font-size: 0.625rem;
+		font-family: "微软雅黑";
+		overflow: hidden;
+	}
+	.bottomText p:nth-of-type(1){
+		width: 5.890625rem;
+		height: 1.390625rem;
+		position: absolute;
+		left: 3.234375rem;
+		top: 0;
+	}
+	.bottomText p img{
+		width: 5.890625rem;
+		height: 1.390625rem;
+	}
+	.bottomText p span{
+		display: block;
+		text-shadow: 0 0 10px #666;
+	}
+	/*第三部分*/
+	.third{
+		background: url(../img/bg3.png) no-repeat ;
+		background-size: cover;
+		position: relative;
+	}
+	.third img{
+		width: 4.1875rem;
+		height: 6.65625rem;
+		position: absolute;
+	}
+	.third .work,.third .condition{
+		box-sizing: border-box;
+		padding: 0.90625rem 0.59375rem 0.90625rem 0.90625rem ;
+		width: 12.34375rem;
+		margin: 0.7rem auto 1.2625rem;
+		font: 0.65rem/1.25rem helvetica,"微软雅黑";
+		position: relative;
+	}
+	.work img{
+		left: -1rem;
+		top: -0.6rem;
+		z-index: 999;
+	}
+	.work div{
+		position: absolute;
+		left: 0;
+		top: 0;
+	} 
+	.condition img{
+		right: -3.2rem;
+		top: -1rem;
+		z-index: 999;
+	}
+	.condition div{
+		position: absolute;
+		right: 0;
+		top: 0;
+	}	
+	.condition p,.work p{
+		/*visibility: hidden;*/
+		/*position: relative;*/
+		z-index: 99;
+	}
+	.bottomjob{
+		width: 100%;
+		text-align: center;
+		color: #fff;
+		font: 0.7rem/0.78125rem "微软雅黑";
+		position: absolute;
+		bottom: 2.375rem;
+	}
+	/*折纸盒子*/
+	.cover{
+		background-color: rgba( 0,0,0,0.4 );
+	}
+	.borderTop:before{
+		content:"";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 0.15625rem;
+		background-color: #fff;
+	}
+	.borderLeft:after{
+		content:"";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0.15625rem;
+		height: 100%;
+		background-color: #fff;
+	}
+	.borderRight:after{
+		content:"";
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 0.15625rem;
+		height: 100%;
+		background-color: #fff;
+	}
+	.borderBottom:before{
+		content:"";
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 0.15625rem;
+		background-color: #fff;
+	}
+	.work,.condition{
+		font-size: 0px;
+	}
+	.work span{
+		display: inline-block;
+		font:0.65rem/1.25rem helvetica "微软雅黑";
+		position: relative;
+		z-index: 99;
+	}
+	.condition span{
+		display: inline-block;
+		font:0.65rem/1.25rem helvetica "微软雅黑";
+		position: relative;
+		z-index: 99;
+	}
+	
+	/*第四部分*/
+	.forth{
+		background: url(../img/bg4.png) no-repeat ;
+		background-size: cover;
+		position: relative;
+	}
+	.forth .intro{
+		width: 9.6rem;
+		height: 7.84rem;
+		position: absolute;
+		left: 3.625rem;
+		top: 1.140625rem;
+	}
+	.forth .introduce{
+		width: 13.65625rem;
+		/*box-sizing: border-box;*/
+		position: relative;
+		margin: 8.390625rem auto ;		
+	}
+	.introduce p{
+		position: relative;
+		z-index: 999;
+		padding: 1.21875rem 0.890625rem;
+		font:0.78125rem/1.40625rem helvetica ;
+	}
+	.forth .introduce .cover{
+		width:12.5%;
+		height: 12.5%;
+		float: left;
+		background-color: rgba(0,0,0,0.4);
+		
+		perspective: 500px;
+	}
+	.forth .coverBox{
+		transform-style: preserve-3d;
+		/*transform: rotate(-90deg);*/	
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.forth .introduce span{
+		transition: 2.5s;
+		display: inline-block;
+		font-size:0.78125rem;
+	}
+	.forth .dot{
+		position: absolute;
+	}
+	.forth .demon{
+		width: 3.53125rem;
+		height: 3.734375rem;
+		left: 0;
+		top: -4rem;
+		animation: go 3.5s 1s infinite linear;
+	}
+	.forth .yellow:nth-of-type(2){
+		width: 3.35rem;
+		height: 3.35rem;
+		left: 10rem;
+		top: -3rem;
+		animation: go 3.6s 2s infinite linear;
+	}
+	.forth .yellow:nth-of-type(3){
+		width: 2rem;
+		height: 2rem;
+		left: 12rem;
+		top: -4rem;
+		animation: go 3.7s 1s infinite linear;
+	}
+	.forth .yellow:nth-of-type(4){
+		width: 1.5rem;
+		height: 1.5rem;
+		left: 14rem;
+		top: -4rem;
+		animation: go 4.2s 1.3s infinite linear;
+	}
+	.forth .yellow:nth-of-type(5){
+		width: 2.5rem;
+		height: 2.5rem;
+		left: 4rem;
+		top: -4rem;
+		animation: go 4s 1.5s infinite linear;
+	}
+	.forth .demon:nth-of-type(6){
+		width: 2.3rem;
+		height: 2.3rem;
+		left: 5rem;
+		top: -4rem;
+		animation: go 5.5s 5s infinite linear;
+	}
+	.forth .demon:nth-of-type(7){
+		width: 1rem;
+		height: 1rem;
+		left: 5rem;
+		top: -4rem;
+		animation: go 4s 0.5s infinite linear;
+	}
+	.forth .demon:nth-of-type(8){
+		width: 0.8rem;
+		height: 0.8rem;
+		left: 10rem;
+		top: -2rem;
+		animation: go 5s 1.5s infinite linear;
+	}
+	.forth .demon:nth-of-type(9){
+		width: 0.8rem;
+		height: 0.8rem;
+		left: 2rem;
+		top: -4rem;
+		animation: go 5.5s 3.5s infinite linear;
+	}
+	.forth .yellow:nth-of-type(10){
+		width: 1.5rem;
+		height: 1.5rem;
+		left: 13rem;
+		top: -4rem;
+		animation: go 3.2s 1.3s infinite linear;
+	}
+	.forth .yellow:nth-of-type(11){
+		width: 2rem;
+		height: 2rem;
+		left: 1rem;
+		top: -4rem;
+		animation: go 3.2s 3s infinite linear;
+	}
+	.forth .demon:nth-of-type(12){
+		width: 0.5rem;
+		height: 0.5rem;
+		left: 10rem;
+		top: -4rem;
+		animation: go 3.5s 3.5s infinite linear;
+	}
+	@keyframes go{
+		0%{
+			transform: translateX(-2rem) translateY(36rem) rotateY(0) translateZ(-100px);
+		}
+		25%{
+			transform: translateX(0.8rem) translateY(27rem) rotateY(45deg) translateZ(-100px)
+		}
+		50%{
+			transform: translateX(2rem) translateY(18rem) rotateY(0) translateZ(-100px)
+		}
+		75%{
+			transform: translateX(-0.8rem) translateY(9rem) rotateY(-45deg) translateZ(-100px)
+		}
+		100%{
+			transform: translateX(-2rem) translateY(-1rem) rotateY(0) translateZ(-100px)
+		}
+	}
+	/*第五部分*/
+	.fifth{
+		background: url(../img/bg5.png) no-repeat ;
+		background-size: cover;
+		position: relative;
+	}
+	.fifth .cube1,.fifth .cube2{
+		width: 4.078125rem;
+		height: 4.875rem;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: url(../img/cube.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.fifth .textContent{
+		width: 12.5rem;
+		box-sizing: border-box;
+		margin: 5.6875rem auto;
+		border: 0.171875rem solid #fff;
+		background-color: rgba(0,0,0,0.4);
+		font: 0.625rem/1.53125rem helvetica ;
+		text-align: center;
+		padding:0.9375rem 0;
+		position: relative;
+		z-index: 10;
+	}
+	.fifth .textContent .email{
+		/*font-size: 1.1rem;*/
+		color: rgba(0,0,0,0);
+		background: url(../img/miaov.png) no-repeat center center;
+		background-size: 11.359375rem 1.203125rem;
+	}
+	.fifth .contentUs{
+		width: 14.5rem;
+		position: absolute;
+		left: 0.75rem;
+		bottom: 1.5625rem;
+	}
+	.contentUs img{
+		float: left;
+		width: 5.328125rem;
+		height: 5.328125rem;
+		margin-left: 0.5rem;
+	}
+	.contentUs p{
+		padding-top: 0.5625rem;
+		float: right;
+		width: 7.9rem;
+		margin-left: 0.73rem;
+		color: rgba(255,255,255,0.8);
+		font: 0.685rem/1.34375rem helvetica ;
+	}
+	.contentUs p a{
+		color: rgba(255,255,255,0.8);
+	}
+	.contentUs p span{
+		display: block;
+	}
+	.fifth_dot{
+		position: absolute;
+		z-index: 999;
+	}
+	.fifth_dot:nth-of-type(1){
+		width: 1.5625rem;
+		left: 13.484375rem;
+		top: 2.453125rem;
+	}
+	.fifth_dot:nth-of-type(2){
+		width: 2.640625rem;
+		left: 4.21875rem;
+		top: 2rem;
+	}
+	.fifth_dot:nth-of-type(3){
+		width: 2.265625rem;
+		left: 5.1875rem;
+		top: 13rem;
+	}
+	.fifth_dot:nth-of-type(4){
+		width: 2.59375rem;
+		left: 12.03125rem;
+		top: 16.828125rem;
+	}
+	.fifth_dot:nth-of-type(5){
+		width: 2.078125rem;
+		left: 0.35625rem;
+		top: 9.890625rem;
+	}

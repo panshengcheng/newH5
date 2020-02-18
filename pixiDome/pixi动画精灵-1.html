@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi-spriteUitle动画</title>
+    <script src="./lib/pixi5.min.js"></script>
+    <script src="./lib/SpriteUtilities.js"></script>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let option = {
+            width:window.innerWidth,
+            height:window.innerHeight,
+            transparent:true
+        }
+        let app = new PIXI.Application(option);
+        document.body.appendChild(app.view);
+        let su = new SpriteUtilities(PIXI);
+        
+        let imgUrl = "https://www.kkkk1000.com/images/learnPixiJS-AnimatedSprite/dnf.json";
+        PIXI.loader.add(imgUrl).load(setup);//加载图片
+        //frameSeries 方法可以通过已加载的纹理贴图集，使用一系列编号的帧ID来创建动画精灵。
+        //su.frameSeries(startNumber, endNumber, baseName, extension);startNumber:起始帧序列号，endNumber:结束帧序列号，baseName:可选的文件名，extension:可选的文件扩展名
+        //返回一个可以用于自作动画精灵的纹理数组
+        //注意：在使用frameSeries时，要确保其实在JSON文件中每一帧的名称都是按顺序来的
+        function setup(){
+            //创建纹理数组
+			debugger;
+            let frames = su.frameSeries(0,7,"dnf",".png"); 
+            console.log(frames);
+			//创建动画精灵
+            let pixie = new PIXI.extras.AnimatedSprite(frames);
+			//设置动画精灵的速度
+			pixie.animationSpeed=0.1;
+
+			//把动画精灵添加到舞台
+            app.stage.addChild(pixie);
+			//播放动画精灵
+            pixie.play();
+
+        }
+    </script>
+</body>
+</html>

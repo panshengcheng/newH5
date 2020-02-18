@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6之promise深入理解</title>
+    <script>
+        //promise.all()以及promise.race();
+        let p1 = new Promise((resolve,reject)=>{
+            setTimeout(function(){
+               console.log("开始执行P1");
+            },1000);
+        })
+        let p2 = new Promise((resolve,reject)=>{
+            setTimeout(function(){
+                console.log("开始执行P2");
+            },2000)
+        })
+        // Promise.all([p1,p2]).then(()=>{//all()方法在p1和p2执行完成后才开始执行
+        //     console.log("最后执行");
+        // })
+        Promise.race([p1,p2]).then(()=>{//race()只要p1或p2其中一个执行完成，本promise就开始执行
+            console.log("只要p1或p2其中一个执行完成，本promise就开始执行");
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

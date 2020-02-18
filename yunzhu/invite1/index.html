@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中铁阅山湖  云著</title>
+    <script>
+        (function () {
+            var html = document.documentElement;
+            var width = html.getBoundingClientRect().width;
+            var fs = width/16;
+            html.style.fontSize = fs+"px";
+        })()
+    </script>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="./mp3/Bloom of Youth.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="night">
+                <div class="shooting_star"></div>
+                <div class="shooting_star"></div>
+                <div class="shooting_star"></div>
+            </div>
+              <img src="./img/1.jpg"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/2.jpg">
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/3.jpg"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/4.jpg"/>
+              <a id="position" href="https://uri.amap.com/marker?position=106.6006636620,26.6313092609&name=贵州省贵阳市观山湖区观山西路悦湖薹艺术馆中国中铁置业贵州公司">
+                   
+                </a>
+          </div>
+        </div>
+        <div class="tubiao" id="tubiao">
+            <img src="./img/arrow.png" style="width:30px;height:20px; top:90vh; left:45vw;" id="array" class="resize">
+        </div>
+      </div>
+    <script src="./js/swiper.min.js"></script>
+    <script>
+        //音乐
+        let objMusic = document.getElementById('bgMusic');
+        let musicState = true;
+        function musicPlay(){
+            $(".music").removeClass('musicStop').addClass('musicPlay');  
+            if(objMusic.paused){
+                objMusic.play();
+                objMusic.muted=false;
+            } 
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.play();
+                objMusic.muted=false;
+            },false)    
+        }
+
+
+        function musicStop(){
+            objMusic.pause();
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.pause();
+                objMusic.muted=true;
+            },false)
+            $(".music").removeClass('musicPlay').addClass('musicStop');
+            
+        }
+        musicPlay();
+        $('.music').bind("touchend",function(){
+            if(musicState){
+                musicStop();
+                musicState=false;
+            }else{
+                musicPlay();
+                musicState=true;
+            }
+        })
+        let mySwiper = new Swiper('.swiper-container',{
+            direction: 'vertical',
+            touchRatio : 0.1,
+            on:{
+                slideChangeTransitionStart:function(){
+                    if(this.activeIndex === 3){
+                        $("#tubiao").css("display","none");
+                    }else{
+                        $("#tubiao").css("display","block");
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>城市投票</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">  
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">    
+    <script src="./libs/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{width: 100vw;height: 100vh;overflow: hidden;position: relative;}
+        .swiper-container {width: 600px;height: 300px;} 
+        .imgInfo{width: 99%; height: 30%;border: 1px solid blue;position: absolute;top: 0;left: 0;}
+        .imgInfo img{width: 100%;height: 100%;}
+        .number{width: 99%; height: 7%;border: 1px solid red;position: absolute; top: 30%;left: 0;display: inline-flex;}
+        .number1{border: red 1px solid; width: 50%; text-align: center;}
+        .cityOptions{width: 90%;height: 57%;position: absolute;top: 37%; padding: 0% 5%;}
+        .issue{width: 100%;height: 20%;display:  inline-block;}
+        .issue p{color: springgreen; font-size: 20px; font-family: "宋体"; font-weight: bold;margin: 3% 0 1% 0;}
+        input[type="radio"]{width: 15px;height: 15px;opacity: 0;}
+        label{position: absolute;left: 0px;top: 4px;width: 15px;height: 15px;border: 1px solid #999;cursor: pointer;}
+        .cityInfo{position: relative;line-height: 30px;display: inline-block;margin-left: 10px;font-size: 15px;}
+        input:checked+label {border: 1px solid #2ee74d;}
+        input:checked+label::after {position: absolute;content: "";width: 5px;height: 10px;top: 1px;left: 5px;border: 2px solid rgb(20, 224, 64);
+            border-top: none;border-left: none;transform: rotate(45deg);}
+        span{margin-left: 10px;}
+        
+        .btn{width: 100%; height: 6%;position: absolute;left: 0;top: 95%;}
+        #btn{width: 90%;margin-left: 5%;height: 100%;background-color: #2ee74d;border: none;border-radius: 2px;font-size: 19px;letter-spacing: 25px;}
+    </style>
+</head>
+<body>
+    <section id="one" class="one">
+            <div class="swiper-container imgInfo">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./images/bg.png"/></div>
+                            <div class="swiper-slide"><img src="./images/xf.png"/></div>
+                            <div class="swiper-slide"><img src="./images/bg.png"/></div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="number">
+                    <div class="number1">
+                        <p>访问人数：</p>
+                        <span id="number1">0</span>
+                    </div>
+                    <div class="number1">
+                        <p>总投票数：</p>
+                        <span id="number2">0</span>
+                    </div>
+                </div>
+                <div class="cityOptions" id="cityOptions">
+                    <div class="issue">
+                        <p>问题一：</p>
+                        <div class="cityInfo">
+                            <input type="radio" id="num1" name="city1" class="city1">
+                            <label for="num1"></label>
+                            <span>城市1</span>
+                        </div>
+                        <div class="cityInfo">
+                            <input type="radio" id="num2" name="city1" class="city1">
+                            <label for="num2"></label>
+                            <span>城市2</span>
+                        </div>
+                        <div class="cityInfo">
+                            <input type="radio" id="num3" name="city1" class="city1">
+                            <label for="num3"></label>
+                            <span>城市3</span>
+                        </div>
+                    </div>
+                    <div class="issue">
+                        <p>问题二：</p>
+                        <div class="cityInfo">
+                            <input type="radio" id="num4" name="city2" class="city2">
+                            <label for="num4"></label>
+                            <span>医院</span>
+                        </div>
+                        <div class="cityInfo">
+                            <input type="radio" id="num5" name="city2" class="city2">
+                            <label for="num5"></label>
+                            <span>学校</span>
+                        </div>
+                        <div class="cityInfo">
+                            <input type="radio" id="num6" name="city2" class="city2">
+                            <label for="num6"></label>
+                            <span>公安局</span>
+                        </div>
+                    </div>
+                    <div class="issue">
+                        <p>问题三：</p>
+                        <div class="cityInfo">
+                            <input type="radio" id="num7" name="city3" class="city3">
+                            <label for="num7"></label>
+                            <span>医院</span>
+                        </div>
+                        <div class="cityInfo">
+                            <input type="radio" id="num8" name="city3" class="city3">
+                            <label for="num8"></label>
+                            <span>学校</span>
+                        </div>
+                        <div class="cityInfo">
+                            <input type="radio" id="num9" name="city3" class="city3">
+                            <label for="num9"></label>
+                            <span>公安局</span>
+                        </div>
+                    </div>
+                    <div class="issue">
+                        <p>问题四：</p>
+                        <div class="issue">
+                            <div class="cityInfo">
+                                <input type="radio" id="num10" name="city4" class="city4">
+                                <label for="num10"></label>
+                                <span>网红地</span>
+                            </div>
+                            <div class="cityInfo">
+                                <input type="radio" id="num11" name="city4" class="city4">
+                                <label for="num11"></label>
+                                <span>中心商圈</span>
+                            </div>
+                            <div class="cityInfo">
+                                <input type="radio" id="num12" name="city4" class="city4">
+                                <label for="num12"></label>
+                                <span>旅游圣地</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="issue">
+                        <p>问题五：</p>
+                        <div class="issue">
+                            <div class="cityInfo">
+                                <input type="radio" id="num13" name="city5" class="city5">
+                                <label for="num13"></label>
+                                <span>复式楼</span>
+                            </div>
+                            <div class="cityInfo">
+                                <input type="radio" id="num14" name="city5" class="city5">
+                                <label for="num14"></label>
+                                <span>单身公寓</span>
+                            </div>
+                            <div class="cityInfo">
+                                <input type="radio" id="num15" name="city5" class="city5">
+                                <label for="num15"></label>
+                                <span>别墅小区</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="btn">
+                        <button id="btn">提交</button>
+                </div>
+    </section>
+    <section id="two" class="two" style="display:none;">
+
+    </section>
+    <script src="https://unpkg.com/swiper/js/swiper.js"> </script>  
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+    <script>
+         var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            speed: 200,
+            loop: true,
+            observer:true,
+            observeParents:true,
+            autoplayDisableOnInteraction : false,
+            autoplay:1000
+        });
+        
+    </script>
+    <script src="./js/cityVote.js"></script>
+</body>
+</html>

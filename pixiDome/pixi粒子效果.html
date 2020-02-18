@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi-dust粒子效果</title>
+    <script src="./lib/pixi5.min.js"></script>
+    <script src="./lib/SpriteUtilities.js"></script>
+    <script src="./lib/dust.js"></script>
+    <style>
+        *{margin: 0;}
+    </style>
+</head>
+<body>
+    <script>
+        let option ={
+            width:window.innerWidth,
+            height:window.innerHeight,
+            transparent:true
+        }
+        let app = new PIXI.Application(option);
+        let stage = app.stage;//创建一个舞台
+        let renderer = app.renderer;//创建一个渲染器
+        document.body.appendChild(renderer.view);
+        let su = new SpriteUtilities(PIXI);
+        let d = new Dust(PIXI);
+        let particleStream;
+        let imgURL = "https://www.kkkk1000.com/images/learnPixiJS-ParticleEffects/star.png";
+        PIXI.loader.add(imgURL).load(setup);
+        function setup(){
+            particleStream = d.emitter(
+                100,//第一个参数是创建粒子间隔（以毫秒为单位）
+                ()=>d.create(
+                    128,128,
+                    () => su.sprite(imgURL),
+                    stage,
+                    30,
+                    0.1,
+                    false,
+                    3.14,6.28,
+                    30,60,
+                    1,5
+                )
+            )
+            particleStream.play();
+            gameLoop();//开始循环游戏
+        }
+        function gameLoop(){
+            requestAnimationFrame(gameLoop);
+            d.update();
+            renderer.render(stage);
+        }
+
+    </script>
+</body>
+</html>

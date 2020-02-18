@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-class</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        *{margin: 0;}
+        .app .inner{
+            font-size: 50px;
+        }
+        .app .color{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- 使用v-bind进行绑定 简写  ： -->
+        <!-- 使用['','']标签来实现class渲染 -->
+        <h3 v-bind:class="['inner', 'color']">这是一个H3标签</h3>
+        <!-- vue 使用三元表达式来表达 -->
+        <h3 :class="['inner', flag?'color':'']">这是一个H3标签,vue使用三元表达式</h3>
+        <!-- vue 为提高可读性使用对象形式 {} -->
+        <h3 :class="['inner', {'color':flag}]">这是一个H3标签,vue使用三元表达式的对象形式</h3>
+    </div>
+    <script>
+        let vue = new Vue({
+            el:".app",
+            data:{
+                flag:true
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

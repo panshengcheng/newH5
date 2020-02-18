@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi遮罩练习</title>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+    <script src="./lib/TweenMax.min.js"></script>
+</head>
+<body>
+    <script>
+        let option = {
+            width:window.innerWidth,
+            height:window.innerHeight,
+            autoStart:1,
+            antialias:true,
+            backgroundColor:0X000000
+        }
+        let app = new PIXI.Application(option);
+        let stage = app.stage;
+        let renderer = app.renderer;
+        document.body.appendChild(renderer.view);
+        let loader = new PIXI.Loader();
+        let imgArr = [
+            "img/beijing01.jpg",
+            "img/beijing02.jpg",
+            "img/bj.png",
+            "img/login.png",
+            "img/mask.png",
+            "img/name.png",
+            "img/phone.png"
+        ]
+        loader.add(imgArr);
+        loader.on("progress",function(e){
+            console.log(e.progress);
+        });
+        loader.load(setup);
+        function setup(){
+            let texture = loader.resources["img/mask.png"].texture;
+            //添加精灵
+            let sprite1 = new PIXI.Sprite(texture);
+            sprite1.width = app.screen.width;
+            sprite1.height = app.screen.height;
+            
+            //给精灵添加遮罩
+            let rectangleMask = new PIXI.Graphics();
+            rectangleMask.beginFill(0X66ccfff).drawRect(0, 0, window.innerWidth, window.innerHeight/2).endFill();
+            rectangleMask.position.set(0,0);
+            sprite1.mask = rectangleMask;
+            stage.addChild(sprite1,rectangleMask);
+            TweenMax.to(rectangleMask, 20, {
+                y: 495,
+                ease: Linear.easeNone,
+                onComplete: function () {
+                    console.log("完成动画")
+                    //TweenMax.to(p1Text, 1, { alpha: 0, delay: 3, onComplete: next });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

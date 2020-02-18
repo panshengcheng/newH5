@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi实现视频播放</title>
+    <!-- <script src="./lib/pixi5.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+        }
+        #btnPlay{
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 20;
+            position: absolute;
+            top: 90vh;
+            right: 10vw;
+            z-index: 100;
+            background-color: rgba(255,255,255,0.5);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnPlay">播放</button>
+    <script>
+        let option ={
+            width:window.innerWidth,
+            height:window.innerHeight,
+            transparent:true
+        }
+        let app = new PIXI.Application(option);
+        let stage = app.stage;
+        let renderer = app.renderer;
+        document.body.appendChild(renderer.view);
+        let videoUrl = "./mp4/h5bei03.mp4";
+        //视频纹理
+        let videoTexture;
+        //视频精灵
+        let videoSprite;
+        //视频元素
+        let videoSource;
+        //加载视频纹理
+        videoTexture = PIXI.Texture.from(videoUrl);
+        //创建视频精灵
+        videoSprite = new PIXI.Sprite(videoTexture);
+        //设置视频的宽度和高度
+        videoSprite.width = option.width;
+        videoSprite.height = option.height;
+        //视频元素
+        videoSource = videoTexture.baseTexture.source;
+        //把视频精灵添加到舞台
+        stage.addChild(videoSprite);
+        document.getElementById("btnPlay").addEventListener("touchend", function(){
+            videoSource.play();
+        },false)
+    </script>
+</body>
+</html>

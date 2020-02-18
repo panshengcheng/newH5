@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3响应式页面</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        /* 媒体轮询：
+            media="screen and (min-width:800px)"   //设备屏幕大于800px的
+            media="screen and (min-width:400px) and (max-width:800px)" //设备屏幕小于等800px的，大于400px的
+            media="screen and (max-width:400px)" //设备屏幕小于等于400px的
+            <link rel="stylesheet" media="screen and (min-width:800px)" href="index1.css"/>
+            检测手机横屏或竖屏
+            <link rel="stylesheet" media="all and (orientation:portrait)" href="index1.css"/>  portrait：竖屏
+            <link rel="stylesheet" media="all and (orientation:landscape)" href="index2.css"/> landscape：横屏
+
+
+            //在html文件直接引入
+            @media screen and (min-width:500px){
+
+            }
+            @media screen and (max-width:500px){
+
+            }
+
+            //引入外部样式表 @import url("XXX.css") screen and (min-width:400px) and (max-width:800px);
+             */
+             @media screen and (max-width:500px){
+                .media{
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: red;
+                }
+             }
+
+             @media screen and (min-width:500px){
+                .media{
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: blue;
+                }
+            }
+        
+    </style>
+</head>
+<body>
+    <div class="media"></div>
+</body>
+</html>

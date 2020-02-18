@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百万人理想城市问卷调查</title>
+    <script>
+        (function () {
+            var html = document.documentElement;
+            var width = html.getBoundingClientRect().width;
+            var fs = width/16;
+            html.style.fontSize = fs+"px";
+        })()
+    </script>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <script src="lib/jquery.min.js"></script>
+    <script src="./lib/swiper.js"></script>
+    <script src="./js/alert.js"></script>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="./mp3/bj.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <!-- <audio src="./mp3/choose.mp3" id="choose" preload="true"></audio> -->
+    <section class="bj one" id="one">
+        <img src="./images/1/1-title.png" id="title"/>
+        <img src="./images/1/1-title1.png" id="title1"/>
+        <img src="./images/1/1-btton.png" id="statrtBtn"/>
+        <img src="./images/1/1-logo.png"/>
+    </section>
+    <section class="bj pagebj two">
+        <canvas id="canvas"></canvas>
+        <img class="title" src="./images/2/1-title.png"/>
+        <div class="bottomText page1">
+            <div class="bottomBorder"></div>
+            <div class="sideBorder leftSide twosid"></div>
+            <div class="sideBorder rightSide twosid"></div>
+            <div class="topBorder leftSide twotop"></div>
+            <div class="topBorder rightSide twotop"></div>
+            <p><img src="./images/repeat/bgy-logo.png"/></p>
+            <p class="bottomTextSpanBox">
+                <em>
+                    <span><img src="./images/2/2-title1.png" class="ftitle" data-target="t1Selected" data-btn="t1btn"/></span>
+                    <span><img src="./images/2/2-opionA.png?t=1" id="t1A" class="answer subhead" data-target="t1Selected" data-btn="btn1"/></span>
+                    <span><img src="./images/2/2-opionB.png" id="t1B" class="answer subhead" data-target="t1Selected" data-btn="btn1"/></span>
+                    <span><img src="./images/2/2-opionC.png" id="t1C" class="answer subhead" data-target="t1Selected" data-btn="btn1"/></span>
+                    <span><img src="./images/2/2-opionD.png" id="t1D" class="answer subhead" data-target="t1Selected" data-btn="btn1"/></span>
+                    <span><img src="./images/2/2-opionE.png" id="t1E" class="answer subhead" data-target="t1Selected" data-btn="btn1"/></span>
+                    <span><img src="./images/2/2-btn.png" id="btn1" data-status="0" class="btn btn-t"/></span>
+                </em>
+            </p>
+        </div>
+    </section>
+    <section class="bj pagebj three">
+        <img class="title" src="./images/3/3-title.png"/>
+        <div class="bottomText page2">
+            <div class="bottomBorder"></div>
+            <div class="sideBorder leftSide threesid"></div>
+            <div class="sideBorder rightSide threesid"></div>
+            <div class="topBorder leftSide threetop"></div>
+            <div class="topBorder rightSide threetop"></div>
+            <p><img src="./images/repeat/bgy-logo.png"/></p>
+            <p class="bottomTextSpanBox">
+                <em>
+                    <span><img src="./images/3/3-title1.png" class="ftitle" data-target="t2Selected" data-btn="btn2"/></span>
+                    <span><img src="./images/3/3-opionA.png" id="t2A" class="answer subhead" data-target="t2Selected" data-btn="btn2"/></span>
+                    <span><img src="./images/3/3-opionB.png" id="t2B" class="answer subhead" data-target="t2Selected" data-btn="btn2"/></span>
+                    <span><img src="./images/3/3-opionC.png" id="t2C" class="answer subhead" data-target="t2Selected" data-btn="btn2"/></span>
+                    <span><img src="./images/3/3-opionD.png" id="t2D" class="answer subhead" data-target="t2Selected" data-btn="btn2"/></span>
+                    <span><img src="./images/3/3-opionE.png" id="t2E" class="answer subhead" data-target="t2Selected" data-btn="btn2"/></span>
+                    <span><img src="./images/2/2-btn.png" id="btn2" data-status="0" class="btn btn-t"/></span>
+                </em>
+            </p>
+        </div>
+    </section>
+    <section class="bj pagebj four" >
+        <img class="title" src="./images/4/4-title.png"/>
+        <div class="bottomText page3">
+            <div class="bottomBorder"></div>
+            <div class="sideBorder leftSide foursid"></div>
+            <div class="sideBorder rightSide foursid"></div>
+            <div class="topBorder leftSide fourtop"></div>
+            <div class="topBorder rightSide fourtop"></div>
+            <p><img src="./images/repeat/bgy-logo.png"/></p>
+            <p class="bottomTextSpanBox">
+                <em>
+                    <span><img src="./images/4/4-title1.png" class="ftitle" data-target="t3Selected" data-btn="btn3"/></span>
+                    <span><img src="./images/4/4-A.png" id="t3A" class="answer subhead" data-target="t3Selected" data-btn="btn3"/></span>
+                    <span><img src="./images/4/4-B.png" id="t3B" class="answer subhead" data-target="t3Selected" data-btn="btn3"/></span>
+                    <span><img src="./images/4/4-C.png" id="t3C" class="answer subhead" data-target="t3Selected" data-btn="btn3"/></span>
+                    <span><img src="./images/4/4-D.png" id="t3C" class="answer subhead" data-target="t3Selected" data-btn="btn3"/></span>
+                    <span><img src="./images/4/4-E.png" id="t3C" class="answer subhead" data-target="t3Selected" data-btn="btn3"/></span>
+                    <span><img src="./images/2/2-btn.png" id="btn3" data-status="0" class="btn btn-t"/></span>
+                </em>
+            </p>
+        </div>
+    </section>
+    <section class="bj pagebj five" >
+        <img class="title" src="./images/5/5-title.png"/>
+        <div class="bottomText page4">
+            <div class="bottomBorder"></div>
+            <div class="sideBorder leftSide fivesid"></div>
+            <div class="sideBorder rightSide fivesid"></div>
+            <div class="topBorder leftSide fivetop"></div>
+            <div class="topBorder rightSide fivetop"></div>
+            <p><img src="./images/repeat/bgy-logo.png"/></p>
+            <p class="bottomTextSpanBox">
+                <em>
+                    <span><img src="./images/5/5-title1.png" class="ftitle" data-target="t4Selected" data-btn="btn4"/></span>
+                    <span><img src="./images/5/5-A.png" id="t4A" class="answer subhead" data-target="t4Selected" data-btn="btn4"/></span>
+                    <span><img src="./images/5/5-B.png" id="t4B" class="answer subhead" data-target="t4Selected" data-btn="btn4"/></span>
+                    <span><img src="./images/5/5-C.png" id="t4C" class="answer subhead" data-target="t4Selected" data-btn="btn4"/></span>
+                    <span><img src="./images/5/5-D.png" id="t4D" class="answer subhead" data-target="t4Selected" data-btn="btn4"/></span>
+                    <span><img src="./images/5/5-E.png" id="t4E" class="answer subhead" data-target="t4Selected" data-btn="btn4"/></span>
+                    <span><img src="./images/2/2-btn.png" id="btn4" data-status="0" class="btn btn-t"/></span>
+                </em>
+            </p>
+        </div>
+    </section>
+    <section class="bj pagebj six">
+        <img class="title" src="./images/6/6-title.png"/>
+        <div class="bottomText page5">
+            <div class="bottomBorder"></div>
+            <div class="sideBorder leftSide sixsid"></div>
+            <div class="sideBorder rightSide sixsid"></div>
+            <div class="topBorder leftSide sixtop"></div>
+            <div class="topBorder rightSide sixtop"></div>
+            <p><img src="./images/repeat/bgy-logo.png"/></p>
+            <p class="bottomTextSpanBox">
+                <em>
+                    <span><img src="./images/6/6-title1.png"  class="ftitle" data-target="t5Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/6/6-A.png" id="t5A" class="answer subhead" data-target="t5Selected" data-btn="btn5"/></span>
+                    <span><img src="./images/6/6-B.png" id="t5B" class="answer subhead" data-target="t5Selected" data-btn="btn5"/></span>
+                    <span><img src="./images/6/6-C.png" id="t5C" class="answer subhead" data-target="t5Selected" data-btn="btn5"/></span>
+                    <span><img src="./images/6/6-D.png" id="t5D" class="answer subhead" data-target="t5Selected" data-btn="btn5"/></span>
+                    <span><img src="./images/6/6-E.png" id="t5E" class="answer subhead" data-target="t5Selected" data-btn="btn5"/></span>
+                    <span><img src="./images/2/2-btn.png" id="btn5" data-status="0" class="btn btn-t"/></span>
+                </em>
+            </p>
+        </div>
+    </section>
+    <section class="bj pagebj seven">
+        <img class="title" src="./images/7/7-title.png"/>
+        <div class="bottomText page6">
+            <div class="bottomBorder"></div>
+            <div class="sideBorder leftSide sevensid"></div>
+            <div class="sideBorder rightSide sevensid"></div>
+            <div class="topBorder leftSide seventop"></div>
+            <div class="topBorder rightSide seventop"></div>
+            <p><img src="./images/repeat/bgy-logo.png"/></p>
+            <p class="bottomTextSpanBox">
+                <em>
+                    <span><img src="./images/7/7-title1.png"  class="ftitle" data-target="t6Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/7/7-A.png" id="t6A" class="answer subhead" data-target="t6Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/7/7-B.png" id="t6B" class="answer subhead" data-target="t6Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/7/7-C.png" id="t6C" class="answer subhead" data-target="t6Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/7/7-D.png" id="t6D" class="answer subhead" data-target="t6Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/7/7-E.png" id="t6E" class="answer subhead" data-target="t6Selected" data-btn="btn6"/></span>
+                    <span><img src="./images/repeat/btn.png" id="btn6" data-status="0" class="btn btn-t"/></span>
+                </em>
+            </p>
+        </div>
+    </section>
+    <section class="bj result third">
+        <img class="title" id="r-title" src="./images/repeat/title.png"/>
+        <div class="work">
+            <!-- <img src="images/7/jq.png"/> -->
+            <p> 根据您的选择分析：</p>
+            <p></p>
+            <p style="display: inline;margin-left: 20px;">以下分析相似度为：</p><span style="font-size: 30px;color: red;">&nbsp;<strong id="pnumber" style="font-size: 30px;color: red;" ></strong>%</span>
+        </div>
+        <img src="./images/8/kuang.png" class="kuang"/>
+        <img src="" id="finfo" class="finfo"/>
+        <img class="r-express" id="flogo" src="./images/8/thanks.png"/>
+		<!-- <img class="r-logo" src="./images/7/7-bgy-logo.png"/> -->
+    </section>
+    <!-- 预加载页面 -->
+    <section class="logo" id="loading">
+            <div class="loading">
+                <p id="pros">0%</p>
+            </div>
+    </section>
+    <script src="./lib/TweenMax.min.js"></script>
+    <script src="./js/index.js"></script>
+    
+</body>
+</html>

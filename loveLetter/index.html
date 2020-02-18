@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>来自远方的情书</title>
+    <link rel="stylesheet" href="./css/index.css"/>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="./music/bj.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <section id="zy" class="bj" style="display: none;">
+        <div id='content'>
+            <div id="snowflake"></div>
+        </div>
+        <img class="img2" id="img2" src="./images/xf.png" alt="信"/>
+    </section>
+    <section class="bj2" id="info" style="display: none;">
+        <img class="bimg" src="./images/two/bj2.jpg"/>
+        <div class="myinfo1">
+            <div class="names">
+                <img src="./images/two/name.png"/>
+                <input type="text" id="name" class="name" placeholder="请输入昵称"/>
+            </div>
+            <div class="genderInfo">
+                <img src="./images/two/gender.png"/>
+                <div>
+                    <img class="gen" src="./images/two/n.png"/>
+                    <input type="radio" class="gender gen1" id="male" name="gender" value="male"/>
+                
+                    <img class="gen" src="./images/two/g.png"/>
+                    <input type="radio" class="gender gen2" id="woman" name="gender" value="woman"/>
+                </div>
+            </div>
+            <img id="btnImg" src="./images/two/btn.png"/>
+        </div>
+    </section>
+    <section id="males" class="bj2 males ages" style="display: none;">
+        <div class="title">
+            <img class="png1" src="./images/three/title.png"/>
+            <img class="png" src="./images/three/80.png"/>
+            <input type="radio" class="age age80" name="age" value="80m"/>
+            <img class="png" src="./images/three/90.png"/>
+            <input type="radio" class="age age90" name="age" value="90m"/>
+            <img class="png" src="./images/three/00.png"/>
+            <input type="radio" class="age age00" name="age" value="00m"/>
+            <img id="btn1" class="png2" src="./images/three/btnImg1.png"/>
+        </div>
+    </section>
+    <section id="womans" class="bj2 womans ages" style="display: none;">
+        <div class="title">
+            <img class="png1" src="./images/four/title.png"/>
+            <img class="png"  src="./images/four/80.png"/>
+            <input type="radio" class="age age80" name="age" value="80w"/>
+            <img class="png"  src="./images/four/90.png"/>
+            <input type="radio" class="age age90" name="age" value="90w"/>
+            <img class="png"  src="./images/four/00.png"/>
+            <input type="radio" class="age age00" name="age" value="00w"/>
+            <img id="btn2" class="png2"  src="./images/three/btnImg1.png"/>
+        </div>
+    </section>
+    <section id="isOne" class="bj2 five" style="display: none;">
+        <div class="title">
+            <img class="png3" src="./images/five/isSingleton.png"/>
+            <img class="png"  src="./images/five/isSinleton.png"/>
+            <input type="radio" class="singleton isOne" name="isOne" value="isOne"/>
+            <img class="png"  src="./images/five/noSingleton.png"/>
+            <input type="radio" class="singleton noOne" name="isOne" value="noOne"/>
+            <img class="btn3" id="btn3" src="./images/five/btnImg2.png"/>
+        </div>
+    </section>
+    <section class="bj" id="loading">
+        <div class="loading">
+            <p id="pros">0%</p>
+        </div>
+    </section>
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/pixi5.min.js"></script>
+    <script src="./libs/TweenMax.min.js"></script>
+    <script src="./libs/transit.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

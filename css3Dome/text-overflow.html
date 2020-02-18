@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3文字与字体</title>
+    <style>
+        @font-face {
+            font-family: "MOOC Font";
+            src: url(http://www.imooc.com/Amaranth-BoldItalic.otf);
+        }
+        *{margin: 0;}
+        .text_dome{
+            width: 100%; height: 100px; 
+            background-color:black;
+            color:white;
+            text-overflow: ellipsis;/**ellipsis(表示显示省略号):clip(剪切) */
+            -webkit-text-overflow:ellipsis;
+            overflow: hidden;/**强制文本在一行内显示*/
+            white-space: nowrap;/**超出部分隐藏nowrap*/
+            font-family: "MOOC Font";
+            text-shadow: 10px 10px 3px #fff;/**文字阴影text-shadow:X轴偏移量 Y轴偏移量 模糊程度 阴影颜色*/
+        }
+    </style>
+</head>
+<body>
+    <div class="text_dome">
+        你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，你好不好好，
+    </div>
+</body>
+</html>

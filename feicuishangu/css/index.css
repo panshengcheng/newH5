@@ -1,0 +1,252 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #0a3e45;
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.tLoading{
+    width: 44%;
+    height: 9vh;
+    display: flex;
+    justify-content: center;
+    margin: 38vh auto;
+}
+.loading p{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    font-family: helvetica "微软雅黑";
+    top: 40%;
+    transform: translateY(4rem);
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    /* opacity: 0; */
+} 
+.swiper-wrapper{
+    display: none;
+}
+.swiper-slide{
+    position: relative;
+}
+img{
+    width: 100%;
+    height: 100%;
+    
+}
+.page1-logo{
+    position: absolute;
+    top: 1.5vh;
+    left: 4vw;
+    width: 22vw;
+    height: 5vh;
+}
+.page1-title{
+    position: absolute;
+    top: 43vh;
+    left: 41vw;
+    width: 15vw;
+    height: 22vh;
+}
+.page1-vtitle{
+    position: absolute;
+    top: 72vh;
+    left: 39vw;
+    width: 19vw;
+    height: 2vh;
+}
+.page1-content{
+    position: absolute;
+    top: 78vh;
+    left: 29vw;
+    width: 41vw;
+    height: 3vh;
+}
+.page1-time{
+    position: absolute;
+    top: 93vh;
+    left: 40vw;
+    width: 17vw;
+    height: 1.5vh;
+}
+
+.page2-dtitle{
+    position: absolute;
+    top: 9vh;
+    left: 34vw;
+    width: 30vw;
+    height: 5vh;
+}
+.page2-box{
+    position: absolute;
+    top: 9vh;
+    left: 18.5vw;
+    width: 61vw;
+    height: 74vh;
+}
+.page2-title{
+    position: absolute;
+    top: 30vh;
+    left: 39vw;
+    width: 21vw;
+    height: 2.5vh;
+}
+.page2-content{
+    position: absolute;
+    top: 41vh;
+    left: 24.5vw;
+    width: 50vw;
+    height: 26vh;
+}
+
+.page3-dtitle{
+    position: absolute;
+    top: 9vh;
+    left: 34vw;
+    width: 30vw;
+    height: 5vh;
+}
+.page3-title{
+    position: absolute;
+    top: 17vh;
+    left: 43vw;
+    width: 12vw;
+    height: 19vh;
+}
+.page3-dhImg{
+    position: absolute;
+    top: 41vh;
+    left: 17.5vw;
+    width: 65vw;
+    height: 26vh;
+}
+.page3-time{
+    position: absolute;
+    top: 71vh;
+    left: 31vw;
+    width: 40vw;
+    height: 5vh;
+}
+
+.page3-dhBtn{
+    position: absolute;
+    top: 81vh;
+    left: 34vw;
+    width: 33vw;
+    height: 3.5vh;
+}
+.page3-number{
+    position: absolute;
+    top: 91vh;
+    left: 31vw;
+    width: 37vw;
+    height: 2vh;
+}
+/* 音乐样式 */
+.music{
+    width:30px;
+    height: 30px;
+    position: absolute;
+    top: 3%;
+    right: 6%;
+    z-index: 100;
+}
+.musicPlay{
+    background: url(../img/Music.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-animation: reverseRotataZ 1.2s linear infinite;
+}
+
+.musicStop{
+    background: url(../img/Music.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+@-webkit-keyframes reverseRotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(-360deg);}
+}
+@-webkit-keyframes rotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(0deg);}
+}
+#array {
+    position: absolute;
+    z-index: 999;
+    opacity: 0;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+}
+@-webkit-keyframes start {
+    0%,
+    30% {
+        opacity: 0;
+        -webkit-transform: translateY(5px) rotate(0deg);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translateY(-10px) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(5px) rotate(0deg);
+    }
+}
+
+@-moz-keyframes start {
+    0%,
+    30% {
+        opacity: 0;
+        -moz-transform: translateY(5px) rotate(0deg);
+    }
+
+    60% {
+        opacity: 1;
+        -moz-transform: translateY(-10px) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        -moz-transform: translateY(5px) rotate(0deg);
+        
+    }
+}
+@keyframes start {
+    0%,
+    30% {
+        opacity: 0;
+        transform: translateY(5px) rotate(0deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(5px) rotate(0deg);
+    }
+}

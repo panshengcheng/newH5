@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TweenMax3D和贝塞尔曲线</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #div1{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 50%;
+            height: 100vh;
+            background: red;
+        }
+        #div2{
+            position: absolute;
+            top: 0%;
+            right:0%;
+            width: 50%;
+            height: 100vh;
+            background: red;
+        }
+        #maskLayer{ width:100vh; height:100vh; background-color:#000000; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50);}
+        #bun{position: absolute;top: 40vh;left: 40vw; width:50px; height:50px; background:rgb(248, 243, 243); text-align: center;}
+    </style>
+</head>
+<body>
+    <!-- 
+        多对象运动
+            - staggerTo
+                - 高级技巧cycle的使用
+                - bezier 曲线
+            - staggerFrom
+        回调函数：
+            - onStart(运动开始触发该函数)
+            - onUpdate(运动中触发该函数)
+            - onComplete(运动结束时触发该函数)
+        3D效果
+            - 3D效果的产生方式
+                - TweenMax transformPerspective
+                - CSS perspective
+            - 变换原点
+                - transformOrigin
+    -->
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="maskLayer">
+        <div id="bun">长按三秒开门</div>
+    </div>
+    <script src="../BGY-boshile/js/TweenMax.min.js"></script>
+    <script src="./js/TimelineMax.js"></script>
+    <script>
+        //3D实现开门的形式
+        let startTime,
+            endTime;
+        document.getElementById('bun').addEventListener("touchstart",function(){
+            //获取当前时间
+            let obj = new Date()
+            startTime = obj.getSeconds();
+        },false)
+        document.getElementById("bun").addEventListener("touchend",function(){
+            let obj = new Date()
+            endTime = obj.getSeconds(); 
+            alert("开始时间为："+startTime+"介绍时间为："+endTime);
+            if(endTime !=undefined && startTime !=undefined && (endTime - startTime)>=2){
+                document.getElementById('maskLayer').style.display='none';
+                start3D();
+            }else{
+                alert("您按的时间太短了");
+            }
+        });
+        
+        function start3D(){
+            let t = new TimelineMax();
+            t.set("#div1",{transformPerspective:300, transformOrigin:"left"})//transformPerspective设置3D空间井深,transformOrigin设置变换的原点
+            t.to('#div1',3,{
+                rotationY:130
+            })
+            let t2 = new TimelineMax();
+            t2.set("#div2",{transformPerspective:300, transformOrigin:"right"})
+            t2.to('#div2',3,{
+                rotationY:-130
+            })
+        }
+        // document.onkeydown = function(){
+
+        //     if(window.event && window.event.keyCode == 123) {
+        //         alert("F12被禁用");
+        //         event.keyCode=0;
+        //         event.returnValue=false;
+        //     }
+        //     if(window.event && window.event.keyCode == 13) {
+        //         window.event.keyCode = 505;
+        //     }
+        //     if(window.event && window.event.keyCode == 8) {
+        //         alert(str+"\n请使用Del键进行字符的删除操作！");
+        //         window.event.returnValue=false;
+        //     }
+
+        // }
+            
+    </script>
+</body>
+</html>

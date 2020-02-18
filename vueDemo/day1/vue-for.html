@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-for循环</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- 使用v-for循环渲染数组 当需要索引时："(item, i) in num" -->
+        <p v-for="item in num">{{item}}</p>
+        <!-- 使用v-for循环渲染对象 当需要索引时："(item, i) in num" -->
+        <p v-for="(item, i) in user">索引：{{i}}===== 编号：{{item.id}} ==== 姓名：{{item.name}}</p>
+    </div>
+    <script>
+        let vue = new Vue({
+            el:".app",
+            data:{
+                num:[1,2,3,4,5,6],
+                user:[{
+                    id:1,
+                    name:"小明"
+                },
+                {
+                    id:2,
+                    name:"小张"
+                },
+                {
+                    id:3,
+                    name:"小天"
+                }]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

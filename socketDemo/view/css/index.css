@@ -1,0 +1,11 @@
+body{
+    background-color: darkslategray;
+}
+.sloading{
+    border: 1px solid #ccc;
+    width: 75vw;
+    padding: 5vw;
+    margin: 40vw auto;
+    border-radius: 10px;
+    color: white;
+}

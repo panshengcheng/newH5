@@ -1,0 +1,874 @@
+@charset "utf-8";
+
+/* CSS Document */
+/*reset css*/
+html {
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.6rem;
+}
+
+html,
+body,
+div,
+object,
+iframe,
+applet,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+address,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+progress {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+li {
+  list-style: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: none;
+  line-height: normal;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+body {
+  font-size: 18px;
+  color: #555;
+  background: #f9f9f9;
+}
+
+.clear {
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+/* 项目自定义 */
+a {
+  color: #555;
+}
+
+a:hover {
+  color: #26b6b6;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+:-webkit-input-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+::-webkit-input-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+:-moz-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+::-moz-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+:-o-input-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+::-o-input-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+:-ms-input-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+::-ms-input-placeholder {
+  color: #cbcbcb;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/*
+* page-header start
+*/
+.page-header {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.06);
+  background-color: #fff;
+  z-index: 100;
+  top: 0;
+}
+
+.header-info {
+  width: 1200px;
+  height: 40px;
+  margin: 20px auto 0;
+}
+
+.logo {
+  width: 85px;
+  height: auto;
+  margin-left: 7px;
+}
+
+.logo a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.search {
+  position: relative;
+  margin-left: 43px;
+  width: 452px;
+  height: 100%;
+}
+
+.search .keyword {
+  position: absolute;
+  width: 355px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 10px;
+  left: 0;
+  border: none;
+  background: #fff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.06);
+}
+
+.search .searchbtn {
+  position: absolute;
+  width: 77px;
+  height: 40px;
+  padding: 0;
+  right: 0;
+  border: none;
+  background: url("https://www.h5ketang.com/index/Common/Images/searchbtn.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.coursetab {
+  width: 193px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 251px;
+}
+
+.coursetab .allcourse {
+  float: left;
+  padding: 0 10px;
+}
+
+.coursetab .mycourse {
+  float: right;
+  padding: 0 10px;
+}
+
+.coursetab .allcourse a,
+.coursetab .mycourse a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.coursetab .allcourse a:hover,
+.coursetab .mycourse a:hover {
+  color: #555;
+}
+
+.coursetab .allcourse,
+.coursetab .mycourse {
+  position: relative;
+}
+
+.coursetab .allcourse:after,
+.coursetab .mycourse:after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #26b6b6;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.coursetab .allcourse:hover:after,
+.coursetab .mycourse:hover:after {
+  left: 0%;
+  width: 100%;
+}
+
+
+.logininfo {
+  position: relative;
+  width: 114px;
+  height: 60px;
+  line-height: 40px;
+  float: right;
+}
+
+.loggedin {
+  float: right;
+}
+
+.loggedin .adavatorbox {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.loggedin img {
+  width: 100%;
+  height: 100%;
+}
+
+.loggedin .exit {
+  position: absolute;
+  width: 114px;
+  height: 40px;
+  top: 60px;
+  text-align: center;
+  color: #fff;
+  background: #26b6b6;
+  border-radius: 0px 0px 10px 10px;
+  display: none;
+}
+
+.loggedin .adavatorbox:hover,
+.loggedin .exit:hover {
+  cursor: pointer;
+}
+
+.loggedin:hover .exit{
+  display:block;
+} 
+
+.loggedin .exit a {
+  color: #fff;
+}
+
+.notLogin .login {
+  float: left;
+  padding: 0 10px;
+}
+
+.notLogin span {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  margin-top: 13px;
+  background-color: #b5b5b5;
+}
+
+.notLogin .registration {
+  float: right;
+  padding: 0 10px;
+}
+
+.notLogin a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+* page-header end
+*/
+/* page-wrapper start */
+.page-wrapper {
+  width: 1200px;
+  height: auto;
+  padding: 80px 0 0;
+  margin: 0 auto;
+}
+
+/* page-wrapper end */
+/*
+* footer start
+*/
+.footer {
+  width: 100%;
+  height: 94px;
+  margin-top: 81px;
+  padding-top: 36px;
+  background-color: #fff;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.footer .copyright {
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  color: #909090;
+}
+
+.footer .copyright p {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+  letter-spacing: 1.5px;
+}
+
+.footer .copyright a {
+  color: #909090;
+}
+
+.footer .copyright a:hover {
+  color: #26b6b6;
+}
+
+/*
+* footer end
+*/
+.loggedin .exit a {
+  color: #fff;
+}
+
+.normal-btn {
+  background-color: #26b6b6;
+  color: #fff;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 40px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+  .header-info {
+    width: 100%;
+  }
+
+  .coursetab {
+    margin-left: 20px;
+  }
+
+  .page-wrapper {
+    width: 100%;
+  }
+  
+  .footer{
+  	margin-top:20px;
+  }
+}
+
+/* IPAD样式 */
+@media (min-width: 768px) and (max-width: 992px) {
+  .search .keyword {
+    width: 155px;
+  }
+
+  .search {
+    width: 252px;
+  }
+  
+  .footer{
+  	margin-top:20px;
+  }
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 13.65px;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 23.04px;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+
+  body,
+  html {
+    font-weight: 200;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    font-size: 4.266666vw;
+  }
+
+  /* 头部内容 START */
+  .page-header {
+    height: 6.25rem
+      /* 100/16 */
+    ;
+    padding: 0 .9375rem
+      /* 15/16 */
+    ;
+    box-sizing: border-box;
+  }
+
+  .header-info {
+    position: relative;
+    margin: .875rem
+      /* 14/16 */
+      auto 0;
+  }
+
+  .logo {
+    width: 3.375rem
+      /* 54/16 */
+    ;
+    margin: 0;
+  }
+
+  .coursetab {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-4.375rem
+      /* 70/16 */
+      );
+    width: 9.375rem /* 150/16 */;
+    height: 1.5625rem
+      /* 25/16 */
+    ;
+    margin: 0;
+    font-size: .75rem
+      /* 12/16 */
+    ;
+    line-height: 1.5625rem
+      /* 25/16 */
+    ;
+  }
+
+  .allcourse,
+  .mycourse {
+    box-sizing: border-box;
+  }
+
+  /* 选中状态时给 .allcourse 或 .mycourse 所在元素添加此类名 */
+
+  .allcourse>a,
+  .mycourse>a {
+    color: unset;
+  }
+
+  .search {
+    box-sizing: border-box;
+    width: 100%;
+    height: 2.1875rem
+      /* 35/16 */
+    ;
+    margin: .75rem
+      /* 12/16 */
+      auto .625rem
+      /* 10/16 */
+    ;
+  }
+
+  .search .keyword {
+    width: 80%;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    background-color: #f2f2f3;
+  }
+
+  .search .searchbtn {
+    width: 20%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .search input[type='text'] {
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+  }
+
+  .search input[type='button'] {
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+  }
+
+  .logininfo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: unset;
+    width: 1.875rem /* 30/16 */;
+    height: 1.875rem /* 30/16 */;
+  }
+
+  .notLogin span {
+    display: none;
+  }
+
+  .notLogin .login {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1.25rem
+      /* 20/16 */
+    ;
+    height: 1.25rem
+      /* 20/16 */
+    ;
+    float: unset;
+    padding: unset;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://www.h5ketang.com/index/Common/Images/icon-user.png);
+    text-indent: 999em;
+  }
+
+  .notLogin .registration {
+    display: none;
+  }
+
+  .loggedin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: unset;
+    height: unset;
+    margin: unset;
+  }
+
+  .loggedin .adavatorbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5625rem
+      /* 25/16 */
+    ;
+    height: 1.5625rem
+      /* 25/16 */
+    ;
+    z-index: 3;
+  }
+
+  .page-banner {
+    display: none;
+  }
+
+  /* 头部内容 END */
+
+  /* 底部 START */
+  .footer {
+    margin-top:10px;
+  }
+
+  .footer .copyright {
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  .footer .copyright p {
+    margin: unset;
+    font-size: .625rem
+      /* 10/16 */
+    ;
+    line-height: 1.8;
+    color: #909090;
+    letter-spacing: unset;
+  }
+}

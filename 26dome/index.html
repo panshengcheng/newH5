@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>26度--报名领票</title>
+    <link rel="stylesheet" href="./css/swiper.min.css"/>
+    <link rel="stylesheet" href="./css/animate.min.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/TweenMax.min.js"></script>
+    <script src="./libs/swiper.animate.min.js"></script>
+    <script src="./libs/swiper.min.js"></script>
+</head>
+<body>
+    <!-- 活动主页 -->
+    <!-- <section style="display:none" class="section">
+        
+    </section> -->
+    <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- 活动视频 -->
+                <section class="swiper-slide swiper-slide1 section">
+                    <img src="./img/brand.png" class="brand"/>
+                    <img src="./img/brand1.png" class="brand1"/>
+                    <img src="./img/markIntro.png" id="img1" class="img1">
+                    <video id="video" class="video" src="./mp4/iAndMotherland.mp4" style="object-fit: fill" muted="false" autoplay="autoplay" loop
+                    x5-playsinline="" playsinline="" webkit-playsinline=""  x-webkit-airplay="allow" controls >
+                        您当前浏览器版本过低，请更换浏览器访问
+                    </video>
+                    <img src="./img/videoIntro.png" id="img2" class="img2">
+                </section>
+            
+                <!-- 活动报名 -->
+                <section id="info" class="swiper-slide swiper-slide1 info section">
+                    <canvas id="canvas" class="canvas">
+                            您当前浏览器版本过低，请更换浏览器访问
+                    </canvas>
+                    <img src="./img/brand.png" class="brand2"/>
+                    <img src="./img/brand1.png" class="brand3"/>
+                    <img src="./img/markIntro.png" class="brand4"/>
+                    <img src="./img/apply.png" class="brand5"/>
+                    <div id="myInfo" class="myInfo">
+                        <div class="my">
+                        <span>姓名：</span>
+                            <input type="text" id="myName" class="myName" placeholder="请输入您的真实姓名"/>
+                        </div>
+                        <div class="my">
+                            <span>电话：</span>
+                            <input type="number" id="phone" class="phone" placeholder="请输入您的有效电话号码"/>
+                        </div>
+                       
+                        <button id="btn">提交报名</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    <script src="./js/canvas.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+        });
+        var myVid=document.getElementById("video");
+            //其他移动端浏览器只能让用户自己触发
+            $(window).on('touchstart', function(){
+                $("video")[0].play();
+                myVid.muted=false;
+                
+            });
+            // 兼容微信(微信可以自动播放)
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                $("video")[0].play();
+                myVid.muted=false;
+                plays();
+            }, false);
+            function plays(){
+                    document.getElementById('video').play();
+            }
+    </script>
+</body>
+</html>

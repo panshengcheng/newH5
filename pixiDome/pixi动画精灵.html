@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pixi动画精灵</title>
+    <script src="./lib/pixi5.min.js"></script>
+    <script src="./lib/SpriteUtilities.js"></script>
+    <style>
+        *{
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //let pixi = new PIXI.extras.AnimatedSprite(textures,autoUpdate);
+        //textures  array 用一系列略有不同的图像做的纹理数组
+        //autoUpdate boolean 默认true 用来判断是否使用PIXI.ticker.shared自动更新动画时间
+        /** pixi 返回对象：返回一些对象属性和方法，用于控制动画精灵
+         *  属性：
+         *      animationSpeed(number) 动画精灵的播放速度，越高越快，默认值1
+         *      currentFrame(number只读) 正在显示的当前帧编号
+         *      onComplete function 当loop属性为false时，一个动画精灵完成播放时调用
+         *      playing Boolean 确定当前动画精灵是否正在播放
+         *      onFrameChange function 当一个动画精灵更改要呈现的纹理时调用
+         *      loop boolean 动画精灵是否在播放后重复播放
+         *      onLoop function 当loop属性为true时调用的函数
+         *      textures array 用于这个动画精灵的纹理数组
+         *      totalFrames number(只读) 动画中的帧总数
+         * 方法：
+         *      play 播放动画精灵
+         *      gotoAndPlay 转到特定的帧并开始播放动画精灵
+         *      stop  停止播放动画精灵
+         *      gotoAndStop  转到特定的帧并停止播放动画精灵
+         * 
+         */
+        let option ={
+            width:window.innerWidth,
+            height:window.innerHeight,
+            transparent:true
+        }
+        //创建一个pixi应用
+        let app = new PIXI.Application(option);
+        //获取渲染器
+        let renderer = app.renderer;
+        document.body.appendChild(renderer.view);
+        //设置别名
+        let TextureCache = PIXI.utils.TextureCache;
+        let Texture = PIXI.Texture;
+        let Rectangle = PIXI.Rectangle;
+        let AnimatedSprite = PIXI.extras.AnimatedSprite;
+        let su = new SpriteUtilities(PIXI);
+        //需要添加的雪碧图地址
+        let imgUrl = "https://www.kkkk1000.com/images/learnPixiJS-AnimatedSprite/dnf.png";
+        //加载图像，加载完成后执行setup
+        PIXI.loader.add(imgUrl).load(setup);
+        function setup(){
+            //获取纹理
+            let base = TextureCache[imgUrl];
+            //filmstrip(imgurl,frameWidth,frameHeight,optionalPadding);
+            /**
+             * filmstrip:可以自动将雪碧图用于制作精灵的纹理数组
+             *      imgurl：雪碧图路径
+             *      franeWidth:每帧的宽度
+             *      franeHeight:每帧的高度
+             *      optionalPadding:每帧周围的填充量（可选）
+             * 返回值：一个可以用于制作精灵的动画数组
+             * 
+             */
+             //frames 方法使用雪碧图中的一组子帧，来创建纹理数组
+             //su.frames(source, coordinates, frameWidth, frameHeight); 其他的同上：coordinates：包含每一帧的x和y坐标的二维数组
+            //let textures =su.filmstrip(imgUrl,80,143);
+            let textures = su.frames(imgUrl, [[0,0],[80,0],[160,0],[240,0]],80, 143);
+            console.log(textures);
+            //第一个纹理
+            // let texture0 =new Texture(base);
+            // texture0.frame = new Rectangle(0,0,80,143);
+            // //第二个纹理
+            // let texture1 = new Texture(base);
+            // texture1.frame = new Rectangle(80,0,80,143);
+            // //第三个纹理
+            // let texture2 = new Texture(base);
+            // texture2.frame = new Rectangle(160,0,80,143);
+            // //第四个纹理
+            // let texture3 = new Texture(base);
+            // texture3.frame = new Rectangle(240,0,80,143);
+            // //创建纹理数组
+            // let textures = [texture0,texture1,texture2,texture3];
+            //创建动画精灵
+            let pixie = new PIXI.extras.AnimatedSprite(textures);
+            //设置动画精灵的速度
+            pixie.animationSpeed=0.1;
+            //把精灵添加到舞台
+            app.stage.addChild(pixie);
+            //播放动画精灵
+            pixie.play();
+        }
+    </script>
+</body>
+</html>

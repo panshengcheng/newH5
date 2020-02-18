@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中铁阅山湖</title>
+    <script>
+        (function () {
+            var html = document.documentElement;
+            var width = html.getBoundingClientRect().width;
+            var fs = width/16;
+            html.style.fontSize = fs+"px";
+        })()
+    </script>
+    <link rel="stylesheet" href="./css/swiper.min.css"/>
+    <link rel="stylesheet" href="./css/animate.min.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <script src="../invite1/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="music">
+        <audio id="bgMusic" src="../invite1/mp3/Bloom of Youth.mp3" autoplay="autoplay" preload="true" loop="loop"></audio>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+                <img src="./img/xh.gif" id="imggif"/>
+                <img src="./img/page1/bj.png"/>
+                <img class="page ani title" swiper-animate-effect="zoomIn" swiper-animate-duration="1.5s" swiper-animate-delay="0.3s" src="./img/page1/title.png"/>
+                <img class="page ani vtitle-1" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="1.5s" src="./img/page1/vtitle-1.png"/>
+                <img class="page ani vtitle-2" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="1.5s" src="./img/page1/vtitle-2.png"/>
+                <img class="page ani time" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="2.4s" src="./img/page1/p1-time.png"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/page2/bj.png">
+              <img class="page ani page2-title" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s" src="./img/page2/title.png"/>
+              <!-- <img class="page ani page2-xhx" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="1s" src="./img/page2/xiahuaxian.png"/> -->
+              <img class="page ani page2-con" swiper-animate-effect="fadeIn" swiper-animate-duration="2.5s" swiper-animate-delay="1s" src="./img/page2/content.png"/>
+              <img class="page ani page2-vtitle" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.3s" swiper-animate-delay="2.5s" src="./img/page2/vtitle.png"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/page3/bj.png"/>
+              <img class="page ani page3-title" swiper-animate-effect="fadeInDown" swiper-animate-duration="1s" swiper-animate-delay="0.3s" src="./img/page3/title.png"/>
+              <img class="page ani page3-con" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="1s" src="./img/page3/content.png"/>
+              <img class="page ani page3-img" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="2s" src="./img/page3/img.png"/>
+          </div>
+          <div class="swiper-slide">
+              <img src="./img/4-1.jpg"/>
+              <div id="form">
+                  <input type="text" id="name" maxlength="6" placeholder="您的姓名："/>
+                  <input type="number" id="phone" maxlength="11" placeholder="联系电话："/>
+                  <button id="submit">报名提交</button>
+              </div>
+              <a id="position" href="https://uri.amap.com/marker?position=106.6006636620,26.6313092609&name=贵州省贵阳市观山湖区观山西路悦湖薹艺术馆中国中铁置业贵州公司">
+                   一键导航
+
+                </a>
+          </div>
+        </div>
+        <div class="tubiao" id="tubiao">
+            <img src="../invite1/img/arrow.png" style="width:30px;height:20px; top:90vh; left:45vw;" id="array" class="resize">
+        </div>
+        
+      </div>
+      <div class="loading">
+            <!-- <img class="bjLoading" src="./img/all-bj.png"/> -->
+            <img class="tLoading" src="./img/fengxiang.jpg"/>
+            <p>0%</p>
+        </div>
+    <script src="../invite1/js/swiper.min.js"></script>
+    <script src="./js/swiper.animate.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        //音乐
+        let objMusic = document.getElementById('bgMusic');
+        let musicState = true;
+        function musicPlay(){
+            $(".music").removeClass('musicStop').addClass('musicPlay');  
+            if(objMusic.paused){
+                objMusic.play();
+                objMusic.muted=false;
+            } 
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.play();
+                objMusic.muted=false;
+            },false)    
+        }
+
+
+        function musicStop(){
+            objMusic.pause();
+            document.addEventListener("WeixinJSBridgeReady",function(){
+                objMusic.pause();
+                objMusic.muted=true;
+            },false)
+            $(".music").removeClass('musicPlay').addClass('musicStop');
+            
+        }
+        musicPlay();
+        $('.music').bind("touchend",function(){
+            if(musicState){
+                musicStop();
+                musicState=false;
+            }else{
+                musicPlay();
+                musicState=true;
+            }
+        })
+        let mySwiper = new Swiper('.swiper-container',{
+            direction: 'vertical',
+            touchRatio : 0.1,
+            on:{
+                init: function(){
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                }, 
+                slideChangeTransitionStart:function(){
+                        if(this.activeIndex === 3){
+                            $("#tubiao").css("display","none");
+                        }else{
+                            $("#tubiao").css("display","block");
+                        }
+                    },
+                slideChangeTransitionEnd: function(){ 
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+                } 
+            }
+        })
+    </script>
+</body>
+</html>

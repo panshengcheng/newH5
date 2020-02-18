@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>陀螺仪测试</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        #tuo{
+            width: 100%;
+            height: 100%;
+            background-color: aqua;
+        }
+        #box{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -25px 0 0 -25px;
+            width:50px;
+            height: 50px;
+            background-color: red;
+            color: #fff;
+            font-size: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="tuo">
+        <h1>陀螺仪测试</h1>
+    </div>
+    <div id="box"></div>
+    <script>
+        (function(){
+            var box =document.getElementById("box");
+            var lastX;
+            var lastY;
+            var lastZ;
+            var maxRang = 80;
+            var minRang = 20;
+            var isShake = false;
+            //摇一摇，记录上一次的重力加速度，和当前次的加上速度相减差值大于一定幅度的时候，就可以认定用户在进行摇一摇
+            window.addEventListener('devicemotion', function(e){
+                var motion = e.accelerationIncludingGravity;//调用陀螺仪
+                var x = Math.round(motion.x);
+                var y = Math.round(motion.y);
+                var z = Math.round(motion.z);
+                if(typeof lastX == "undefined"){
+                    lastX = x;
+                    lastY = y;
+                    lastZ = z;
+                    return;
+                }
+                //Math.abs取绝对值
+                var dis = Math.abs(x - lastX) + Math.abs(y - lastY) + Math.abs(z - lastZ);
+                //获取摇晃次数的最大值
+                //var max = Math.max(dis,)
+                if(dis > maxRang){//晃动幅度大于80时，用户摇晃了手机
+                    isShake = true;
+                }
+
+                if(dis < minRang && isShake){
+                    //执行摇一摇
+                    isShake = false;
+                }
+                lastX = x;
+                lastY = y;
+                lastZ = z;
+                if(getAdr()){
+                    x = -x;
+                    y = -y;
+                    z = -z;
+                }
+
+            })
+        })();
+        //判断其是否为安卓
+        function getAdr(){
+            var u = navigator.userAgent;//获取手机型号：IOS 或 Android
+            return u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+        }
+    </script>
+</body>
+</html>

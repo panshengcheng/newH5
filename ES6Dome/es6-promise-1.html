@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6之Promise之then方法</title>
+    <script>
+        new Promise((resolve,reject)=>{
+            setTimeout(function(){
+                console.log(1);
+                resolve("成功");
+            },2000);
+        }).then((data)=>{//then方法里接受两个函数，第一个函数里执行的上一层执行成功的数据，第二个函数里执行的是上一层执行失败的结果，当该方法执行结束后会返回一个新的promise对象
+            new Promise((resolve,reject)=>{
+                console.log(data)
+                resolve(data);
+            })
+        },(err)=>{
+            console.log(err);
+        }).then((data)=>{
+            console.log(data);
+        },(err)=>{
+            console.log(err);
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

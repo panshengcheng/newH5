@@ -1,0 +1,218 @@
+*{margin: 0;padding: 0;overflow: hidden;}
+html body section{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* background: url(../images/bg.png) no-repeat 60% 40% #f9b92e;
+    background-size: 7.96875rem 6.40625rem; */
+    background-color: coral;
+    z-index: 999999;
+    color: #fff;
+    font-size: 1.09rem;
+}
+.loading p{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    font-family: helvetica "微软雅黑";
+    top: 40%;
+    transform: translateY(4rem);
+}
+
+.bj{
+    width: 100vw;
+    height: 100vh;
+    background:url(../images/bg.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.img2{
+    width: 70%;
+    position: absolute;
+    top: 40%;
+    left: 15%;
+}
+
+#snowflake { width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; }
+.snowRoll { position: absolute; opacity: 0; -webkit-animation-name: mysnow; -webkit-animation-duration: 20s; -moz-animation-name: mysnow; -moz-animation-duration: 20s; height: 80px; }
+ @-webkit-keyframes mysnow { 0% {
+ bottom: 100%;
+}
+ 50% {
+ -webkit-transform: rotate(1080deg);
+}
+ 100% {
+ -webkit-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+}
+}
+ @-moz-keyframes mysnow { 0% {
+ bottom: 100%;
+}
+ 50% {
+ -moz-transform: rotate(1080deg);
+}
+ 100% {
+ -moz-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+}
+}
+
+
+/* 第二页 */
+.bimg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.myinfo1{
+    position:absolute;
+    top: 33%;
+    left: 19%;
+    width: 70%;
+}
+#name{
+    width: 50%;
+    height: 31px;
+    margin-left: 34%;
+    border: none;
+    color: cyan;
+    font-size: 20px;
+    margin-top: 2%;
+}
+.genderInfo{
+    margin-top: 5%;
+}
+.genderInfo .gen{
+    margin: 6%;
+}
+
+.gen1{
+    position: absolute;
+    left: 9%;
+    top: 48%;
+    width: 54px;
+    height: 35px;
+    opacity: 0;
+}
+
+.gen2{
+    position: absolute;
+    left: 53%;
+    top: 48%;
+    width: 54px;
+    height: 35px;
+    opacity: 0;
+}
+.gen:active{
+    /* background-color: red; */
+    transform: rotate(2);
+}
+
+#btnImg{
+    margin: 8%;
+}
+
+/* 根据性别选择年龄 */
+.bj2{
+    width: 100%;
+    height: 100vh;
+    background: url(../images/two/bj2.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.title{
+    position: absolute;
+    top: 30%;
+    left: 14%;
+    width: 70%;
+}
+.title .png1{
+    margin: 5%;
+    width: 90%;
+}
+.title .png{
+    width: 70%;
+    height: 4vh;
+    margin: 12% 0% 4% 15%;
+} 
+.title .png2{
+    margin: 3% 10% 0% 14%;
+}
+.age{
+    position: absolute;
+    left: 13%;
+    top: 28%;
+    width: 27vh;
+    height: 4vh;
+    opacity: 0;
+}
+.age90{
+    top: 48%;
+}
+.age00{
+    top: 68%;
+}
+
+/* 第四页 */
+.title .png3{
+    margin: 5%;
+    width: 81%;
+}
+
+.title .btn3{
+    margin: 24% 10% 0% 14%;
+}
+.singleton{
+    position: absolute;
+    width: 49vw;
+    height: 4vh;
+    opacity: 0;
+}
+.isOne{
+    top: 31%;
+    left: 15%;
+}
+.noOne{
+    top: 53%;
+    left: 15%;
+}
+
+/* 音乐样式 */
+.music{
+    width:20px;
+    height: 20px;
+    position: absolute;
+    top: 3%;
+    right: 4%;
+    z-index: 100;
+    
+}
+.musicPlay{
+    background: url(../images/musicPlay.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-animation: reverseRotataZ 1.2s linear infinite;
+}
+
+.musicStop{
+    background: url(../images/musicStop.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+@-webkit-keyframes reverseRotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(-360deg);}
+}
+@-webkit-keyframes rotataZ{
+    0%{-webkit-transform: rotateZ(0deg);}
+    100%{-webkit-transform: rotateZ(360deg);}
+}
+
+/* music */

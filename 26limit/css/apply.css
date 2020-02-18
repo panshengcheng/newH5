@@ -1,0 +1,92 @@
+html body {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+}
+html body .apply {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/souye.jpg");
+  position: absolute;
+  background-size: 100vw 100vh;
+  top: 0;
+  left: 0;
+}
+html body .apply .img0 img {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+html body .apply .title {
+  position: absolute;
+  top: 8rem;
+  left: 4.1rem;
+  width: 17.5rem /* 280/16 */;
+  height: 7.625rem /* 244/16 */;
+  font-size: 36px;
+  text-align: center;
+  font-family: SourceHanSansSC-regular;
+  color: #fcf4f4;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+html body .apply .name {
+  position: absolute;
+  left: 80px;
+  top: 467px;
+  width: 250px;
+  height: 35px;
+  line-height: 20px;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #ffffff;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+html body .apply .name #name {
+  border-radius: 5px;
+  height: 30px;
+  line-height: 20px;
+  font-size: 20px;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 0px;
+}
+html body .apply .phone {
+  position: absolute;
+  left: 80px;
+  top: 528px;
+  width: 250px;
+  height: 35px;
+  line-height: 20px;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #ffffff;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+html body .apply .phone #phone {
+  border-radius: 5px;
+  height: 30px;
+  line-height: 20px;
+  font-size: 20px;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 0px;
+}
+html body .apply #btn {
+  position: absolute;
+  left: 130px;
+  top: 600px;
+  width: 136px;
+  height: 32px;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 5px 5px 5px 5px;
+  font-family: PingFangSC-regular;
+  background-color: rgba(34, 240, 34, 0.8);
+  border: 0px;
+}
+html body .apply #btn a {
+  color: #eee6e6;
+  font-weight: 5px;
+}

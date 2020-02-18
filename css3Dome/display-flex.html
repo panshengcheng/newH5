@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display-flex弹性盒模型</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .root{
+            width: 80%;
+            margin: 0 auto;/*水平居中*/
+            /* 给父元素设置display-flex属性:控制子元素的排列方式：
+                    flex-direction:设置元素的排列方式
+                            row：元素从左到右横向排列，
+                            row-reverse：元素从右向左横向排列
+                            column：元素从上到下按顺序排列
+                            column-reverse：元素从下到上按顺序排列 */
+            display: flex;/*规定元素为块级弹性盒模型*/
+            border: solid 1px red;
+            flex-direction: row;
+            /* 
+                    flex-wrap:默认情况下，项目都排在一条轴线上，如果一条轴线排不下，flex-wrap规定子元素如何进行排序
+                            nowrap:(默认)不换行
+                            wrap:换行，第一行在最上面，如果元素排不下会挤到下一行重新开始
+                            wrap-reverse:换行，在第一行的上方
+             */
+            flex-wrap: nowrap;
+            /*
+                    justify-content:定义主轴的对齐方式
+                            flex-start：（默认）左对齐
+                            flex-end：右对齐
+                            center：居中
+                            space-between：两端对齐，项目之间的间隔都相等
+                            space-around：每个项目两侧的间隔相等，所以之间的间隔比项目与边框的间隔大一倍
+            */
+            justify-content:space-around;
+            /*
+                    align-items:定义项目在交叉轴上如何对齐
+                            flex-start：交叉轴的起点对齐
+                            flex-end：交叉轴的终点对齐
+                            center：交叉轴的中点对齐
+                            baseline：项目的第一行文字的基线对齐
+                            stretch：(默认)如果项目未设置高度或设置为auto，将占满整个容器的高度
+            */
+            align-items: baseline;
+            /*
+                    align-content：定义了多根轴的对齐方式，如果只有一根轴该属性不起作用
+                        flex-start：与交叉轴的起点对齐
+                        flex-end：与交叉轴的终点对齐
+                        center：与交叉轴的中点对齐
+                        space-between：与交叉轴两端对齐，轴线之间的间隔平均分布
+                        space-around：每根轴线两侧的间隔都相等，所以轴线之间的间隔比轴线与边框的间隔大一倍
+                        stretch：(默认值)轴线占满两交叉轴
+            */
+            align-content: flex-end;
+        }
+        .root div{
+            width: 100px;
+            height: 50px;
+            border: blue solid 1px;
+            /*order: 2;定义项目的排列顺序*/
+            /* flex-grow: 2;定义项目的放大比例 */
+            /* flex-shrink:3;定义了项目的缩小比例 */
+            /* flex:none; */
+            align-self: auto;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="root"><!--父元素-->
+        <!--子元素-->
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+</html>

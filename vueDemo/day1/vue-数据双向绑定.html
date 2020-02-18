@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue v-model实现数据双向绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .input{
+            width: 100%;
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>{{msg}}</h3>
+        <input type="text" class="input" v-model="msg"/>
+    </div>
+    <script>
+        let vue = new Vue({
+            el:"#app",
+            data:{
+                msg:"实现数据双向绑定"
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

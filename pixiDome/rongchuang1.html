@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>融创预约</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="lib/pixi5.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <!-- <script src="lib/jquery.min.js"></script> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #inputText{
+            top: 23.5rem;
+            left: 7.4rem;
+            position: absolute;
+            z-index: 999;
+        }
+        #inputPhone{
+            top: 26rem;
+            left: 7.3rem;
+            position: absolute;
+            z-index: 999;
+        }
+        input{
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <div id="inputText">
+        <input type="text" id="userName" style="border:0px;background:none; width: 90%;">
+    </div>
+    <div id="inputPhone">
+            <input type="number" id="phone" style="border:0px;background:none; width: 90%;">
+    </div>
+    </div>
+    <script src="js/rongchuang.js"></script>
+</body>
+</html>

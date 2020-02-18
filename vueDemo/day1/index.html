@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一个VUE程序</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-2">
+        <span v-bind:title="message">
+            鼠标悬停几秒，查看此处动态绑定的提示信息
+        </span>
+    </div>
+    <div id="app-3">
+        <p v-if="seen">你现在看到我了</p>
+    </div>
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">反转消息</button>
+    </div>
+    <div id="app-6">
+        <p>v-model实现应用于表单之间双向绑定</p>
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app-2',
+            data:{
+                message:"页面加载于 "+new Date().toLocaleString()
+            }
+        });
+        console.log(app.$el === document.getElementById("app-2"));
+
+        let app2 = new Vue({
+            el:"#app-3",
+            data:{
+                seen:false
+            }
+        })
+        let app4 = new Vue({
+            el:'#app-4',
+            data:{
+                todos:[
+                    {text:'谐谑 JavaScript'},
+                    {text:"学习 VUE"},
+                    {text:"整个项目"},
+                ]
+            }
+        });
+        
+        let app5 = new Vue({
+            el:"#app-5",
+            data:{
+                message:"你好， VUE",
+            },
+            methods:{
+                reverseMessage: function(){
+                    this.message = this.message.split('').reverse().join('')//把获取到的字符串，以空格分开，reverse()反转，join()重新组合
+                }
+            }
+        })
+        let app6 = new Vue({
+            el:"#app-6",
+            data:{
+                message:'Hello Vue!'
+            }
+        })
+    </script>
+</body>
+</html>

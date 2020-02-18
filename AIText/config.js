@@ -1,0 +1,2 @@
+const APIKEY = 'wC1EHI4IKC34KsJGltwtkx_3VkzH4wo4';
+const APISECRET = '4AXTZzP9gX-a1Yl1Fapz-Wc6G1FqbYKH';

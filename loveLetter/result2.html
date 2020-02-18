@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>长按保存测试页面</title>
+    <script src="./libs/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="./libs/CanvasImages.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html body{width: 100vw;height:100vh;}
+        .wrap{width: 100%;height: 100%;position: relative;top: 0;left: 0;}
+        .wrap img:nth-of-type(1){width:100%;height:100%;position: absolute;top: 0;left: 0;}
+        .wrap img:nth-of-type(2){width:100%;height:100%;position: absolute;top: 0;left: 0;}
+    </style>
+</head>
+<body>
+    <div class="wrap" id="wrap">
+        <img src="./images/bg.png" alt="">
+        <img src="./images/xf.gif">
+    </div>
+
+    <script>
+        //检测屏幕按下时间
+        getTouchTime();
+        function getTouchTime(){
+            let startTime = 0;
+            let stopTime = 0;
+            let wrapTime = document.getElementById("wrap");
+            wrapTime.addEventListener("touchstart",function(e){
+                startTime =+ new Date();
+                console.log("开始时间："+startTime);
+            },false);
+            wrapTime.addEventListener("touchend",function(e){
+                stopTime =+ new Date();
+                console.log("结束时间为："+stopTime)
+                if(stopTime -startTime >700){
+                    convert2canvas();
+                }else{
+                    alert("您按的时间太短了");
+                }
+            },false);
+            
+        }
+        
+        function convert2canvas() {
+            console.log("进来咯1")
+            // 获取需要转化的dom对象 直接使用$('.wrap')选取的为jquery对象 无法继续操作
+            var cntElem = $('.wrap')[0];
+
+            var shareContent = cntElem; //需要截图的包裹的（原生的）DOM 对象
+            var width = shareContent.offsetWidth; //获取dom 宽度
+            var height = shareContent.offsetHeight; //获取dom 高度
+
+            var canvas = document.createElement("canvas"); //创建一个canvas节点
+            var scale = 2; //定义任意放大倍数 支持小数
+            canvas.width = width * scale; //定义canvas 宽度 * 缩放
+            canvas.height = height * scale; //定义canvas高度 *缩放
+            //放大后再缩小提高清晰度
+            canvas.getContext("2d").scale(scale, scale); 
+            
+            console.log(width)
+            console.log(height)
+            // 设置html2canvas方法的配置
+            var opts = {
+                scale: scale, // 添加的scale 参数
+                canvas: canvas, //自定义 canvas
+                // allowTaint: true, //允许画布上有跨域图片 不建议使用 后面详细补充
+                // logging: true, //日志开关，便于查看html2canvas的内部执行流程
+                width: width, //dom 原始宽度
+                height: height,
+                useCORS: true // 【重要】开启跨域配置
+            };
+            // 开始转化为canvs对象
+            html2canvas(shareContent, opts).then(function(canvas) {
+
+                var context = canvas.getContext('2d');
+                // 【重要】关闭抗锯齿
+                context.mozImageSmoothingEnabled = false;
+                context.webkitImageSmoothingEnabled = false;
+                context.msImageSmoothingEnabled = false;
+                context.imageSmoothingEnabled = false;
+
+                // 【重要】默认转化的格式为png,也可设置为其他格式
+                var img = Canvas2Image.convertToJPEG(canvas, canvas.width, canvas.height);
+               
+                //转化后放哪 最好放在与 .wrap 父级下
+                var detail = document.getElementsByClassName("wrap")[0];
+                console.log(detail);
+                detail.appendChild(img);
+                // 最后设置img标签为正常高度宽度 提高清晰度
+                $(img).css({
+                "width": canvas.width / 2 + "px",
+                "height": canvas.height / 2 + "px",
+                }).addClass('f-full');
+
+            });
+        }
+        // $.fn.longPress = function(fn) {
+        //     let timeout = 0;
+        //     const $this = this;
+        //     for (let i = 0; i < $this.length; i++) {
+        //         $this[i].addEventListener('touchstart', () => {
+        //             timeout = setTimeout(fn, 800); // 长按时间超过800ms，则执行传入的方法 
+        //         }, false);
+        //         $this[i].addEventListener('touchend', () => {
+        //             clearTimeout(timeout); // 长按时间少于800ms，不会执行传入的方法
+        //         }, false);
+        //     }
+        // };
+        // $('img').longPress(() => {
+        //     saveImg();
+        // });
+        // saveImg() {
+        //     // 想要保存的图片节点
+        //     const dom = document.querySelector('img');
+
+        //     // 创建一个新的canvas
+        //     const Canvas = document.createElement('canvas');
+        //     const width = document.body.offsetWidth;  // 可见屏幕的宽
+        //     const height = document.body.offsetHeight;  // 可见屏幕的高
+        //     const scale = window.devicePixelRatio;  // 设备的devicePixelRatio
+
+        //     // 将Canvas画布放大scale倍，然后放在小的屏幕里，解决模糊问题
+        //     Canvas.width = width * scale;
+        //     Canvas.height = height * scale;
+        //     Canvas.getContext('2d').scale(scale, scale);
+
+        //     html2canvas(dom, {
+        //         canvas: Canvas,
+        //         scale,
+        //         useCORS: true,
+        //         logging: true,
+        //         width: width + 'px',
+        //         hegiht: height + 'px',
+        //     }).then((canvas) => {
+        //             const context = canvas.getContext('2d');
+        //             // 关闭抗锯齿形
+        //             context.mozImageSmoothingEnabled = false;
+        //             context.webkitImageSmoothingEnabled = false;
+        //             context.msImageSmoothingEnabled = false;
+        //             context.imageSmoothingEnabled = false;
+        //             // canvas转化为图片
+        //             const img = canvas2Image(canvas, canvas.width, canvas.height);
+        //             document.body.appendChild(img);
+        //             img.style.cssText = "width:100%;height:100%;position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;";
+        //     }
+        // }
+        // canvas2Image(canvas, width, height) {
+        //     const retCanvas = document.createElement('canvas');
+        //     const retCtx = retCanvas.getContext('2d');
+        //     retCanvas.width = width;
+        //     retCanvas.height = height;
+        //     retCtx.drawImage(canvas, 0, 0, width, height, 0, 0, width, height);
+        //     const img = document.createElement('img');
+        //     img.src = retCanvas.toDataURL('image/jpeg');  // 可以根据需要更改格式
+        //     return img;
+        // }
+    
+    </script>
+</body>
+</html>

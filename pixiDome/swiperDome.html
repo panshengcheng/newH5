@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>swiper测试</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <style>
+       .swiper-container {
+            width: 600px;
+            height: 300px;
+            /* -webkit-animation:mymove 5s infinite; */
+        } 
+        /* @keyframes mymove
+        {
+        from {top:0px;}
+        to {top:200px;}
+        }
+        @-webkit-keyframes mymove{
+            0%{
+                background-color: #ebc446
+            }
+            20%{
+                background-color: #1363bc;
+                height:250px
+            }
+            40%{
+                background-color: #cf0fff;
+                height:300px
+            }
+            60%{
+                background-color: #810977;
+                height:350px
+            }
+            80%{
+                background-color: #c91f10;
+                height:400px
+            }
+            100%{
+                background-color: #ffc602;
+                height:450px
+            }
+ 
+        } */
+        .page {
+            background-color: red;
+        }
+        /*.swiper-slide1 {
+            background-color: aqua;
+        }
+        .swiper-slide2 {
+            background-color: blue;
+        }*/
+        
+    </style>
+</head>
+<body>
+        <div id="slide" class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div  class="swiper-slide page cover" >
+                    <img src="images/biaoqing01.jpg" alt="" class="bgImg" swiper-animate-effect="" swiper-animate-duration="" swiper-animate-delay="">
+                   
+                  </div>
+                  <div  class="swiper-slide page" style='background:green'>
+                    <img src="images/biaoqing02.jpg" alt="" class="bgImg" swiper-animate-effect="" swiper-animate-duration="" swiper-animate-delay="">
+                   
+                  </div>
+                  <div  class="swiper-slide page" style='background:blue'>
+                    <img src="images/biaoqing03.jpg" alt="" class="bgImg" swiper-animate-effect="" swiper-animate-duration="" swiper-animate-delay="">
+                    
+                  </div>
+                  <div  class="swiper-slide page" style='background:blue'>
+                      <img src="images/biaoqing04.jpg" alt="" class="bgImg" swiper-animate-effect="" swiper-animate-duration="" swiper-animate-delay="">
+                      
+                    </div>
+                  <!-- <div class="swiper-slide">
+                      <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">内容</p>
+                      </div> -->
+                  
+                </div>
+                <div class="swiper-pagination"></div><!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
+              
+        
+              </div>
+              
+
+    <script src="lib/swiper.min.js"></script>
+    <script src="lib/swiper.animate1.0.3.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="js/swiperDome.js"></script>
+</body>
+</html>

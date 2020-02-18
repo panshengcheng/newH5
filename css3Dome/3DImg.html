@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D幻灯片</title>
+    <style>
+        body,ul,ol{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+           list-style: none; 
+        }
+        .wrap{
+            width: 800px;
+            margin: 100px auto 0;
+        }
+        #picList{
+            width: 800px; height: 360px; -webkit-perspective: 800px; /*景深800*/
+        }
+        #picList li{width: 50; height: 360px; position: relative; -webkit-transform-style:preserve-3d;}
+        #picList a{width: 100%; height: 100%; position: absolute; left: 0; top: 0;}
+        #picList li a:nth-of-type(1){background:url(./img/logo1.jpg) no-repeat;}
+        /* transform-origin:旋转基点  transform:rotateX()旋转角度*/
+        #picList li a:nth-of-type(2){background:url(./img/logo1.jpg) no-repeat; -webkit-transform-origin: top;-webkit-transform: rotateX(-90deg)}
+        #picList li a:nth-of-type(3){background:url(./img/logo1.jpg) no-repeat;-webkit-transform: translateZ(360px);}
+        #picList li a:nth-of-type(4){background:url(./img/logo1.jpg) no-repeat;-webkit-transform-origin: bottom;-webkit-transform: rotateX(90deg)}
+        #picList li a:nth-of-type(5){background:url(./img/logo1.jpg) no-repeat;}
+        #btns{float: left; padding: 10px 0;}
+        #btns li{
+            width: 40px; height: 40px; background:#000;color: #fff;border-radius: 50%; font:italic 30px/40px Arial; float: left;
+            margin: 0 5px; text-align:center;
+        }
+        #btns .active{background: #f60;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul id="picList">
+            <li>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <!-- <span></span>
+                <span></span> -->
+            </li>
+        </ul>
+        <ol id="btns">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+</body>
+</html>
