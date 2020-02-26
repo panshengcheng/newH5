@@ -1,6 +1,4 @@
-<div style="display:none">
-        <?php include_once "wechat.php"; ?>
-</div>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +13,7 @@
     <link rel="stylesheet" href="css/index.css"/>
 </head>
 <body>
-<div style="display:none">
-        <?php include_once "wechat.php"; ?>
-</div>
+
 <audio id="bg" src="./mp3/bj1.mp3"  preload="auto"  style="display: none">
 </audio>
 <div id="loadIng">
