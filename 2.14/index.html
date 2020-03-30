@@ -39,6 +39,20 @@
             <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="3s">2020年2月8日</p>
             
           </section>
+          <section class="swiper-slide swiper-slide1 four">
+            <img class="ani page2 img2-1" swiper-animate-effect="fadeInRight" swiper-animate-duration="2s" swiper-animate-delay="0.5s" src="./img/myImg.jpg" alt="">
+            <img class="ani page2 img2-2" swiper-animate-effect="fadeInLeft" swiper-animate-duration="2s" swiper-animate-delay="0.5s" src="./img/1-2.jpg" alt="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="2s">确定关系</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="3s">2020年2月18日</p>
+            
+          </section>
+		  <section class="swiper-slide swiper-slide1 four">
+            <img class="ani page2 img2-1" swiper-animate-effect="fadeInRight" swiper-animate-duration="2s" swiper-animate-delay="0.5s" src="./img/myImg.jpg" alt="">
+            <img class="ani page2 img2-2" swiper-animate-effect="fadeInLeft" swiper-animate-duration="2s" swiper-animate-delay="0.5s" src="./img/1-2.jpg" alt="">
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="2s">第一次去老丈人家</p>
+            <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="3s">2020年3月28日</p>
+            
+          </section>
           <section class="swiper-slide swiper-slide1 five">
             <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s">见到你第一眼我就觉得</p>
             <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="1s">为什么有人像偶像剧一样带着柔光</p>
@@ -88,7 +102,7 @@
                 if(num < sum){
                     init();
                 }else{
-                    musicPlay();
+                    //musicPlay();
                     $(".loading").css({"display":"none"});
                     $(".swiper-wrapper").css({"display":"block"});
                     $("#array").css({"display":"block"});
@@ -100,6 +114,7 @@
         
         let objMusic = document.getElementById('bgMusic');
         let musicState = true;
+        musicPlay();
         function musicPlay(){
             $(".music").removeClass('musicStop').addClass('musicPlay');  
             if(objMusic.paused){
