@@ -19,12 +19,6 @@ function loading(){
     }
     let imgArr =[
         "./img/640x1080.png",
-        // "http://wx.uvcsi.com/html5/lewan/zhuanpan/images/一等奖.jpg",
-        // "http://wx.uvcsi.com/html5/lewan/zhuanpan/images/p1bg.jpg",
-        // "http://wx.uvcsi.com/html5/lewan/zhuanpan/images/p1zhuanpan.png",
-        // "http://wx.uvcsi.com/html5/lewan/zhuanpan/images/p1zhizhen.png",
-        // "http://wx.uvcsi.com/html5/lewan/zhuanpan/images/p1btn.png",
-        // "http://wx.uvcsi.com/html5/lewan/zhuanpan/images/p1btn2.png"
     ];
     let app = new PIXI.Application(option);
     $(".loading").css({"display":"block"});

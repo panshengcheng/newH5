@@ -1,0 +1,132 @@
+<div style="display:none">
+        <?php include_once "wechat.php"; ?>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽奖页面</title>
+    <link rel="stylesheet" href="./css/index.css"/>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+<!-- css裁剪：-webkit-clip-path:polygon()
+    中奖率算法：
+        算法一：
+                直接随机生成一个随机概率：
+                    例：
+                        let number = parseInt(Math.rendom() * 100)
+                        根据生成的随机数，判断属于几等奖
+        算法二：
+                1.生成一个随机数，根据得出的随机数判断中奖的概率
+                        let number1 = Math.rendom() * 100
+                        例：50%的中奖率
+                        if(number1 >= 50){
+                            //中奖
+                        }else{
+                            //未中奖
+                        }
+                2.再次生成一个随机数，判断中奖的奖项
+                        let number2 = parseInt(Math.rendom() * 100)
+                        例：1~2：一等奖
+                            3~20：二等奖
+                            ............
+                            if(number1 >= 50){
+                                //中奖
+                                if(number2 <3 ){
+                                    //一等奖
+                                }else if(number2 >=3 && number <30 ){
+                                    //二等奖
+                                }
+                            } 
+        奖项固定：
+                读取数据库奖品数量
+                let data = [num1,num2,num3,num4,num5,num6];//num1：一等奖奖品数量,num2:二等奖奖品数量,............
+                以算法二为例：
+                    使用递归算法进行奖项的查询
+                封装函数
+                getNumber()
+                function getNumber(){
+                    let number1 = parseInt(Math.rendom() * 100);
+                    if(number1 <=40 ){//40%中奖率
+                        let number2 = parseInt(Math.random() * 100);
+                        let deg =0;
+                        switch(number2){
+                            case number2 >0 && number2 <=2://2%的中一等奖率
+                                deg = 360 + 45*0.5+360*6; //转盘旋转圈数
+                                if(data[0] ==0 ){
+                                    getNumber();
+                                    retrue;
+                                }
+                                data[0] = data[0] -1;
+                                break;
+                            case number2 >2 && number2 <=10://8%的中二等奖率
+                                deg = 180 + 90 + 45*0.5 + 360*6; //转盘旋转圈数
+                                if(data[1] ==0 ){
+                                    getNumber();
+                                    retrue;
+                                }
+                                data[1] = data[1] -1;
+                                break;
+                            case number10 >0 && number2 <=20://10%的中三等奖率
+                                deg = 360 + 45*0.5+360*6; //转盘旋转圈数
+                                if(data[2] ==0 ){
+                                    getNumber();
+                                    retrue;
+                                }
+                                data[2] = data[2] -1;
+                                break;
+                                ..........//依次排序
+                        }
+                    }else{
+                        //未中奖
+                    }
+                }
+ -->
+    <audio src="../invitation02/mp3/gq.mp3"></audio>
+    <section class="fixedPage">
+        <button id="xBtn">活动详情</button>
+        <button id="pBtn">排名列表</button>
+    </section>
+    <!-- 活动首页 -->
+    <section class="homePage">
+        <img id="them" src="http://placehold.it/300x100" alt="主标"/>
+        <div class="buttonInfo">
+            <img id="infoBtn" src="http://placehold.it/70x30" alt="活动详情按钮">
+            <img id="startBtn" src="http://placehold.it/70x30" alt="开始按钮按钮">
+        </div>
+        <!-- <img id="ruleMask" src="http://placehold.it/250x400" alt="活动规则信息"> -->
+    </section>
+    <!-- 抽奖页 -->
+    <section class="turantablePage">
+        <canvas id="canvas"></canvas>
+    </section>
+    <!-- 活动介绍页 -->
+    <section class="troducePage">
+            <div class="troduce">
+                <img id="cBtn" src="./img/clon.png"/>
+                <img id="conner" src="http://placehold.it/300x100"/>
+            </div>
+    </section>
+    <!-- 活动中奖者名单 -->
+    <section class="gainerPage">
+
+    </section>
+    <!-- 我的奖品页 -->
+    <section class="myGainerPage">
+
+    </section>
+    <!-- 加载页 -->
+    <section class="loading">
+        <img src="http://placehold.it/640x1080" alt="">
+        <div id="loadInfo">
+            <img src="http://placehold.it/100x100" alt="" id="loadImg">
+            <p id="loadNum">已加载0%</p>
+        </div>
+    </section>
+    <script src="./js/pixi5.min.js"></script>
+    <script src="./js/TweenMax.min.js"></script>
+    <script src="./js/turntable.js"></script>
+</body>
+</html>
