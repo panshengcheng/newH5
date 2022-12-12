@@ -13,7 +13,7 @@
   "dependencies": {
     "alloytouch": "^0.2.5",
     "body-parser": "^1.18.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fs": "0.0.1-security"
   },
   "devDependencies": {
